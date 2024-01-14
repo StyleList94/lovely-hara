@@ -7,8 +7,8 @@ import { dmSans, inter, roboto, robotoMono } from 'app/fonts';
 import 'styles/global.css';
 
 export const metadata: Metadata = {
-  title: 'Stylish Next App',
-  description: 'Whatever you want',
+  title: 'StyleList94',
+  description: '광안리구미호',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={`${inter.variable} ${roboto.variable} ${robotoMono.variable} ${dmSans.variable}`}
     >
-      <body>
+      <body className="bg-base-100">
         <AppProvider>{children}</AppProvider>
       </body>
     </html>
