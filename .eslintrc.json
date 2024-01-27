@@ -3,8 +3,7 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true,
-    "jest": true
+    "node": true
   },
   "settings": {
     "react": {
@@ -20,7 +19,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "ignorePatterns": ["*.config.js", "*.config.ts", "jest.setup.ts"],
+  "ignorePatterns": ["*.config.js", "*.config.ts"],
   "plugins": ["@typescript-eslint", "testing-library"],
   "extends": [
     "eslint:recommended",
@@ -30,7 +29,6 @@
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
-    "plugin:jest/recommended",
     "next/core-web-vitals",
     "prettier"
   ],
@@ -40,12 +38,19 @@
         "**/__tests__/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[jt]s?(x)"
       ],
-      "extends": ["plugin:testing-library/react"]
+      "extends": ["plugin:vitest/recommended", "plugin:testing-library/react"]
     }
   ],
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ],
     "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/return-await": "off",
     "consistent-return": [
@@ -54,11 +59,20 @@
         "treatUndefinedAsUnspecified": false
       }
     ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.?(ts|tsx)",
+          "**/*.spec.?(ts|tsx)",
+          "**/test-utils.tsx"
+        ]
+      }
+    ],
     "jsx-a11y/label-has-associated-control": [
       2,
       {
-        "labelAttributes": ["label"],
-        "depth": 3
+        "depth": 2
       }
     ],
     "no-param-reassign": [
@@ -84,6 +98,12 @@
     ],
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": [
+      "error",
+      {
+        "ignoreFunctionalComponents": true
+      }
+    ]
   }
 }
