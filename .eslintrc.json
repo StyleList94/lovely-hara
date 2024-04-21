@@ -83,6 +83,7 @@
       }
     ],
     "react-hooks/rules-of-hooks": "error",
+    "react/display-name": "off",
     "react/function-component-definition": [
       2,
       {
@@ -99,11 +100,6 @@
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "react/require-default-props": [
-      "error",
-      {
-        "ignoreFunctionalComponents": true
-      }
-    ]
+    "react/require-default-props": "off"
   }
 }
