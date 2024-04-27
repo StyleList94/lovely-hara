@@ -1,9 +1,14 @@
-'use client';
+import Header from '@/components/header';
 
 export default function IndexPage() {
   return (
-    <main className="flex flex-col justify-center items-center gap-8 p-12">
-      <h1 className="text-2xl">StyleList94</h1>
-    </main>
+    <>
+      <Header />
+      <main className="flex flex-col pt-16 min-h-screen">
+        <div className="flex flex-col p-8">
+          <h1 className="text-2xl">Content</h1>
+        </div>
+      </main>
+    </>
   );
 }

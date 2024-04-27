@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-pretendard)'],
         mono: ['var(--font-roboto-mono)'],
+        display: ['var(--font-titillium-web)'],
       },
     },
   },

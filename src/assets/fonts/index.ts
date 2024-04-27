@@ -1,10 +1,17 @@
-import { Roboto_Mono } from 'next/font/google';
+import { Roboto_Mono, Titillium_Web } from 'next/font/google';
 import localFont from 'next/font/local';
 
 export const robotoMono = Roboto_Mono({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-roboto-mono',
+});
+
+export const titilliumWeb = Titillium_Web({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: '400',
+  variable: '--font-titillium-web',
 });
 
 export const pretendard = localFont({
