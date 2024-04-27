@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)'],
+        sans: ['var(--font-pretendard)'],
         mono: ['var(--font-roboto-mono)'],
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require('daisyui')],
 };
