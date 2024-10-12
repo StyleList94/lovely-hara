@@ -30,6 +30,7 @@
     "airbnb/hooks",
     "airbnb-typescript",
     "next/core-web-vitals",
+    "plugin:eslint-plugin-next-on-pages/recommended",
     "prettier"
   ],
   "overrides": [
@@ -38,7 +39,10 @@
         "**/__tests__/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[jt]s?(x)"
       ],
-      "extends": ["plugin:@vitest/legacy-recommended", "plugin:testing-library/react"]
+      "extends": [
+        "plugin:@vitest/legacy-recommended",
+        "plugin:testing-library/react"
+      ]
     }
   ],
   "rules": {
@@ -79,10 +83,7 @@
       "error",
       {
         "props": true,
-        "ignorePropertyModificationsForRegex": [
-          "^state$",
-          "^ctx$"
-        ]
+        "ignorePropertyModificationsForRegex": ["^state$", "^ctx$"]
       }
     ],
     "react-hooks/rules-of-hooks": "error",
@@ -90,20 +91,14 @@
     "react/function-component-definition": [
       2,
       {
-        "namedComponents": [
-          "arrow-function",
-          "function-declaration"
-        ],
+        "namedComponents": ["arrow-function", "function-declaration"],
         "unnamedComponents": "arrow-function"
       }
     ],
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".ts",
-          ".tsx"
-        ]
+        "extensions": [".ts", ".tsx"]
       }
     ],
     "react/jsx-props-no-spreading": "off",

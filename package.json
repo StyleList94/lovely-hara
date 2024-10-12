@@ -10,7 +10,10 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui",
-    "prepare": "husky"
+    "prepare": "husky",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev",
+    "deploy": "npm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.8",
@@ -23,6 +26,7 @@
     "tailwind-merge": "^2.5.3"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.5",
     "@next/eslint-plugin-next": "^14.2.14",
     "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^6.4.2",
@@ -45,6 +49,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-next-on-pages": "^1.13.5",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-testing-library": "^6.1.0",
