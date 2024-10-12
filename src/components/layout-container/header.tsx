@@ -29,6 +29,7 @@ const Header = () => (
           </Link>
 
           <div className="flex items-center gap-2">
+            <ThemeControlSwitch />
             <a
               href="https://github.com/StyleList94"
               target="_blank"
@@ -43,7 +44,6 @@ const Header = () => (
             >
               <Icon.BrandGithub />
             </a>
-            <ThemeControlSwitch />
           </div>
         </div>
       </div>
