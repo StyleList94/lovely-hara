@@ -7,6 +7,7 @@ const IconBrandGithub = (props: SVGProps<SVGSVGElement>) => (
     width="1em"
     height="1em"
     viewBox="0 0 24 24"
+    aria-label="icon-github"
     {...props}
   >
     <path
