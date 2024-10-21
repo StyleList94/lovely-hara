@@ -2,7 +2,7 @@ import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import BigNumber from 'bignumber.js';
 
-import { hexColorRegex, rgbRegex } from './regex';
+import { hexColorWithAlphaRegex, rgbRegex } from './regex';
 
 export const cn = (...args: ClassValue[]) => twMerge(clsx(args));
 
@@ -34,7 +34,7 @@ export const hexToRGB = (
   hex: string,
   { includeAlpha = false }: { includeAlpha?: boolean } = {},
 ) => {
-  if (!hexColorRegex.test(hex)) return null;
+  if (!hexColorWithAlphaRegex.test(hex)) return null;
 
   let hexColor = hex.replace(/^#/, '');
 
@@ -71,7 +71,7 @@ export const hexToHSL = (
   hex: string,
   { includeAlpha = false }: { includeAlpha?: boolean } = {},
 ) => {
-  if (!hexColorRegex.test(hex)) return null;
+  if (!hexColorWithAlphaRegex.test(hex)) return null;
 
   let expandedHex = hex.slice(1);
   if (expandedHex.length === 3 || expandedHex.length === 4) {
