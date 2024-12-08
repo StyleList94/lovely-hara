@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import StringMaker from '@/components/string-maker';
 
 describe('<StringMaker />', () => {
@@ -15,7 +15,7 @@ describe('<StringMaker />', () => {
     expect(screen.getByRole('button', { name: /TL/i })).toBeInTheDocument();
   });
 
-  it('should be copied string', () => {
+  it('should be copied string', async () => {
     Object.defineProperty(window, 'navigator', {
       value: {
         clipboard: {
@@ -38,20 +38,26 @@ describe('<StringMaker />', () => {
 
     const buttonSingle = screen.getByRole('button', { name: /single/i });
     fireEvent.click(buttonSingle);
-    expect(writeText).toHaveBeenCalledWith(
-      "'0x29072219f93D6893F9201Adfc31246169e785252'",
-    );
+    await waitFor(() => {
+      expect(writeText).toHaveBeenCalledWith(
+        "'0x29072219f93D6893F9201Adfc31246169e785252'",
+      );
+    });
 
     const buttonDouble = screen.getByRole('button', { name: /double/i });
     fireEvent.click(buttonDouble);
-    expect(writeText).toHaveBeenCalledWith(
-      '"0x29072219f93D6893F9201Adfc31246169e785252"',
-    );
+    await waitFor(() => {
+      expect(writeText).toHaveBeenCalledWith(
+        '"0x29072219f93D6893F9201Adfc31246169e785252"',
+      );
+    });
 
     const buttonTemplate = screen.getByRole('button', { name: /TL/i });
     fireEvent.click(buttonTemplate);
-    expect(writeText).toHaveBeenCalledWith(
-      '`0x29072219f93D6893F9201Adfc31246169e785252`',
-    );
+    await waitFor(() => {
+      expect(writeText).toHaveBeenCalledWith(
+        '`0x29072219f93D6893F9201Adfc31246169e785252`',
+      );
+    });
   });
 });
