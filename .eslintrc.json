@@ -8,6 +8,9 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "typescript": {}
     }
   },
   "parser": "@typescript-eslint/parser",
@@ -29,7 +32,7 @@
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
-    "next/core-web-vitals",
+    "plugin:@next/next/recommended",
     "plugin:eslint-plugin-next-on-pages/recommended",
     "prettier"
   ],
@@ -42,7 +45,10 @@
       "extends": [
         "plugin:@vitest/legacy-recommended",
         "plugin:testing-library/react"
-      ]
+      ],
+      "rules": {
+        "@typescript-eslint/unbound-method": "off"
+      }
     }
   ],
   "rules": {
@@ -61,6 +67,16 @@
       "error",
       {
         "treatUndefinedAsUnspecified": false
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
       }
     ],
     "import/no-extraneous-dependencies": [

@@ -1,13 +1,21 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Button, Input, Tooltip } from '@nextui-org/react';
 
 import { cn } from '@/lib/utils';
 
+import Input from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+
 type StringType = 'single' | 'double' | 'template';
 
-const IconCheck = (
+const IconCheck = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -21,7 +29,7 @@ const IconCheck = (
   </svg>
 );
 
-const IconCopy = (
+const IconCopy = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -34,6 +42,22 @@ const IconCopy = (
     />
   </svg>
 );
+
+const actionItems = [
+  {
+    id: 'single' as const,
+    label: 'Single',
+  },
+  {
+    id: 'double' as const,
+    label: 'Double',
+  },
+  {
+    id: 'template' as const,
+    label: 'TL',
+    detailLabel: 'Template literals',
+  },
+];
 
 const StringMaker = () => {
   const [inputText, setInputText] = useState('');
@@ -77,51 +101,43 @@ const StringMaker = () => {
   return (
     <div
       className={cn(
-        'flex flex-col gap-6 p-5 rounded-md bg-default-100/30 shadow-sm',
+        'flex flex-col gap-6 p-5 rounded-md bg-muted/30 shadow-sm',
         'w-full max-w-96',
       )}
     >
-      <h2 className="text-xl">String Maker</h2>
+      <h2 className="text-lg">String Maker</h2>
 
       <div className="flex flex-col items-center gap-2">
         <Input
-          color="default"
           placeholder="something..."
           value={inputText}
-          onValueChange={setInputText}
+          onChange={(e) => setInputText(e.target.value)}
         />
         <div className="flex items-center gap-1 w-full">
-          <Button
-            className="flex-1"
-            color="default"
-            variant="bordered"
-            onClick={handleClickToCopy('single')}
-            endContent={targetSuccessCopy === 'single' ? IconCheck : IconCopy}
-          >
-            Single
-          </Button>
-          <Button
-            className="flex-1"
-            color="default"
-            variant="bordered"
-            onClick={handleClickToCopy('double')}
-            endContent={targetSuccessCopy === 'double' ? IconCheck : IconCopy}
-          >
-            Double
-          </Button>
-          <Tooltip placement="bottom" showArrow content="template literals">
-            <Button
-              className="flex-1"
-              color="default"
-              variant="bordered"
-              onClick={handleClickToCopy('template')}
-              endContent={
-                targetSuccessCopy === 'template' ? IconCheck : IconCopy
-              }
-            >
-              TL
-            </Button>
-          </Tooltip>
+          <TooltipProvider>
+            {actionItems.map((item) => (
+              <Tooltip
+                open={item.detailLabel ? undefined : false}
+                key={`string-maker-action-${item.id}`}
+              >
+                <TooltipTrigger asChild>
+                  <Button
+                    className="flex-1"
+                    variant="secondary"
+                    onClick={handleClickToCopy(item.id)}
+                  >
+                    {targetSuccessCopy === item.id ? (
+                      <IconCheck />
+                    ) : (
+                      <IconCopy />
+                    )}
+                    {item.label}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>{item.detailLabel}</TooltipContent>
+              </Tooltip>
+            ))}
+          </TooltipProvider>
         </div>
       </div>
     </div>

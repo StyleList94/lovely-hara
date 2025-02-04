@@ -1,10 +1,17 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Code, Input, Tooltip } from '@nextui-org/react';
 
 import { hexColorRegex, rgbRegex } from '@/lib/regex';
 import { cn, hexToHSL, hexToRGB, rgbToHex } from '@/lib/utils';
+import Input from '@/components/ui/input';
+import Code from '@/components/ui/code';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 const ColorPicker = () => {
   const [inputColorValue, setInputColorValue] = useState('');
@@ -49,43 +56,42 @@ const ColorPicker = () => {
   return (
     <div
       className={cn(
-        'flex flex-col gap-6 p-5 rounded-md bg-default-100/30 shadow-sm',
+        'flex flex-col gap-6 p-5 rounded-md bg-muted/30 shadow-sm',
         'w-full max-w-96',
       )}
     >
-      <h2 className="text-xl">Color Picker</h2>
+      <h2 className="text-lg">Color Picker</h2>
 
       <div className="flex items-center gap-2">
         <div
           className={cn('w-10 h-10 flex-none rounded-md border-2')}
           style={{
             backgroundColor: colorValue ?? 'transparent',
-            borderColor: colorValue ?? 'hsl(var(--nextui-default-200)',
+            borderColor: colorValue ?? 'hsl(var(--border))',
           }}
           aria-label="preview"
         />
         <Input
-          color="default"
           placeholder="hex or rgb"
           value={inputColorValue}
-          onValueChange={setInputColorValue}
+          onChange={(e) => setInputColorValue(e.target.value)}
         />
       </div>
 
       {convertedValue && (
         <div className="flex flex-col items-end gap-2">
-          {convertedValue.map((item, index) => (
-            <Tooltip
-              placement="left"
-              showArrow
-              content="copy"
-              key={`converted-${item}`}
-            >
-              <button type="button" onClick={handleClickConvertedValue(index)}>
-                <Code>{item}</Code>
-              </button>
-            </Tooltip>
-          ))}
+          <TooltipProvider delayDuration={0}>
+            {convertedValue.map((item, index) => (
+              <Tooltip key={`converted-${item}`}>
+                <TooltipTrigger onClick={handleClickConvertedValue(index)}>
+                  <Code>{item}</Code>
+                </TooltipTrigger>
+                <TooltipContent side="left">
+                  <p>copy</p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
+          </TooltipProvider>
         </div>
       )}
     </div>

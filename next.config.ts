@@ -1,7 +1,7 @@
 import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
+import type { NextConfig } from 'next';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({
@@ -14,8 +14,8 @@ const nextConfig = {
   },
 };
 
-if (process.env.NODE_ENV === 'development') {
-  await setupDevPlatform();
-}
-
 export default nextConfig;
+
+if (process.env.NODE_ENV === 'development') {
+  setupDevPlatform().catch((e) => console.error(e));
+}

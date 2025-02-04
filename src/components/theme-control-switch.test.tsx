@@ -46,7 +46,7 @@ describe('<ThemeControlSwitch />', () => {
       </ThemeProvider>,
     );
 
-    expect(screen.getByRole('switch')).toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
   test('today is sunny', () => {
@@ -95,7 +95,7 @@ describe('<ThemeControlSwitch />', () => {
       </ThemeProvider>,
     );
 
-    const switchButton = screen.getByRole('switch');
+    const switchButton = screen.getByRole('button');
 
     fireEvent.click(switchButton);
     expect(mockSetTheme).toHaveBeenCalledWith('dark');
@@ -115,7 +115,7 @@ describe('<ThemeControlSwitch />', () => {
       </ThemeProvider>,
     );
 
-    const switchButton = screen.getByRole('switch');
+    const switchButton = screen.getByRole('button');
 
     fireEvent.click(switchButton);
     expect(mockSetTheme).toHaveBeenCalledWith('system');

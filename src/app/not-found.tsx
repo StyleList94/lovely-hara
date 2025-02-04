@@ -1,5 +1,6 @@
-import { Button } from '@nextui-org/react';
 import Link from 'next/link';
+
+import { Button } from '@/components/ui/button';
 
 export default function NotFound() {
   return (
@@ -7,8 +8,8 @@ export default function NotFound() {
       <h2 className="text-2xl">404 :: 페이지를 찾을 수 없습니다.</h2>
 
       <div className="flex flex-col gap-4">
-        <Button variant="light" size="lg" as={Link} href="/">
-          메인 페이지로 이동하기
+        <Button variant="link" size="lg" asChild>
+          <Link href="/">메인 페이지로 이동하기</Link>
         </Button>
       </div>
 

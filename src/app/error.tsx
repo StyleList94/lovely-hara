@@ -1,7 +1,7 @@
 'use client';
 
-import { Button } from '@nextui-org/react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export default function Error({
   error,
@@ -21,11 +21,12 @@ export default function Error({
       )}
 
       <div className="flex flex-col gap-4">
-        <Button color="default" onClick={() => reset()}>
+        <Button variant="secondary" onClick={() => reset()}>
           다시 시도하기
         </Button>
-        <Button variant="light" size="lg" as={Link} href="/">
-          메인 페이지
+
+        <Button variant="link" size="lg" asChild>
+          <Link href="/">메인 페이지</Link>
         </Button>
       </div>
 

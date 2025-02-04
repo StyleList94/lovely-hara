@@ -20,7 +20,7 @@ describe('<ColorPicker />', () => {
 
     expect(previewBox).toHaveStyle(`
       background-color: rgba(0, 0, 0, 0);
-      border-color: hsl(var(--nextui-default-200);
+      border-color: hsl(var(--border));
     `);
 
     fireEvent.change(inputElement, { target: { value: '#FFFFFF' } });
