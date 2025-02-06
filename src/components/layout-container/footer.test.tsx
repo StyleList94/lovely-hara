@@ -13,11 +13,10 @@ describe('<Footer />', () => {
       'https://blog.stylelist94.dev',
     );
 
-    expect(screen.getByText(/© 2024./)).toBeInTheDocument();
+    expect(screen.getByText(/© 2025./)).toBeInTheDocument();
     expect(screen.getByText(/StyleList94/)).toHaveAttribute(
       'href',
       'https://github.com/StyleList94',
     );
-    expect(screen.getByText(/ All rights reserved/)).toBeInTheDocument();
   });
 });

@@ -21,7 +21,7 @@ export default function Error({
       )}
 
       <div className="flex flex-col gap-4">
-        <Button variant="secondary" onClick={() => reset()}>
+        <Button variant="ghost" onClick={() => reset()}>
           다시 시도하기
         </Button>
 
