@@ -7,6 +7,7 @@ describe('<UnitConverter />', () => {
     render(<UnitConverter />);
 
     expect(screen.getByText('Unit Converter')).toBeInTheDocument();
+    expect(screen.getByText('수치 계산')).toBeInTheDocument();
 
     expect(screen.getByLabelText('px')).toBeInTheDocument();
     expect(screen.getByLabelText('rem')).toBeInTheDocument();

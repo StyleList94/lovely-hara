@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 
 import { hexColorRegex, rgbRegex } from '@/lib/regex';
 import { cn, hexToHSL, hexToRGB, rgbToHex } from '@/lib/utils';
+
 import Input from '@/components/ui/input';
 import Code from '@/components/ui/code';
 import {
@@ -12,6 +13,14 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 const ColorPicker = () => {
   const [inputColorValue, setInputColorValue] = useState('');
@@ -54,15 +63,15 @@ const ColorPicker = () => {
   };
 
   return (
-    <div
-      className={cn(
-        'flex flex-col gap-6 p-5 rounded-md bg-muted/30 shadow-sm',
-        'w-full max-w-96',
-      )}
-    >
-      <h2 className="text-lg">Color Picker</h2>
+    <Card className="w-full lg:max-w-96">
+      <CardHeader>
+        <CardTitle>Color Converter</CardTitle>
+        <CardDescription>
+          색상표현을 여러가지 형태로 변환해줍니다.
+        </CardDescription>
+      </CardHeader>
 
-      <div className="flex items-center gap-2">
+      <CardContent className="flex items-center gap-2">
         <div
           className={cn('w-10 h-10 flex-none rounded-md border-2')}
           style={{
@@ -76,10 +85,10 @@ const ColorPicker = () => {
           value={inputColorValue}
           onChange={(e) => setInputColorValue(e.target.value)}
         />
-      </div>
+      </CardContent>
 
       {convertedValue && (
-        <div className="flex flex-col items-end gap-2">
+        <CardFooter className="flex flex-col items-end gap-2">
           <TooltipProvider delayDuration={0}>
             {convertedValue.map((item, index) => (
               <Tooltip key={`converted-${item}`}>
@@ -92,9 +101,9 @@ const ColorPicker = () => {
               </Tooltip>
             ))}
           </TooltipProvider>
-        </div>
+        </CardFooter>
       )}
-    </div>
+    </Card>
   );
 };
 

@@ -7,6 +7,7 @@ describe('<StringMaker />', () => {
     render(<StringMaker />);
 
     expect(screen.getByText('String Maker')).toBeInTheDocument();
+    expect(screen.getByText('복사/붙여넣기가 쉬워집니다.')).toBeInTheDocument();
 
     expect(screen.getByPlaceholderText('something...')).toBeInTheDocument();
 

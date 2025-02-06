@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react';
 
-import { cn } from '@/lib/utils';
-
 import Input from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
@@ -12,6 +10,14 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 type StringType = 'single' | 'double' | 'template';
 
@@ -99,48 +105,43 @@ const StringMaker = () => {
   }, [targetSuccessCopy]);
 
   return (
-    <div
-      className={cn(
-        'flex flex-col gap-6 p-5 rounded-md bg-muted/30 shadow-sm',
-        'w-full max-w-96',
-      )}
-    >
-      <h2 className="text-lg">String Maker</h2>
+    <Card className="w-full lg:max-w-96">
+      <CardHeader>
+        <CardTitle>String Maker</CardTitle>
+        <CardDescription>복사/붙여넣기가 쉬워집니다.</CardDescription>
+      </CardHeader>
 
-      <div className="flex flex-col items-center gap-2">
+      <CardContent className="flex flex-col items-center gap-2">
         <Input
           placeholder="something..."
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
         />
-        <div className="flex items-center gap-1 w-full">
-          <TooltipProvider>
-            {actionItems.map((item) => (
-              <Tooltip
-                open={item.detailLabel ? undefined : false}
-                key={`string-maker-action-${item.id}`}
-              >
-                <TooltipTrigger asChild>
-                  <Button
-                    className="flex-1"
-                    variant="secondary"
-                    onClick={handleClickToCopy(item.id)}
-                  >
-                    {targetSuccessCopy === item.id ? (
-                      <IconCheck />
-                    ) : (
-                      <IconCopy />
-                    )}
-                    {item.label}
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>{item.detailLabel}</TooltipContent>
-              </Tooltip>
-            ))}
-          </TooltipProvider>
-        </div>
-      </div>
-    </div>
+      </CardContent>
+
+      <CardFooter className="flex items-center gap-1 w-full">
+        <TooltipProvider delayDuration={300}>
+          {actionItems.map((item) => (
+            <Tooltip
+              open={item.detailLabel ? undefined : false}
+              key={`string-maker-action-${item.id}`}
+            >
+              <TooltipTrigger asChild>
+                <Button
+                  className="flex-1"
+                  variant="secondary"
+                  onClick={handleClickToCopy(item.id)}
+                >
+                  {targetSuccessCopy === item.id ? <IconCheck /> : <IconCopy />}
+                  {item.label}
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{item.detailLabel}</TooltipContent>
+            </Tooltip>
+          ))}
+        </TooltipProvider>
+      </CardFooter>
+    </Card>
   );
 };
 

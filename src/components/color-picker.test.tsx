@@ -6,7 +6,10 @@ describe('<ColorPicker />', () => {
   it('should be render default state', () => {
     render(<ColorPicker />);
 
-    expect(screen.getByText('Color Picker')).toBeInTheDocument();
+    expect(screen.getByText('Color Converter')).toBeInTheDocument();
+    expect(
+      screen.getByText('색상표현을 여러가지 형태로 변환해줍니다.'),
+    ).toBeInTheDocument();
 
     expect(screen.getByPlaceholderText('hex or rgb')).toBeInTheDocument();
     expect(screen.getByLabelText('preview')).toBeInTheDocument();

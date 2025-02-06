@@ -2,11 +2,17 @@
 
 import { type ChangeEvent, useEffect, useState } from 'react';
 
-import { cn } from '@/lib/utils';
 import useDebounce from '@/hooks/use-debounce';
 
 import Input from '@/components/ui/input';
 import Label from '@/components/ui/label';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 type Unit = 'px' | 'rem';
 
@@ -55,16 +61,14 @@ const UnitConverter = () => {
   }, [lastChangedValue, debouncedPixelValue, debouncedRemValue]);
 
   return (
-    <div
-      className={cn(
-        'flex flex-col gap-6 p-5 rounded-md bg-muted/30 shadow-sm',
-        'w-full max-w-96',
-      )}
-    >
-      <h2 className="text-lg">Unit Converter</h2>
+    <Card className="w-full lg:max-w-96">
+      <CardHeader>
+        <CardTitle>Unit Converter</CardTitle>
+        <CardDescription>수치 계산</CardDescription>
+      </CardHeader>
 
-      <div className="flex flex-col items-center gap-2">
-        <div className="grid w-full max-w-sm items-center gap-1.5">
+      <CardContent className="flex flex-col items-center gap-2">
+        <div className="grid w-full lg:max-w-sm items-center gap-1.5">
           <Label htmlFor="px">px</Label>
           <Input
             id="px"
@@ -75,7 +79,7 @@ const UnitConverter = () => {
           />
         </div>
 
-        <div className="grid w-full max-w-sm items-center gap-1.5">
+        <div className="grid w-full lg:max-w-sm items-center gap-1.5">
           <Label htmlFor="rem">rem</Label>
           <Input
             id="rem"
@@ -85,8 +89,8 @@ const UnitConverter = () => {
             onChange={handleChangeValue('rem')}
           />
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
