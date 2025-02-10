@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode;
 };
 
-const MainContent = ({ children }: Props) => (
+const MainContainer = ({ children }: Props) => (
   <>
     <div
       className={cn(
@@ -28,4 +28,4 @@ const MainContent = ({ children }: Props) => (
   </>
 );
 
-export default MainContent;
+export default MainContainer;
