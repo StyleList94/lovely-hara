@@ -1,6 +1,8 @@
 import '@testing-library/jest-dom';
+
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import StringMaker from '@/components/string-maker';
+
+import StringMaker from '../string-maker';
 
 describe('<StringMaker />', () => {
   it('should be render', () => {

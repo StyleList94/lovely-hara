@@ -1,6 +1,8 @@
 import '@testing-library/jest-dom';
+
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import UnitConverter from '@/components/unit-converter';
+
+import UnitConverter from '../unit-converter';
 
 describe('<UnitConverter />', () => {
   it('should be render', () => {

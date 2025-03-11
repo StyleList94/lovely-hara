@@ -1,6 +1,8 @@
 import '@testing-library/jest-dom';
+
 import { fireEvent, render, screen } from '@testing-library/react';
-import ColorPicker from '@/components/color-picker';
+
+import ColorPicker from '../color-picker';
 
 describe('<ColorPicker />', () => {
   it('should be render default state', () => {

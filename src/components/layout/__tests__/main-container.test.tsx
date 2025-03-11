@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 
 import { render, screen } from '@testing-library/react';
 
-import MainContainer from './main-container';
+import MainContainer from '../main-container';
 
 describe('<MainContainer />', () => {
   it('should be rendered', () => {
