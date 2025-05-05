@@ -76,7 +76,7 @@ const ColorPicker = () => {
           className={cn('w-10 h-10 flex-none rounded-md border-2')}
           style={{
             backgroundColor: colorValue ?? 'transparent',
-            borderColor: colorValue ?? 'hsl(var(--border))',
+            borderColor: colorValue ?? 'var(--border)',
           }}
           aria-label="preview"
         />
