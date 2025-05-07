@@ -63,7 +63,7 @@ const ColorPicker = () => {
   };
 
   return (
-    <Card className="w-full lg:max-w-96">
+    <Card className="w-full">
       <CardHeader>
         <CardTitle>Color Converter</CardTitle>
         <CardDescription>

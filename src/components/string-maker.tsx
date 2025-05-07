@@ -105,7 +105,7 @@ const StringMaker = () => {
   }, [targetSuccessCopy]);
 
   return (
-    <Card className="w-full lg:max-w-96">
+    <Card className="w-full">
       <CardHeader>
         <CardTitle>String Maker</CardTitle>
         <CardDescription>복사/붙여넣기가 쉬워집니다.</CardDescription>

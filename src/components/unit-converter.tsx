@@ -61,13 +61,13 @@ const UnitConverter = () => {
   }, [lastChangedValue, debouncedPixelValue, debouncedRemValue]);
 
   return (
-    <Card className="w-full lg:max-w-96">
+    <Card className="w-full">
       <CardHeader>
         <CardTitle>Unit Converter</CardTitle>
         <CardDescription>수치 계산</CardDescription>
       </CardHeader>
 
-      <CardContent className="flex flex-col items-center gap-2">
+      <CardContent className="flex flex-col gap-2">
         <div className="grid w-full lg:max-w-sm items-center gap-1.5">
           <Label htmlFor="px">px</Label>
           <Input
