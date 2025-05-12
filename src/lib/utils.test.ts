@@ -1,4 +1,11 @@
-import { cn, hexToHSL, hexToRGB, rgbToHex, sleep } from '@/lib/utils';
+import {
+  cn,
+  hexToHSL,
+  hexToRGB,
+  isFileAccepted,
+  rgbToHex,
+  sleep,
+} from '@/lib/utils';
 
 describe('cn()', () => {
   it('merges class names correctly', () => {
@@ -131,4 +138,76 @@ describe('hexToHSL()', () => {
   test('#RGBA', () => {
     expect(hexToHSL('#0f08')).toBe('hsl(120 100% 50% / 0.53)'); // 수정된 예상 값
   });
+});
+
+describe('isFileAccepted()', () => {
+  const testCases = [
+    // 기본 케이스
+    {
+      file: { name: 'a.jpg', type: 'image/jpeg' } as File,
+      expected: true,
+    },
+
+    // 확장자 테스트
+    {
+      file: { name: 'b.png', type: 'image/png' } as File,
+      accept: '.png',
+      expected: true,
+    },
+    {
+      file: { name: 'c.pdf', type: 'application/pdf' } as File,
+      accept: '.docx',
+      expected: false,
+    },
+
+    // MIME 타입
+    {
+      file: { name: 'd.pdf', type: 'application/pdf' } as File,
+      accept: 'application/pdf',
+      expected: true,
+    },
+    {
+      file: { name: 'e.mp3', type: 'audio/mpeg' } as File,
+      accept: 'video/mp4',
+      expected: false,
+    },
+
+    // 와일드카드
+    {
+      file: { name: 'f.jpg', type: 'image/jpeg' } as File,
+      accept: 'image/*',
+      expected: true,
+    },
+    {
+      file: { name: 'g.mp4', type: 'video/mp4' } as File,
+      accept: 'image/*',
+      expected: false,
+    },
+
+    // 복합 조건
+    {
+      file: { name: 'h.docx', type: 'application/vnd.openxmlformats' } as File,
+      accept: 'image/*, .docx, application/pdf',
+      expected: true,
+    },
+    {
+      file: { name: 'i.txt', type: 'text/plain' } as File,
+      accept: 'image/*, .docx',
+      expected: false,
+    },
+
+    // 대소문자
+    {
+      file: { name: 'J.JPEG', type: 'IMAGE/JPEG' } as File,
+      accept: '.jpeg, image/jpeg',
+      expected: true,
+    },
+  ];
+
+  test.each(testCases)(
+    'case %#: $file.name ($accept)',
+    ({ file, accept, expected }) => {
+      expect(isFileAccepted(file, accept)).toBe(expected);
+    },
+  );
 });
