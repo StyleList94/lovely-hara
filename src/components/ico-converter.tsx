@@ -3,6 +3,7 @@
 import { useState, useTransition, useCallback, ChangeEvent } from 'react';
 import { FileUpIcon, Loader2Icon } from 'lucide-react';
 import Image from 'next/image';
+import { FileUploader } from '@stylelist94/nine-beauty-actress';
 
 import { convertToICO } from '@/lib/actions';
 
@@ -15,7 +16,6 @@ import {
 } from '@/components/ui/card';
 import Label from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import FileUploader from '@/components/file-uploader';
 
 const IcoConverter = () => {
   const [errorMessage, setErrorMessage] = useState('');

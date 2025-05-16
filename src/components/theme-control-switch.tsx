@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { AppearanceSwitch } from '@stylelist94/nine-beauty-actress';
 
 import { cn } from '@/lib/utils';
 import Icon from '@/assets/icons';
@@ -27,22 +28,17 @@ const ThemeControlSwitch = () => {
   }
 
   return (
-    <button
-      type="button"
+    <AppearanceSwitch
+      isActive={isDarkTheme}
+      onClick={toggleTheme}
       className={cn(
-        'w-8 h-8',
-        'flex items-center justify-center text-2xl text-neutral-600',
-        'rounded-lg bg-white hover:bg-neutral-100',
+        'bg-white hover:bg-neutral-100',
         'dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-300',
       )}
-      onClick={toggleTheme}
     >
-      {isDarkTheme ? (
-        <Icon.LightMode className="text-neutral-200" />
-      ) : (
-        <Icon.DarkMode className="text-neutral-700" />
-      )}
-    </button>
+      <Icon.DarkMode className="text-neutral-700" />
+      <Icon.LightMode className="text-neutral-200" />
+    </AppearanceSwitch>
   );
 };
 
