@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+@source '../../node_modules/@stylelist94/nine-beauty-actress/**/*.{ts,tsx}';
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -122,4 +124,3 @@
     @apply bg-background text-foreground;
   }
 }
-
