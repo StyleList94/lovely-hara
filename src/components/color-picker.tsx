@@ -66,9 +66,7 @@ const ColorPicker = () => {
     <Card className="w-full">
       <CardHeader>
         <CardTitle>Color Converter</CardTitle>
-        <CardDescription>
-          색상표현을 여러가지 형태로 변환해줍니다.
-        </CardDescription>
+        <CardDescription>가끔씩 RGB가 그리워...</CardDescription>
       </CardHeader>
 
       <CardContent className="flex items-center gap-2">
@@ -81,7 +79,7 @@ const ColorPicker = () => {
           aria-label="preview"
         />
         <Input
-          placeholder="hex or rgb"
+          placeholder="hex 또는 rgb()"
           value={inputColorValue}
           onChange={(e) => setInputColorValue(e.target.value)}
         />

@@ -9,7 +9,7 @@ describe('<UnitConverter />', () => {
     render(<UnitConverter />);
 
     expect(screen.getByText('Unit Converter')).toBeInTheDocument();
-    expect(screen.getByText('수치 계산')).toBeInTheDocument();
+    expect(screen.getByText('16비트 박자 쪼개기')).toBeInTheDocument();
 
     expect(screen.getByLabelText('px')).toBeInTheDocument();
     expect(screen.getByLabelText('rem')).toBeInTheDocument();

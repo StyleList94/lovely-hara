@@ -1,14 +1,14 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import IcoConverter from '../ico-converter';
+import IconConverter from '../icon-converter';
 
-describe('<IcoConverter />', () => {
+describe('<IconConverter />', () => {
   it('should be render', () => {
-    render(<IcoConverter />);
+    render(<IconConverter />);
 
-    expect(screen.getByText('ICO Converter')).toBeInTheDocument();
-    expect(screen.getByText('파비콘 만들기')).toBeInTheDocument();
+    expect(screen.getByText('Icon Converter')).toBeInTheDocument();
+    expect(screen.getByText('아! 맞다 파비콘!')).toBeInTheDocument();
 
     expect(screen.getByLabelText('아이콘 이미지')).toBeInTheDocument();
     expect(
@@ -17,6 +17,8 @@ describe('<IcoConverter />', () => {
     expect(screen.getByText('또는 클릭해서 업로드')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('somthing icon')).toBeInTheDocument();
 
-    expect(screen.getByRole('button', { name: 'Convert' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Convert to ICO' }),
+    ).toBeInTheDocument();
   });
 });

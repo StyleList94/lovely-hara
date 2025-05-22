@@ -17,7 +17,7 @@ import {
 import Label from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 
-const IcoConverter = () => {
+const IconConverter = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isPending, startTransition] = useTransition();
   const [previewInfo, setPreviewInfo] = useState<{
@@ -71,8 +71,8 @@ const IcoConverter = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>ICO Converter</CardTitle>
-        <CardDescription>파비콘 만들기</CardDescription>
+        <CardTitle>Icon Converter</CardTitle>
+        <CardDescription>아! 맞다 파비콘!</CardDescription>
       </CardHeader>
 
       <CardContent className="flex flex-col items-center gap-2">
@@ -119,7 +119,7 @@ const IcoConverter = () => {
           <div className="flex flex-col gap-2">
             <Button type="submit" disabled={isPending}>
               {isPending && <Loader2Icon className="animate-spin" />}
-              Convert
+              Convert to ICO
             </Button>
 
             {errorMessage && (
@@ -132,4 +132,4 @@ const IcoConverter = () => {
   );
 };
 
-export default IcoConverter;
+export default IconConverter;

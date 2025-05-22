@@ -9,9 +9,11 @@ describe('<StringMaker />', () => {
     render(<StringMaker />);
 
     expect(screen.getByText('String Maker')).toBeInTheDocument();
-    expect(screen.getByText('복사/붙여넣기가 쉬워집니다.')).toBeInTheDocument();
+    expect(screen.getByText('EVM 주소를 처리하고 싶어!')).toBeInTheDocument();
 
-    expect(screen.getByPlaceholderText('something...')).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText('16진수 40개 같은 거...'),
+    ).toBeInTheDocument();
 
     expect(screen.getByRole('button', { name: /single/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /double/i })).toBeInTheDocument();
@@ -33,7 +35,7 @@ describe('<StringMaker />', () => {
       clipboard: { writeText },
     } = navigator;
 
-    const inputElement = screen.getByPlaceholderText('something...');
+    const inputElement = screen.getByPlaceholderText('16진수 40개 같은 거...');
 
     fireEvent.change(inputElement, {
       target: { value: '0x29072219f93D6893F9201Adfc31246169e785252' },

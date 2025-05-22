@@ -9,18 +9,16 @@ describe('<ColorPicker />', () => {
     render(<ColorPicker />);
 
     expect(screen.getByText('Color Converter')).toBeInTheDocument();
-    expect(
-      screen.getByText('색상표현을 여러가지 형태로 변환해줍니다.'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('가끔씩 RGB가 그리워...')).toBeInTheDocument();
 
-    expect(screen.getByPlaceholderText('hex or rgb')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('hex 또는 rgb()')).toBeInTheDocument();
     expect(screen.getByLabelText('preview')).toBeInTheDocument();
   });
 
   it('should be show result color', () => {
     render(<ColorPicker />);
 
-    const inputElement = screen.getByPlaceholderText('hex or rgb');
+    const inputElement = screen.getByPlaceholderText('hex 또는 rgb()');
     const previewBox = screen.getByLabelText('preview');
 
     expect(previewBox).toHaveStyle(`
@@ -88,7 +86,7 @@ describe('<ColorPicker />', () => {
       clipboard: { writeText },
     } = navigator;
 
-    const inputElement = screen.getByPlaceholderText('hex or rgb');
+    const inputElement = screen.getByPlaceholderText('hex 또는 rgb()');
     fireEvent.change(inputElement, { target: { value: '#FFFFFF' } });
 
     fireEvent.click(screen.getByRole('button', { name: /rgb\(255 255 255\)/ }));

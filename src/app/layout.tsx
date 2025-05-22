@@ -5,6 +5,8 @@ import AppProvider from '@/providers/app-provider';
 
 import { pretendard, robotoMono, titilliumWeb } from '@/assets/fonts';
 
+import Toaster from '@/components/ui/sonner';
+
 import '@/styles/global.css';
 
 export const metadata: Metadata = {
@@ -41,6 +43,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body>
         <AppProvider>{children}</AppProvider>
+        <Toaster />
       </body>
     </html>
   );
