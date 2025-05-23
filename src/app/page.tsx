@@ -6,6 +6,7 @@ import StringMaker from '@/components/string-maker';
 import UnitConverter from '@/components/unit-converter';
 import IconConverter from '@/components/icon-converter';
 import SpringSimulator from '@/components/spring-simulator';
+import SearchExplore from '@/components/search-explore';
 
 export default function IndexPage() {
   return (
@@ -23,7 +24,10 @@ export default function IndexPage() {
             'xl:grid-cols-2',
           )}
         >
-          <ColorPicker />
+          <div className={cn('grid grid-cols-1 gap-4')}>
+            <ColorPicker />
+            <SearchExplore />
+          </div>
           <StringMaker />
         </div>
         <div className="grid grid-cols-1 gap-4">
