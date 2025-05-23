@@ -85,7 +85,7 @@ const ColorPicker = () => {
         />
       </CardContent>
 
-      {convertedValue && (
+      {convertedValue ? (
         <CardFooter className="flex flex-col items-end gap-2">
           <TooltipProvider delayDuration={0}>
             {convertedValue.map((item, index) => (
@@ -99,6 +99,19 @@ const ColorPicker = () => {
               </Tooltip>
             ))}
           </TooltipProvider>
+        </CardFooter>
+      ) : (
+        <CardFooter className="flex flex-col">
+          <div
+            className={cn(
+              'flex justify-center items-center w-full h-[10.75rem]',
+              'border border-dashed rounded-lg',
+            )}
+          >
+            <p className="text-sm text-zinc-700 dark:text-zinc-300">
+              결과를 기다리는 중...
+            </p>
+          </div>
         </CardFooter>
       )}
     </Card>
