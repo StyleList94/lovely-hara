@@ -2,5 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 export GITHUB_TOKEN=$(grep GITHUB_TOKEN .env.local | cut -d '=' -f2)
-yarn tsc
-CI=true yarn test
+pnpm exec tsc
+pnpm run test

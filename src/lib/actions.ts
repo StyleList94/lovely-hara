@@ -18,7 +18,10 @@ export const convertToICO = async (file: File) => {
   const buffer = Buffer.from(await file.arrayBuffer());
   const metadata = await sharp(buffer).metadata();
 
-  if (!metadata.width || !metadata.height) {
+  if (
+    typeof metadata.width === 'undefined' ||
+    typeof metadata.height === 'undefined'
+  ) {
     throw new Error('이미지 크기를 읽을 수 없습니다');
   }
 

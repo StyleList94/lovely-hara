@@ -23,7 +23,11 @@
     "sourceType": "module"
   },
   "ignorePatterns": ["*.config.[jt]s", "*.config.m[jt]s"],
-  "plugins": ["@typescript-eslint", "testing-library"],
+  "plugins": [
+    "@typescript-eslint",
+    "testing-library",
+    "eslint-plugin-next-on-pages"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",

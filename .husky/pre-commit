@@ -2,4 +2,4 @@
 . "$(dirname "$0")/_/husky.sh"
 
 export GITHUB_TOKEN=$(grep GITHUB_TOKEN .env.local | cut -d '=' -f2)
-yarn lint-staged
+pnpm exec lint-staged
