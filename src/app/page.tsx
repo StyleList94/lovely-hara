@@ -7,6 +7,7 @@ import UnitConverter from '@/components/unit-converter';
 import IconConverter from '@/components/icon-converter';
 import SpringSimulator from '@/components/spring-simulator';
 import SearchExplore from '@/components/search-explore';
+import PlayBall from '@/components/play-ball';
 
 export default function IndexPage() {
   return (
@@ -28,7 +29,10 @@ export default function IndexPage() {
             <ColorPicker />
             <SearchExplore />
           </div>
-          <StringMaker />
+          <div className={cn('grid grid-cols-1 gap-4')}>
+            <StringMaker />
+            <PlayBall />
+          </div>
         </div>
         <div className="grid grid-cols-1 gap-4">
           <div className="grid gird-cols-1 gap-4">

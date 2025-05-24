@@ -1,27 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
 import { AppearanceSwitch } from '@stylelist94/nine-beauty-actress';
 
-import { cn } from '@/lib/utils';
 import Icon from '@/assets/icons';
+import useMounted from '@/hooks/use-mounted';
+import useThemeControl from '@/hooks/use-theme-control';
+import { cn } from '@/lib/utils';
 
 const ThemeControlSwitch = () => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme, systemTheme } = useTheme();
+  const mounted = useMounted();
 
-  const isDarkTheme = resolvedTheme === 'dark';
-
-  const toggleTheme = () => {
-    const targetTheme = systemTheme === 'dark' ? 'light' : 'dark';
-
-    setTheme(theme === 'system' ? targetTheme : 'system');
-  };
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const { isDarkTheme, toggleTheme } = useThemeControl();
 
   if (!mounted) {
     return null;
