@@ -8,6 +8,7 @@ import IconConverter from '@/components/icon-converter';
 import SpringSimulator from '@/components/spring-simulator';
 import SearchExplore from '@/components/search-explore';
 import PlayBall from '@/components/play-ball';
+import TwBreakpoint from '@/components/tw-breakpoint';
 
 export default function IndexPage() {
   return (
@@ -45,10 +46,15 @@ export default function IndexPage() {
               'xl:grid-cols-2',
             )}
           >
-            <UnitConverter />
-            <IconConverter />
+            <div className={cn('grid grid-cols-1 gap-4')}>
+              <TwBreakpoint />
+            </div>
+            <div className={cn('grid grid-cols-1 gap-4')}>
+              <UnitConverter />
+              <IconConverter />
+            </div>
           </div>
-        </div>{' '}
+        </div>
       </div>
     </Container>
   );

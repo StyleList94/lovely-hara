@@ -129,7 +129,7 @@ const Container = ({ children }: PropsWithChildren) => (
   </Card>
 );
 
-const FailLoadData = () => (
+const FailLoadData = ({ message }: { message: string }) => (
   <CardContent className="flex flex-col gap-2">
     <div
       className={cn(
@@ -137,7 +137,7 @@ const FailLoadData = () => (
         'border border-dashed rounded-lg',
       )}
     >
-      <p className="text-sm text-red-400">데이터 어디갔어!?</p>
+      <p className="text-sm text-red-400">{message}</p>
     </div>
   </CardContent>
 );
@@ -154,7 +154,7 @@ const PlayBall = async () => {
     if (!res.ok) {
       return (
         <Container>
-          <FailLoadData />
+          <FailLoadData message="데이터 어디갔어!?" />
         </Container>
       );
     }
@@ -239,7 +239,7 @@ const PlayBall = async () => {
   } catch (e) {
     return (
       <Container>
-        <FailLoadData />
+        <FailLoadData message="마! 데이타 어데로갔노!?" />
       </Container>
     );
   }

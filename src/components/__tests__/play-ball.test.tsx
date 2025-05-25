@@ -4,6 +4,18 @@ import { render, screen } from '@testing-library/react';
 
 import PlayBall from '../play-ball';
 
+const mockTextDataGroup = [
+  '1',
+  "<span class='team-name'>롯데</span>",
+  '53',
+  '30',
+  '20',
+  '3',
+  '0.600',
+  '2',
+  '1승',
+];
+
 describe('<PlayBall />', () => {
   it('should render', async () => {
     global.fetch = vi.fn().mockResolvedValue({
@@ -12,35 +24,7 @@ describe('<PlayBall />', () => {
         title: '2025년 5월 24일 기준',
         rows: [
           {
-            row: [
-              {
-                Text: '1',
-              },
-              {
-                Text: "<span class='team-name'>롯데</span>",
-              },
-              {
-                Text: '53',
-              },
-              {
-                Text: '30',
-              },
-              {
-                Text: '20',
-              },
-              {
-                Text: '3',
-              },
-              {
-                Text: '0.600',
-              },
-              {
-                Text: '2',
-              },
-              {
-                Text: '1승',
-              },
-            ],
+            row: mockTextDataGroup.map((item) => ({ Text: item })),
           },
         ],
       }),
@@ -92,5 +76,22 @@ describe('<PlayBall />', () => {
     ).toBeInTheDocument();
 
     expect(screen.getByText('데이터 어디갔어!?')).toBeInTheDocument();
+  });
+
+  it('should render when throw error', async () => {
+    global.fetch = vi
+      .fn()
+      .mockRejectedValue(
+        new Error("Today's game has been cancelled because of the rain"),
+      );
+
+    render(await PlayBall());
+
+    expect(screen.getByText('그깟 공놀이')).toBeInTheDocument();
+    expect(
+      screen.getByText('올해는 제발 가을야구 하자...'),
+    ).toBeInTheDocument();
+
+    expect(screen.getByText('마! 데이타 어데로갔노!?')).toBeInTheDocument();
   });
 });
