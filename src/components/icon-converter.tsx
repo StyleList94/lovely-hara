@@ -117,7 +117,7 @@ const IconConverter = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <Button type="submit" disabled={isPending}>
+            <Button type="submit" disabled={isPending} variant="outline">
               {isPending && <Loader2Icon className="animate-spin" />}
               Convert to ICO
             </Button>

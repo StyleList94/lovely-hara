@@ -1,8 +1,7 @@
 'use client';
 
 import { type ChangeEvent, useEffect, useState } from 'react';
-
-import useDebounce from '@/hooks/use-debounce';
+import { useDebounce } from '@stylelist94/nine-beauty-actress';
 
 import Input from '@/components/ui/input';
 import Label from '@/components/ui/label';
