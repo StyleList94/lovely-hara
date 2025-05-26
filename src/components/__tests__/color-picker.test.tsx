@@ -5,7 +5,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import ColorPicker from '../color-picker';
 
 describe('<ColorPicker />', () => {
-  it('should be render default state', () => {
+  it('should render default state', () => {
     render(<ColorPicker />);
 
     expect(screen.getByText('Color Converter')).toBeInTheDocument();

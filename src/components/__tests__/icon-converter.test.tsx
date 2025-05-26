@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import IconConverter from '../icon-converter';
 
 describe('<IconConverter />', () => {
-  it('should be render', () => {
+  it('should render', () => {
     render(<IconConverter />);
 
     expect(screen.getByText('Icon Converter')).toBeInTheDocument();

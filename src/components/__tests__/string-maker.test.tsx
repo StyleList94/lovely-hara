@@ -5,7 +5,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import StringMaker from '../string-maker';
 
 describe('<StringMaker />', () => {
-  it('should be render', () => {
+  it('should render', () => {
     render(<StringMaker />);
 
     expect(screen.getByText('String Maker')).toBeInTheDocument();
