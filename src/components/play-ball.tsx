@@ -72,21 +72,6 @@ function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '').trim();
 }
 
-function getSecondsUntilNextMidnight(): number {
-  const now = new Date();
-  const tomorrow = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate() + 1,
-    0,
-    0,
-    0,
-    0,
-  );
-
-  return Math.floor((tomorrow.getTime() - now.getTime()) / 1000);
-}
-
 function parseRowData(data: TeamRankingResponse) {
   const ranking: TeamStanding[] = data.rows.map((rowObj) => {
     const { row } = rowObj;
@@ -144,11 +129,9 @@ const FailLoadData = ({ message }: { message: string }) => (
 
 const PlayBall = async () => {
   try {
-    const cacheTime = getSecondsUntilNextMidnight();
-
     const res = await fetch(
       'https://www.koreabaseball.com/ws/Main.asmx/GetTeamRank',
-      { method: 'POST', next: { revalidate: cacheTime } },
+      { method: 'POST' },
     );
 
     if (!res.ok) {
