@@ -10,7 +10,7 @@ import SearchExplore from '@/components/search-explore';
 import PlayBall from '@/components/play-ball';
 import TwBreakpoint from '@/components/tw-breakpoint';
 
-export default function IndexPage() {
+export default async function IndexPage() {
   return (
     <Container>
       <div

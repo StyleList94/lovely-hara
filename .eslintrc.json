@@ -23,11 +23,7 @@
     "sourceType": "module"
   },
   "ignorePatterns": ["*.config.[jt]s", "*.config.m[jt]s"],
-  "plugins": [
-    "@typescript-eslint",
-    "testing-library",
-    "eslint-plugin-next-on-pages"
-  ],
+  "plugins": ["@typescript-eslint", "testing-library"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -37,7 +33,6 @@
     "airbnb/hooks",
     "airbnb-typescript",
     "plugin:@next/next/recommended",
-    "plugin:eslint-plugin-next-on-pages/recommended",
     "prettier"
   ],
   "overrides": [

@@ -41,3 +41,7 @@ next-env.d.ts
 
 # IntelliJ
 .idea
+
+# Cloudflare Workers
+.open-next
+.wrangler
