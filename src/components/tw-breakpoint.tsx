@@ -1,3 +1,6 @@
+'use client';
+
+import { toast } from 'sonner';
 import { ChevronDownIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -54,55 +57,31 @@ function remToPx(rem: number) {
 const CONTAINER_QUERY_COLLAPSED_FIRST_INDEX = 3;
 const CONTAINER_QUERY_COLLAPSED_LAST_INDEX = 9;
 
-const TwBreakpoint = () => (
-  <Card className="w-full">
-    <CardHeader>
-      <CardTitle>바람막이</CardTitle>
-      <CardDescription>반응형 디자인 노트</CardDescription>
-    </CardHeader>
+const TwBreakpoint = () => {
+  const handleClickRow = (target: string) => async () => {
+    try {
+      await navigator.clipboard.writeText(`${target}:`);
+      toast.success('이걸 갖다 붙여줘!', {
+        description: `${target}:`,
+        duration: 1000,
+      });
+    } catch (error) {
+      toast.error('복사 실패!?', { description: '이럴 리가 없는데...' });
+    }
+  };
 
-    <CardContent className="flex flex-col gap-4">
-      <section className="flex flex-col gap-1">
-        <h2 className="text-sm text-zinc-800 dark:text-zinc-200">
-          미디어 쿼리
-        </h2>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>prefix</TableHead>
-              <TableHead className="text-right">최소 너비</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {twViewportBreak.map((item) => (
-              <TableRow key={`tw-viewport-${item.prefix}`}>
-                <TableCell>{item.prefix}</TableCell>
-                <TableCell className="text-right">
-                  {item.remValue}rem ({remToPx(item.remValue)}px)
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </section>
+  return (
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle>바람막이</CardTitle>
+        <CardDescription>반응형 디자인 노트</CardDescription>
+      </CardHeader>
 
-      <Collapsible asChild>
+      <CardContent className="flex flex-col gap-4">
         <section className="flex flex-col gap-1">
-          <CollapsibleTrigger
-            className={cn(
-              'flex justify-between items-center w-full ',
-              'data-[state=open]:*:last:-rotate-180',
-              'text-sm text-zinc-800 dark:text-zinc-200',
-            )}
-          >
-            <h2 className="">컨테이너 쿼리</h2>
-
-            <ChevronDownIcon
-              size={16}
-              className="transition-transform ease-in-out"
-            />
-          </CollapsibleTrigger>
-
+          <h2 className="text-sm text-zinc-800 dark:text-zinc-200">
+            미디어 쿼리
+          </h2>
           <Table>
             <TableHeader>
               <TableRow>
@@ -111,55 +90,107 @@ const TwBreakpoint = () => (
               </TableRow>
             </TableHeader>
             <TableBody>
-              {twContainerBreak
-                .slice(0, CONTAINER_QUERY_COLLAPSED_FIRST_INDEX)
-                .map((item) => (
-                  <CollapsibleContent
-                    asChild
-                    key={`tw-container-${item.prefix}`}
-                  >
-                    <TableRow>
-                      <TableCell>{item.prefix}</TableCell>
-                      <TableCell className="text-right">
-                        {item.remValue}rem ({remToPx(item.remValue)}px)
-                      </TableCell>
-                    </TableRow>
-                  </CollapsibleContent>
-                ))}
-              {twContainerBreak
-                .slice(
-                  CONTAINER_QUERY_COLLAPSED_FIRST_INDEX,
-                  CONTAINER_QUERY_COLLAPSED_LAST_INDEX,
-                )
-                .map((item) => (
-                  <TableRow key={`tw-container-${item.prefix}`}>
-                    <TableCell>{item.prefix}</TableCell>
-                    <TableCell className="text-right">
-                      {item.remValue}rem ({remToPx(item.remValue)}px)
-                    </TableCell>
-                  </TableRow>
-                ))}
-              {twContainerBreak
-                .slice(CONTAINER_QUERY_COLLAPSED_LAST_INDEX)
-                .map((item) => (
-                  <CollapsibleContent
-                    asChild
-                    key={`tw-container-${item.prefix}`}
-                  >
-                    <TableRow>
-                      <TableCell>{item.prefix}</TableCell>
-                      <TableCell className="text-right">
-                        {item.remValue}rem ({remToPx(item.remValue)}px)
-                      </TableCell>
-                    </TableRow>
-                  </CollapsibleContent>
-                ))}
+              {twViewportBreak.map((item) => (
+                <TableRow
+                  key={`tw-viewport-${item.prefix}`}
+                  onClick={handleClickRow(item.prefix)}
+                  className="cursor-pointer"
+                >
+                  <TableCell>{item.prefix}</TableCell>
+                  <TableCell className="text-right">
+                    {item.remValue}rem ({remToPx(item.remValue)}px)
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </section>
-      </Collapsible>
-    </CardContent>
-  </Card>
-);
+
+        <Collapsible asChild>
+          <section className="flex flex-col gap-1">
+            <CollapsibleTrigger
+              className={cn(
+                'flex justify-between items-center w-full ',
+                'data-[state=open]:*:last:-rotate-180',
+                'text-sm text-zinc-800 dark:text-zinc-200',
+              )}
+            >
+              <h2 className="">컨테이너 쿼리</h2>
+
+              <ChevronDownIcon
+                size={16}
+                className="transition-transform ease-in-out"
+              />
+            </CollapsibleTrigger>
+
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>prefix</TableHead>
+                  <TableHead className="text-right">최소 너비</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {twContainerBreak
+                  .slice(0, CONTAINER_QUERY_COLLAPSED_FIRST_INDEX)
+                  .map((item) => (
+                    <CollapsibleContent
+                      asChild
+                      key={`tw-container-${item.prefix}`}
+                    >
+                      <TableRow
+                        onClick={handleClickRow(item.prefix)}
+                        className="cursor-pointer"
+                      >
+                        <TableCell>{item.prefix}</TableCell>
+                        <TableCell className="text-right">
+                          {item.remValue}rem ({remToPx(item.remValue)}px)
+                        </TableCell>
+                      </TableRow>
+                    </CollapsibleContent>
+                  ))}
+                {twContainerBreak
+                  .slice(
+                    CONTAINER_QUERY_COLLAPSED_FIRST_INDEX,
+                    CONTAINER_QUERY_COLLAPSED_LAST_INDEX,
+                  )
+                  .map((item) => (
+                    <TableRow
+                      key={`tw-container-${item.prefix}`}
+                      onClick={handleClickRow(item.prefix)}
+                      className="cursor-pointer"
+                    >
+                      <TableCell>{item.prefix}</TableCell>
+                      <TableCell className="text-right">
+                        {item.remValue}rem ({remToPx(item.remValue)}px)
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                {twContainerBreak
+                  .slice(CONTAINER_QUERY_COLLAPSED_LAST_INDEX)
+                  .map((item) => (
+                    <CollapsibleContent
+                      asChild
+                      key={`tw-container-${item.prefix}`}
+                    >
+                      <TableRow
+                        onClick={handleClickRow(item.prefix)}
+                        className="cursor-pointer"
+                      >
+                        <TableCell>{item.prefix}</TableCell>
+                        <TableCell className="text-right">
+                          {item.remValue}rem ({remToPx(item.remValue)}px)
+                        </TableCell>
+                      </TableRow>
+                    </CollapsibleContent>
+                  ))}
+              </TableBody>
+            </Table>
+          </section>
+        </Collapsible>
+      </CardContent>
+    </Card>
+  );
+};
 
 export default TwBreakpoint;

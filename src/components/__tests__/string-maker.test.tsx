@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
@@ -24,7 +24,7 @@ describe('<StringMaker />', () => {
     Object.defineProperty(window, 'navigator', {
       value: {
         clipboard: {
-          writeText: vi.fn().mockResolvedValue(undefined), // 기본적으로 resolved promise 반환
+          writeText: vi.fn().mockResolvedValue(undefined),
         },
       },
     });

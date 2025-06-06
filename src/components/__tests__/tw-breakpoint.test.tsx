@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 
 import { fireEvent, render, screen } from '@testing-library/react';
 import TwBreakpoint from '../tw-breakpoint';
@@ -58,5 +58,31 @@ describe('<TwBreakpoint />', () => {
     expect(screen.getByText('72rem (1152px)')).toBeInTheDocument();
     expect(screen.getByText('@7xl')).toBeInTheDocument();
     expect(screen.getAllByText('80rem (1280px)')[1]).toBeInTheDocument();
+  });
+
+  it('should be copied to click row item', async () => {
+    Object.defineProperty(window, 'navigator', {
+      value: {
+        clipboard: {
+          writeText: vi.fn().mockResolvedValue(undefined),
+        },
+      },
+    });
+
+    const {
+      clipboard: { writeText },
+    } = navigator;
+
+    render(<TwBreakpoint />);
+
+    const mediaQueryRowElement = screen.getByRole('row', { name: /^lg/ });
+    fireEvent.click(mediaQueryRowElement);
+
+    expect(writeText).toHaveBeenCalledWith('lg:');
+
+    const containerQueryRowElement = screen.getByRole('row', { name: /^@2xl/ });
+    fireEvent.click(containerQueryRowElement);
+
+    expect(writeText).toHaveBeenCalledWith('@2xl:');
   });
 });

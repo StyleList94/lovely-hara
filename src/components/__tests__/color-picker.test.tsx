@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 
 import { fireEvent, render, screen } from '@testing-library/react';
 
@@ -15,7 +15,7 @@ describe('<ColorPicker />', () => {
     expect(screen.getByLabelText('preview')).toBeInTheDocument();
   });
 
-  it('should be show result color', () => {
+  it('should show result color', () => {
     render(<ColorPicker />);
 
     const inputElement = screen.getByPlaceholderText('hex 또는 rgb()');
@@ -71,11 +71,11 @@ describe('<ColorPicker />', () => {
     `);
   });
 
-  it('should be show copyable color', () => {
+  it('should show copyable color', () => {
     Object.defineProperty(window, 'navigator', {
       value: {
         clipboard: {
-          writeText: vi.fn().mockResolvedValue(undefined), // 기본적으로 resolved promise 반환
+          writeText: vi.fn().mockResolvedValue(undefined),
         },
       },
     });
