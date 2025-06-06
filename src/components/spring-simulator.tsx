@@ -121,8 +121,8 @@ const SpringSimulator = () => {
   return (
     <Card className="@container w-full">
       <CardHeader>
-        <CardTitle>스프링 시뮬레이터</CardTitle>
-        <CardDescription>통통 튀는 애니메이션을 만들고 싶다면</CardDescription>
+        <CardTitle>스프링 테스터</CardTitle>
+        <CardDescription>통통 튀는 애니메이션 만들기!</CardDescription>
       </CardHeader>
 
       <CardContent className="flex flex-col gap-6">

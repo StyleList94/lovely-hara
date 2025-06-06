@@ -240,7 +240,9 @@ const SearchExplore = () => {
     <Card className="w-full">
       <CardHeader>
         <CardTitle>서치퀸</CardTitle>
-        <CardDescription>GPT가 하는거 반만큼만 해볼까{'<'}3</CardDescription>
+        <CardDescription>
+          어떤 걸 좋아할지 몰라서 다 준비해 봤어{'<'}3
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
         <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -248,7 +250,7 @@ const SearchExplore = () => {
           <div className="flex w-full max-w-sm items-center space-x-2">
             <Input
               id="query"
-              placeholder="검색하고 싶은 거"
+              placeholder="뭐든 말해봐!"
               onChange={handleChange}
               value={query}
             />

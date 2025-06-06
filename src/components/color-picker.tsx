@@ -65,8 +65,8 @@ const ColorPicker = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Color Converter</CardTitle>
-        <CardDescription>가끔씩 RGB가 그리워...</CardDescription>
+        <CardTitle>색폼 바꾸기</CardTitle>
+        <CardDescription>다 똑같은 입술 색 아니었어?</CardDescription>
       </CardHeader>
 
       <CardContent className="flex items-center gap-2">
@@ -109,7 +109,7 @@ const ColorPicker = () => {
             )}
           >
             <p className="text-sm text-zinc-700 dark:text-zinc-300">
-              결과를 기다리는 중...
+              두근두근...
             </p>
           </div>
         </CardFooter>

@@ -7,7 +7,7 @@ describe('<IconConverter />', () => {
   it('should render', () => {
     render(<IconConverter />);
 
-    expect(screen.getByText('Icon Converter')).toBeInTheDocument();
+    expect(screen.getByText('아이콘 폼체인지')).toBeInTheDocument();
     expect(screen.getByText('아! 맞다 파비콘!')).toBeInTheDocument();
 
     expect(screen.getByLabelText('아이콘 이미지')).toBeInTheDocument();
@@ -18,7 +18,7 @@ describe('<IconConverter />', () => {
     expect(screen.getByPlaceholderText('somthing icon')).toBeInTheDocument();
 
     expect(
-      screen.getByRole('button', { name: 'Convert to ICO' }),
+      screen.getByRole('button', { name: 'ICO 내놔!' }),
     ).toBeInTheDocument();
   });
 });

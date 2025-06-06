@@ -71,7 +71,7 @@ const IconConverter = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Icon Converter</CardTitle>
+        <CardTitle>아이콘 폼체인지</CardTitle>
         <CardDescription>아! 맞다 파비콘!</CardDescription>
       </CardHeader>
 
@@ -119,7 +119,7 @@ const IconConverter = () => {
           <div className="flex flex-col gap-2">
             <Button type="submit" disabled={isPending} variant="outline">
               {isPending && <Loader2Icon className="animate-spin" />}
-              Convert to ICO
+              ICO 내놔!
             </Button>
 
             {errorMessage && (

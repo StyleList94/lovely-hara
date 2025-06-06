@@ -22,9 +22,9 @@ describe('<SpringSimulator />', () => {
   it('should render', () => {
     render(<SpringSimulator />);
 
-    expect(screen.getByText('스프링 시뮬레이터')).toBeInTheDocument();
+    expect(screen.getByText('스프링 테스터')).toBeInTheDocument();
     expect(
-      screen.getByText('통통 튀는 애니메이션을 만들고 싶다면'),
+      screen.getByText('통통 튀는 애니메이션 만들기!'),
     ).toBeInTheDocument();
 
     expect(screen.getByLabelText(/Stiffness/i)).toBeInTheDocument();

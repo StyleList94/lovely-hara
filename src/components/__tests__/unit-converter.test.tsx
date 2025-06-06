@@ -8,7 +8,7 @@ describe('<UnitConverter />', () => {
   it('should render', () => {
     render(<UnitConverter />);
 
-    expect(screen.getByText('Unit Converter')).toBeInTheDocument();
+    expect(screen.getByText('사이즈가 뭐꼬')).toBeInTheDocument();
     expect(screen.getByText('16비트 박자 쪼개기')).toBeInTheDocument();
 
     expect(screen.getByLabelText('px')).toBeInTheDocument();

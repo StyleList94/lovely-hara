@@ -8,11 +8,13 @@ describe('<ColorPicker />', () => {
   it('should render default state', () => {
     render(<ColorPicker />);
 
-    expect(screen.getByText('Color Converter')).toBeInTheDocument();
-    expect(screen.getByText('가끔씩 RGB가 그리워...')).toBeInTheDocument();
+    expect(screen.getByText('색폼 바꾸기')).toBeInTheDocument();
+    expect(screen.getByText('다 똑같은 입술 색 아니었어?')).toBeInTheDocument();
 
     expect(screen.getByPlaceholderText('hex 또는 rgb()')).toBeInTheDocument();
     expect(screen.getByLabelText('preview')).toBeInTheDocument();
+
+    expect(screen.getByText('두근두근...')).toBeInTheDocument();
   });
 
   it('should show result color', () => {

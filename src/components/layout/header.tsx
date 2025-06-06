@@ -22,8 +22,7 @@ const Header = () => (
             <span className="text-sm leading-relaxed tracking-wider">.DEV</span>
           </Link>
 
-          <div className="flex items-center gap-0.5">
-            <ThemeControlSwitch />
+          <div className="flex items-center gap-0.25">
             <a
               href="https://github.com/StyleList94"
               target="_blank"
@@ -36,8 +35,9 @@ const Header = () => (
                 'transition duration-200 ease-in-out',
               )}
             >
-              <Icon.BrandGithub className="w-5" />
+              <Icon.BrandGithub className="w-4 h-4" />
             </a>
+            <ThemeControlSwitch />
           </div>
         </div>
       </div>

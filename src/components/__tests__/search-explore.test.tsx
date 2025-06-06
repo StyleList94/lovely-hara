@@ -11,11 +11,11 @@ describe('<SearchExplore />', () => {
 
     expect(screen.getByText('서치퀸')).toBeInTheDocument();
     expect(
-      screen.getByText('GPT가 하는거 반만큼만 해볼까<3'),
+      screen.getByText('어떤 걸 좋아할지 몰라서 다 준비해 봤어<3'),
     ).toBeInTheDocument();
 
     expect(screen.getByLabelText('검색어')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('검색하고 싶은 거')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('뭐든 말해봐!')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /search/ })).toBeInTheDocument();
 
     expect(screen.getByLabelText('모두 선택')).toBeInTheDocument();
@@ -44,7 +44,7 @@ describe('<SearchExplore />', () => {
   it('should be changed query', () => {
     render(<SearchExplore />);
 
-    const inputElement = screen.getByPlaceholderText('검색하고 싶은 거');
+    const inputElement = screen.getByPlaceholderText('뭐든 말해봐!');
 
     fireEvent.change(inputElement, { target: { value: '엔믹스' } });
     expect((inputElement as HTMLInputElement).value).toBe('엔믹스');
@@ -56,7 +56,7 @@ describe('<SearchExplore />', () => {
 
     render(<SearchExplore />);
 
-    const inputElement = screen.getByPlaceholderText('검색하고 싶은 거');
+    const inputElement = screen.getByPlaceholderText('뭐든 말해봐!');
     const buttonElement = screen.getByRole('button', { name: /search/ });
 
     expect(buttonElement).toBeDisabled();
