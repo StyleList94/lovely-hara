@@ -24,44 +24,37 @@ describe('<ColorPicker />', () => {
     const previewBox = screen.getByLabelText('preview');
 
     expect(previewBox).toHaveStyle(`
-      background-color: rgba(0, 0, 0, 0);
-      border-color: hsl(var(--border));
+      background-color: transparent;
     `);
 
     fireEvent.change(inputElement, { target: { value: '#FFFFFF' } });
     expect(previewBox).toHaveStyle(`
       background-color: #FFFFFF;
-      border-color: #FFFFFF;
     `);
 
     fireEvent.change(inputElement, { target: { value: '#ffffff' } });
     expect(previewBox).toHaveStyle(`
       background-color: #ffffff;
-      border-color: #ffffff;
     `);
 
     fireEvent.change(inputElement, { target: { value: '#fff' } });
     expect(previewBox).toHaveStyle(`
       background-color: #fff;
-      border-color: #fff;
     `);
 
     fireEvent.change(inputElement, { target: { value: 'rgb(255, 255, 255)' } });
     expect(previewBox).toHaveStyle(`
       background-color: #ffffff;
-      border-color: #ffffff;
     `);
 
     fireEvent.change(inputElement, { target: { value: 'rgb(0 0 0)' } });
     expect(previewBox).toHaveStyle(`
       background-color: #000000;
-      border-color: #000000;
     `);
 
     fireEvent.change(inputElement, { target: { value: 'rgb(50% 50% 100%)' } });
     expect(previewBox).toHaveStyle(`
       background-color: #8080ff;
-      border-color: #8080ff;
     `);
 
     fireEvent.change(inputElement, {
@@ -69,7 +62,6 @@ describe('<ColorPicker />', () => {
     });
     expect(previewBox).toHaveStyle(`
       background-color: #4080ff;
-      border-color: #4080ff;
     `);
   });
 

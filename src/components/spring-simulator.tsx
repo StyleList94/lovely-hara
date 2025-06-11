@@ -26,6 +26,24 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import Combobox from '@/components/ui/combobox';
+
+type Option = {
+  value: string;
+  label: string;
+};
+
+const presetOptions: Option[] = [
+  { value: 'scroll-linked', label: 'Scroll linked' },
+];
+
+const presetGroup: Record<string, SpringOptions> = {
+  'scroll-linked': {
+    stiffness: 150,
+    damping: 30,
+    mass: 1,
+  },
+};
 
 const inputStyle =
   'w-20 h-7 text-sm text-right pr-0 border-transparent shadow-none dark:bg-transparent';
@@ -70,6 +88,8 @@ const SpringSimulator = () => {
     mass,
   });
 
+  const [selectedPreset, setSelectedPreset] = useState('');
+
   const handleChangeStiffness = (e: ChangeEvent<HTMLInputElement>) => {
     const value = Math.max(1, Math.min(1000, +e.target.value));
     setStiffness(value);
@@ -77,6 +97,7 @@ const SpringSimulator = () => {
       ...prevState,
       stiffness: value,
     }));
+    setSelectedPreset('');
   };
 
   const handleChangeDamping = (e: ChangeEvent<HTMLInputElement>) => {
@@ -86,6 +107,7 @@ const SpringSimulator = () => {
       ...prevState,
       damping: value,
     }));
+    setSelectedPreset('');
   };
 
   const handleChangeMass = (e: ChangeEvent<HTMLInputElement>) => {
@@ -95,10 +117,24 @@ const SpringSimulator = () => {
       ...prevState,
       mass: value,
     }));
+    setSelectedPreset('');
   };
 
   const handleChangeSlider = () => {
     setSpringOptions({ stiffness, mass, damping });
+    setSelectedPreset('');
+  };
+
+  const handlePresetValueChange = (value: string) => {
+    if (presetGroup[value]) {
+      const nextSpringOption = presetGroup[value];
+      setStiffness(nextSpringOption.stiffness ?? 100);
+      setDamping(nextSpringOption.damping ?? 10);
+      setMass(nextSpringOption.mass ?? 10);
+
+      setSpringOptions({ ...nextSpringOption });
+    }
+    setSelectedPreset(value);
   };
 
   const handleClickCopy = async () => {
@@ -126,7 +162,7 @@ const SpringSimulator = () => {
       </CardHeader>
 
       <CardContent className="flex flex-col gap-6">
-        <div className="flex flex-col @md:flex-row @md:items-center gap-4">
+        <div className="flex flex-col @md:flex-row @md:items-end gap-4">
           <TooltipProvider delayDuration={300}>
             <div className="flex flex-col gap-2 w-full">
               <div className="flex flex-col gap-2">
@@ -245,30 +281,49 @@ const SpringSimulator = () => {
               </div>
             </div>
           </TooltipProvider>
-          <div className="flex flex-col gap-2 @md:w-72">
-            <Button variant="outline" onClick={handleClickCopy}>
-              Copy
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => setRetryCount((prevState) => prevState + 1)}
-            >
-              Replay
-            </Button>
+          <div className="flex flex-col justify-between gap-4 @md:w-72 h-full">
+            <div className="flex flex-col gap-2 ">
+              <Combobox
+                value={selectedPreset}
+                onValueChange={handlePresetValueChange}
+                options={presetOptions}
+                placeholder="프리셋"
+                queryPlaceholder="프리셋 검색"
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Button variant="outline" onClick={handleClickCopy}>
+                Copy
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setRetryCount((prevState) => prevState + 1)}
+              >
+                Replay
+              </Button>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col">
-          <p className="text-sm text-zinc-700 dark:text-zinc-200">
+        <div className="flex flex-col gap-2">
+          <p className="text-sm text-zinc-800 dark:text-zinc-200">
             스프링(?) 같이 생긴 것
           </p>
           <LazyMotion features={domAnimation}>
-            <div className="relative flex flex-col justify-center items-start w-64 h-12">
-              <div className="absolute h-2 w-full rounded bg-zinc-100 dark:bg-zinc-800" />
-              <SpringBox
-                key={`${springOptions.stiffness}-${springOptions.damping}-${springOptions.mass}-${retryCount}`}
-                {...springOptions}
-              />
+            <div
+              className={cn(
+                'overflow-hidden flex w-full p-0.5 rounded-xl',
+                'border-4 border-zinc-200/30 dark:border-zinc-700/30',
+              )}
+            >
+              <div className="relative flex flex-col justify-center items-start w-64 h-12">
+                <div className="absolute h-2 w-full rounded bg-zinc-100 dark:bg-zinc-800" />
+                <SpringBox
+                  key={`${springOptions.stiffness}-${springOptions.damping}-${springOptions.mass}-${retryCount}`}
+                  {...springOptions}
+                />
+              </div>
             </div>
           </LazyMotion>
         </div>
