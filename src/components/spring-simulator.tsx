@@ -1,5 +1,7 @@
 'use client';
 
+import type { SpringOptions } from 'motion';
+
 import { type ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { LazyMotion, domAnimation, useSpring } from 'motion/react';
 import * as m from 'motion/react-m';
@@ -7,8 +9,6 @@ import { InfoIcon } from 'lucide-react';
 import { toast } from 'sonner';
 
 import { cn } from '@/lib/utils';
-
-import type { SpringOptions } from 'motion';
 
 import {
   Card,
@@ -28,8 +28,10 @@ import {
 } from '@/components/ui/tooltip';
 import Combobox from '@/components/ui/combobox';
 
+type PresetOptionValue = 'scroll-linked';
+
 type Option = {
-  value: string;
+  value: PresetOptionValue;
   label: string;
 };
 
@@ -37,7 +39,7 @@ const presetOptions: Option[] = [
   { value: 'scroll-linked', label: 'Scroll linked' },
 ];
 
-const presetGroup: Record<string, SpringOptions> = {
+const presetGroup: Record<PresetOptionValue, SpringOptions> = {
   'scroll-linked': {
     stiffness: 150,
     damping: 30,
@@ -126,14 +128,12 @@ const SpringSimulator = () => {
   };
 
   const handlePresetValueChange = (value: string) => {
-    if (presetGroup[value]) {
-      const nextSpringOption = presetGroup[value];
-      setStiffness(nextSpringOption.stiffness ?? 100);
-      setDamping(nextSpringOption.damping ?? 10);
-      setMass(nextSpringOption.mass ?? 10);
+    const nextSpringOption = presetGroup[value as PresetOptionValue];
+    setStiffness(nextSpringOption.stiffness ?? 100);
+    setDamping(nextSpringOption.damping ?? 10);
+    setMass(nextSpringOption.mass ?? 10);
 
-      setSpringOptions({ ...nextSpringOption });
-    }
+    setSpringOptions({ ...nextSpringOption });
     setSelectedPreset(value);
   };
 
@@ -146,7 +146,7 @@ const SpringSimulator = () => {
         position: 'bottom-right',
         duration: 1000,
       });
-    } catch (error) {
+    } catch {
       toast.error('Failed to copy!', {
         position: 'bottom-right',
         duration: 1000,

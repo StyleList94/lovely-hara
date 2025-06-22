@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom/vitest';
 
 import { fireEvent, render, screen } from '@testing-library/react';
+
 import TwBreakpoint from '../tw-breakpoint';
 
 describe('<TwBreakpoint />', () => {
@@ -60,7 +61,7 @@ describe('<TwBreakpoint />', () => {
     expect(screen.getAllByText('80rem (1280px)')[1]).toBeInTheDocument();
   });
 
-  it('should be copied to click row item', async () => {
+  it('should be copied to click row item', () => {
     Object.defineProperty(window, 'navigator', {
       value: {
         clipboard: {
@@ -69,9 +70,9 @@ describe('<TwBreakpoint />', () => {
       },
     });
 
-    const {
-      clipboard: { writeText },
-    } = navigator;
+    const writeText = vi
+      .spyOn(navigator.clipboard, 'writeText')
+      .mockResolvedValue();
 
     render(<TwBreakpoint />);
 

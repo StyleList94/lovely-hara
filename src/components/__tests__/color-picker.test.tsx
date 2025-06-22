@@ -76,9 +76,9 @@ describe('<ColorPicker />', () => {
 
     render(<ColorPicker />);
 
-    const {
-      clipboard: { writeText },
-    } = navigator;
+    const writeText = vi
+      .spyOn(navigator.clipboard, 'writeText')
+      .mockResolvedValue();
 
     const inputElement = screen.getByPlaceholderText('hex 또는 rgb()');
     fireEvent.change(inputElement, { target: { value: '#FFFFFF' } });

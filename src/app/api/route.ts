@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-
-export async function GET() {
+export function GET() {
   return Response.json({ name: 'StyleList94' });
 }

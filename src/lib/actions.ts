@@ -2,12 +2,11 @@
 
 import sharp from 'sharp';
 
-// eslint-disable-next-line import/prefer-default-export
 export const convertToICO = async (file: File) => {
   const ICO_SIZE_GROUP = [16, 24, 32, 48, 64, 128, 256];
 
   // 1. 파일 유효성 검사
-  if (!file || !file.type.startsWith('image/png')) {
+  if (!file.type.startsWith('image/png')) {
     throw new Error('PNG 이미지만 업로드 가능합니다');
   }
   if (file.size > 5 * 1024 * 1024) {
@@ -18,15 +17,13 @@ export const convertToICO = async (file: File) => {
   const buffer = Buffer.from(await file.arrayBuffer());
   const metadata = await sharp(buffer).metadata();
 
-  if (
-    typeof metadata.width === 'undefined' ||
-    typeof metadata.height === 'undefined'
-  ) {
+  if (metadata.width === undefined || metadata.height === undefined) {
     throw new Error('이미지 크기를 읽을 수 없습니다');
   }
 
   // 3. 생성할 ICO 크기 계산 (원본 크기 이하만 선택)
   const targetSizes = ICO_SIZE_GROUP.filter(
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     (size) => size <= metadata.width! && size <= metadata.height!,
   );
 

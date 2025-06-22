@@ -31,9 +31,9 @@ describe('<StringMaker />', () => {
 
     render(<StringMaker />);
 
-    const {
-      clipboard: { writeText },
-    } = navigator;
+    const writeText = vi
+      .spyOn(navigator.clipboard, 'writeText')
+      .mockResolvedValue();
 
     const inputElement =
       screen.getByPlaceholderText('40개의 16진수 같은 거...');

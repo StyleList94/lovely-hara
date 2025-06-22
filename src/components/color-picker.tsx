@@ -57,7 +57,7 @@ const ColorPicker = () => {
 
     try {
       await navigator.clipboard.writeText(convertedValue[target]);
-    } catch (error) {
+    } catch {
       /* empty */
     }
   };

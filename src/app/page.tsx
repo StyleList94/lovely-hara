@@ -11,7 +11,7 @@ import PlayBall from '@/components/play-ball';
 import TwBreakpoint from '@/components/tw-breakpoint';
 import BlogFeed from '@/components/blog-feed';
 
-export default async function IndexPage() {
+export default function IndexPage() {
   return (
     <Container>
       <section

@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import BigNumber from 'bignumber.js';
+import { BigNumber } from 'bignumber.js';
 
 import { hexColorWithAlphaRegex, rgbRegex } from './regex';
 
@@ -53,13 +53,9 @@ export const hexToRGB = (
   const hasAlpha = hexColor.length === 8;
 
   const hexValue = parseInt(hexColor, 16);
-  /* eslint-disable-next-line no-bitwise */
   const r = (hexValue >> (hasAlpha ? 24 : 16)) & 255;
-  /* eslint-disable-next-line no-bitwise */
   const g = (hexValue >> (hasAlpha ? 16 : 8)) & 255;
-  /* eslint-disable-next-line no-bitwise */
   const b = (hexValue >> (hasAlpha ? 8 : 0)) & 255;
-  /* eslint-disable-next-line no-bitwise */
   const a = hasAlpha ? ((hexValue & 255) / 255).toFixed(2) : 1;
 
   return hasAlpha || includeAlpha
@@ -147,7 +143,7 @@ export const hexToHSL = (
     parseFloat(new BigNumber(l).multipliedBy(100).toFixed(1)),
   );
 
-  if (alphaHex !== 'ff' || (alphaHex === 'ff' && includeAlpha)) {
+  if (alphaHex !== 'ff' || includeAlpha) {
     return `hsl(${h} ${s}% ${lPercent}% / ${a})`;
   }
   return `hsl(${h} ${s}% ${lPercent}%)`;

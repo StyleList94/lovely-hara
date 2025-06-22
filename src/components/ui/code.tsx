@@ -1,11 +1,8 @@
-import React from 'react';
+import type { ComponentProps } from 'react';
+
 import { cn } from '@/lib/utils';
 
-const Code = ({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<'code'>) => (
+const Code = ({ className, children, ...props }: ComponentProps<'code'>) => (
   <code
     className={cn(
       'px-2 py-1 h-fit font-mono font-normal inline-block whitespace-nowrap bg-zinc-200/30 text-zinc-700 text-sm rounded-md',

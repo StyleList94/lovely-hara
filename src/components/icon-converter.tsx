@@ -40,7 +40,7 @@ const IconConverter = () => {
     }
   };
 
-  const convertAction = async (formData: FormData) => {
+  const convertAction = (formData: FormData) => {
     const file = formData.get('icon') as File;
 
     if (file.size > 5 * 1024 * 1024) {

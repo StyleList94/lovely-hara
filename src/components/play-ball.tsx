@@ -1,8 +1,8 @@
+import type { PropsWithChildren } from 'react';
+
 import { format } from 'date-fns';
 
 import { cn } from '@/lib/utils';
-
-import type { PropsWithChildren } from 'react';
 
 import {
   Card,
@@ -219,7 +219,7 @@ const PlayBall = async () => {
         </CardFooter>
       </Container>
     );
-  } catch (e) {
+  } catch {
     return (
       <Container>
         <FailLoadData message="마! 데이타 어데로갔노!?" />

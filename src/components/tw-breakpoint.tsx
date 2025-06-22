@@ -65,7 +65,7 @@ const TwBreakpoint = () => {
         description: `${target}:`,
         duration: 1000,
       });
-    } catch (error) {
+    } catch {
       toast.error('복사 실패!?', { description: '이럴 리가 없는데...' });
     }
   };

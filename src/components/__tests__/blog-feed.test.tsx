@@ -22,7 +22,7 @@ describe('<BlogFeed />', () => {
   it('should render', async () => {
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: async () => mockResult,
+      text: () => mockResult,
     });
 
     render(await BlogFeed());
@@ -41,7 +41,7 @@ describe('<BlogFeed />', () => {
   it('should render when fail to load', async () => {
     global.fetch = vi.fn().mockResolvedValue({
       ok: false,
-      text: async () => '',
+      text: () => '',
     });
 
     render(await BlogFeed());

@@ -86,13 +86,13 @@ const StringMaker = () => {
           await navigator.clipboard.writeText(`"${inputText}"`);
           setTargetSuccessCopy('double');
       }
-    } catch (error) {
+    } catch {
       /* empty */
     }
   };
 
   useEffect(() => {
-    let timerId: NodeJS.Timeout;
+    let timerId: NodeJS.Timeout | undefined;
     if (targetSuccessCopy) {
       timerId = setTimeout(() => setTargetSuccessCopy(null), 3000);
     }

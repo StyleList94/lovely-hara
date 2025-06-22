@@ -20,7 +20,7 @@ describe('<PlayBall />', () => {
   it('should render', async () => {
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      json: async () => ({
+      json: () => ({
         title: '2025년 5월 24일 기준',
         rows: [
           {
@@ -65,7 +65,7 @@ describe('<PlayBall />', () => {
   it('should render when fail to load', async () => {
     global.fetch = vi.fn().mockResolvedValue({
       ok: false,
-      json: async () => ({}),
+      json: () => ({}),
     });
 
     render(await PlayBall());

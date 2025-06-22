@@ -4,10 +4,10 @@ import {
   headerContentBoxStyle,
 } from '@stylelist94/nine-beauty-actress/styles';
 
+import Icon from '@/assets/icons';
 import { cn } from '@/lib/utils';
 
 import ThemeControlSwitch from '@/components/theme-control-switch';
-import Icon from '@/assets/icons';
 
 const Header = () => (
   <>

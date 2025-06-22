@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react';
 import type { Metadata, Viewport } from 'next';
 
-import AppProvider from '@/providers/app-provider';
-
 import { pretendard, robotoMono, titilliumWeb } from '@/assets/fonts';
+
+import AppProvider from '@/providers/app-provider';
 
 import Toaster from '@/components/ui/sonner';
 
