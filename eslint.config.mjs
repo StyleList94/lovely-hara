@@ -3,9 +3,9 @@ import { fileURLToPath } from 'node:url';
 
 import { FlatCompat } from '@eslint/eslintrc';
 import tseslint from 'typescript-eslint';
-import stylishConfig from 'eslint-config-stylish';
-import stylishReactConfig from 'eslint-config-stylish/react';
-import stylishTypeScriptConfig from 'eslint-config-stylish/typescript';
+import stylish from 'eslint-config-stylish';
+import stylishReact from 'eslint-config-stylish/react';
+import stylishTypeScript from 'eslint-config-stylish/typescript';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import vitest from '@vitest/eslint-plugin';
 import testingLibrary from 'eslint-plugin-testing-library';
@@ -23,14 +23,14 @@ export default tseslint.config(
   }),
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    extends: [stylishConfig],
+    extends: [stylish],
     rules: {
       'import/prefer-default-export': 'off',
     },
   },
   {
     files: ['**/*.{js,jsx,tsx}'],
-    extends: [stylishReactConfig],
+    extends: [stylishReact],
   },
   {
     files: ['**/*.{ts,mts,cts,tsx}'],
@@ -44,7 +44,15 @@ export default tseslint.config(
         sourceType: 'module',
       },
     },
-    extends: [stylishTypeScriptConfig],
+    extends: [stylishTypeScript],
+  },
+  {
+    files: ['next.config.ts'],
+    rules: {
+      'no-param-reassign': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
+    },
   },
   {
     files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
