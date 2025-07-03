@@ -88,7 +88,7 @@ function parseRowData(data: TeamRankingResponse) {
     };
   });
 
-  const match = data.title.match(/(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/);
+  const match = /(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/.exec(data.title);
   let date: Date | null = null;
   if (match) {
     const year = Number(match[1]);
