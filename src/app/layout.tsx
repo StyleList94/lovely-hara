@@ -10,6 +10,7 @@ import Toaster from '@/components/ui/sonner';
 import '@/styles/global.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://stylelist94.dev'),
   title: 'StyleList94',
   description: 'FE 유틸리티',
   keywords: ['Utility', '유틸리티'],
@@ -30,8 +31,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
