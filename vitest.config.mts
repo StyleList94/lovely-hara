@@ -1,8 +1,9 @@
-import { defineConfig } from 'vitest/config';
+/// <reference types="vitest" />
+import { getViteConfig } from 'astro/config';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-export default defineConfig({
+export default getViteConfig({
   plugins: [tsconfigPaths(), react()],
   test: {
     environment: 'happy-dom',

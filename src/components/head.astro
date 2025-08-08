@@ -1,0 +1,41 @@
+---
+import { Font } from 'astro:assets';
+
+const title = 'StyleList94';
+const description = 'FE 유틸리티';
+const siteUrl = 'https://stylelist94.dev';
+const keywords = ['Utility', '유틸리티'].join(', ');
+const ogImage = `${siteUrl}/opengraph-image.png`;
+const twitterImage = `${siteUrl}/twitter-image.png`;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <Font cssVariable="--font-pretendard" preload />
+  <Font cssVariable="--font-roboto-mono" preload />
+  <Font cssVariable="--font-titillium-web" preload />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content={keywords} />
+
+  <link rel="canonical" href={siteUrl} />
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:site_name" content={title} />
+  <meta property="og:url" content={siteUrl} />
+  <meta property="og:image" content={ogImage} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={twitterImage} />
+</head>

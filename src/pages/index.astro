@@ -1,0 +1,55 @@
+---
+export const prerender = false;
+
+import { cn } from '@/lib/utils';
+
+import LayoutContainer from '@/layouts/container.astro';
+
+import ColorPicker from '@/components/color-picker';
+import SearchExplore from '@/components/search-explore';
+import StringMaker from '@/components/string-maker';
+import SpringSimulator from '@/components/spring-simulator';
+import TwBreakpoint from '@/components/tw-breakpoint';
+import UnitConverter from '@/components/unit-converter';
+import IconConverter from '@/components/icon-converter';
+import BlogFeed from '@/components/blog-feed.astro';
+import PlayBall from '@/components/play-ball.astro';
+
+import '@/styles/global.css';
+import TopContent from '@/components/top-content';
+---
+
+<LayoutContainer>
+  <TopContent />
+  <div class={cn('grid grid-cols-1 gap-4', 'md:grid-cols-2 md:items-start')}>
+    <div
+      class={cn('grid grid-cols-1 gap-4', 'md:items-start', 'xl:grid-cols-2')}
+    >
+      <div class={cn('grid grid-cols-1 gap-4')}>
+        <ColorPicker client:idle />
+        <SearchExplore client:idle />
+        <BlogFeed />
+      </div>
+      <div class={cn('grid grid-cols-1 gap-4')}>
+        <StringMaker client:load />
+        <PlayBall />
+      </div>
+    </div>
+    <div class="grid grid-cols-1 gap-4">
+      <div class="grid gird-cols-1 gap-4">
+        <SpringSimulator client:idle />
+      </div>
+      <div
+        class={cn('grid grid-cols-1 gap-4', 'md:items-start', 'xl:grid-cols-2')}
+      >
+        <div class={cn('grid grid-cols-1 gap-4')}>
+          <TwBreakpoint />
+        </div>
+        <div class={cn('grid grid-cols-1 gap-4')}>
+          <UnitConverter client:idle />
+          <IconConverter client:load />
+        </div>
+      </div>
+    </div>
+  </div>
+</LayoutContainer>

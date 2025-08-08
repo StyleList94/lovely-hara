@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useTransition, useCallback, ChangeEvent } from 'react';
+import { actions } from 'astro:actions';
+import { useState, useTransition, useCallback, type ChangeEvent } from 'react';
 import { FileUpIcon, Loader2Icon } from 'lucide-react';
-import Image from 'next/image';
-import { FileUploader } from '@stylelist94/nine-beauty-actress';
 
-import { convertToICO } from '@/lib/actions';
+import { FileUploader } from '@stylelist94/nine-beauty-actress';
 
 import {
   Card,
@@ -50,9 +49,17 @@ const IconConverter = () => {
 
     startTransition(async () => {
       try {
-        const { success, data } = await convertToICO(file);
+        const { data: res } = await actions.convertToICO(formData);
 
-        if (success && data) {
+        if (res) {
+          const { success, data } = res;
+
+          if (!success) {
+            setErrorMessage(data);
+            setPreviewInfo(null);
+            return;
+          }
+
           const link = document.createElement('a');
           link.href = `data:image/x-icon;base64,${data}`;
           link.download = 'favicon.ico';
@@ -92,11 +99,10 @@ const IconConverter = () => {
                 {previewInfo ? (
                   <>
                     <div className="relative w-12 h-12 rounded-xs">
-                      <Image
+                      <img
                         src={previewInfo.dataUrl}
                         alt="preview-icon"
-                        fill
-                        className=""
+                        className="w-full h-full"
                       />
                     </div>
                     <p className="text-sm text-zinc-900 dark:text-zinc-50">
