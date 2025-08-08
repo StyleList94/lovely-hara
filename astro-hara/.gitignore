@@ -1,10 +1,14 @@
 # build output
 dist/
+
 # generated types
 .astro/
 
 # dependencies
 node_modules/
+
+# testing
+/coverage
 
 # logs
 npm-debug.log*
@@ -17,8 +21,20 @@ pnpm-debug.log*
 .env
 .env.production
 
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # macOS-specific files
 .DS_Store
 
+# typescript
+*.tsbuildinfo
+
 # jetbrains setting folder
 .idea/
+
+# Cloudflare Workers
+.wrangler
