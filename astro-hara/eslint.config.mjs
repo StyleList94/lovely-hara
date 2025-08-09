@@ -1,5 +1,4 @@
 import tseslint from 'typescript-eslint';
-import { configs as eslintPluginAstroConfigs } from 'eslint-plugin-astro';
 import stylish from 'eslint-config-stylish';
 import stylishReact from 'eslint-config-stylish/react';
 import stylishReactHooks from 'eslint-config-stylish/react-hooks';
@@ -16,7 +15,7 @@ export default tseslint.config(
   },
   {
     files: ['**/*.tsx'],
-    extends: [stylishReact],
+    extends: [stylishReact, stylishReactHooks],
   },
   {
     files: ['**/use*.ts'],
@@ -36,6 +35,5 @@ export default tseslint.config(
     },
     extends: [stylishTypeScript],
   },
-  ...eslintPluginAstroConfigs.recommended,
   eslintConfigPrettier,
 );
