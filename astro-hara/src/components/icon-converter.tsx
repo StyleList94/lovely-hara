@@ -1,11 +1,10 @@
 'use client';
 
+import { actions } from 'astro:actions';
 import { useState, useTransition, useCallback, type ChangeEvent } from 'react';
 import { FileUpIcon, Loader2Icon } from 'lucide-react';
 
 import { FileUploader } from '@stylelist94/nine-beauty-actress';
-
-import { convertToICO } from '@/lib/actions';
 
 import {
   Card,
@@ -50,9 +49,17 @@ const IconConverter = () => {
 
     startTransition(async () => {
       try {
-        const { success, data } = await convertToICO(file);
+        const { data: res } = await actions.convertToICO(formData);
 
-        if (success && data) {
+        if (res) {
+          const { success, data } = res;
+
+          if (!success) {
+            setErrorMessage(data);
+            setPreviewInfo(null);
+            return;
+          }
+
           const link = document.createElement('a');
           link.href = `data:image/x-icon;base64,${data}`;
           link.download = 'favicon.ico';
