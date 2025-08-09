@@ -1,4 +1,4 @@
-name = "my-astro-app"
+name = "lovely-hara"
 main = "./dist/_worker.js/index.js"
 compatibility_date = "2025-03-25"
 compatibility_flags = [ "nodejs_compat" ]
