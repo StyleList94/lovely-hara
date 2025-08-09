@@ -1,5 +1,5 @@
 import { defineAction } from 'astro:actions';
-import sharp from 'sharp';
+import { Jimp } from 'jimp';
 
 type ConvertResult = {
   success: boolean;
@@ -25,15 +25,16 @@ export const server = {
       try {
         // 2. 이미지 메타데이터 추출
         const buffer = Buffer.from(await file.arrayBuffer());
-        const metadata = await sharp(buffer).metadata();
 
-        if (!metadata.width || !metadata.height) {
+        const image = await Jimp.fromBuffer(buffer);
+
+        if (!image.width || !image.height) {
           return { success: false, data: '이미지 크기를 읽을 수 없습니다' };
         }
 
         // 3. ICO 크기 계산
         const targetSizes = ICO_SIZE_GROUP.filter(
-          (size) => size <= metadata.width && size <= metadata.height,
+          (size) => size <= image.width && size <= image.height,
         );
 
         if (targetSizes.length === 0) {
@@ -44,9 +45,11 @@ export const server = {
         }
 
         // 4. 모든 크기로 리사이즈 및 PNG 버퍼 생성
-        const resizePromises = targetSizes.map((size) =>
-          sharp(buffer).resize(size, size, { fit: 'cover' }).png().toBuffer(),
-        );
+        const resizePromises = targetSizes.map(async (size) => {
+          const img = await Jimp.fromBuffer(buffer);
+          img.resize({ w: size, h: size });
+          return await img.getBuffer('image/png');
+        });
 
         const pngBuffers = await Promise.all(resizePromises);
 

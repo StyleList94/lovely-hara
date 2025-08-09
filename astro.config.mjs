@@ -1,18 +1,14 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
-
 import react from '@astrojs/react';
-
+import tailwindcss from '@tailwindcss/vite';
 import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
-
   vite: {
     plugins: [tailwindcss()],
-
     resolve: {
       alias: import.meta.env.PROD
         ? {
@@ -20,8 +16,10 @@ export default defineConfig({
           }
         : {},
     },
+    ssr: {
+      external: ['node:stream'],
+    },
   },
-
   experimental: {
     fonts: [
       {
@@ -76,12 +74,10 @@ export default defineConfig({
       },
     ],
   },
-
   adapter: cloudflare({
     platformProxy: {
       enabled: true,
     },
-
-    imageService: 'compile',
+    imageService: 'cloudflare',
   }),
 });
