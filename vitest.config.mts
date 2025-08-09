@@ -5,9 +5,9 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default getViteConfig({
   plugins: [tsconfigPaths(), react()],
-	test: {
-		   environment: 'happy-dom',
+  test: {
+    environment: 'happy-dom',
     globals: true,
     css: true,
-	},
+  },
 });

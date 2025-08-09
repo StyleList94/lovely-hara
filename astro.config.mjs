@@ -33,33 +33,33 @@ export default defineConfig({
             weight: 400,
             style: 'normal',
             src: [
-              './src/assets/fonts/Pretendard/Pretendard-Regular.subset.woff2',
+              './src/assets/fonts/pretendard/Pretendard-Regular.subset.woff2',
             ],
           },
           {
             weight: 500,
             style: 'normal',
             src: [
-              './src/assets/fonts/Pretendard/Pretendard-Medium.subset.woff2',
+              './src/assets/fonts/pretendard/Pretendard-Medium.subset.woff2',
             ],
           },
           {
             weight: 600,
             style: 'normal',
             src: [
-              './src/assets/fonts/Pretendard/Pretendard-SemiBold.subset.woff2',
+              './src/assets/fonts/pretendard/Pretendard-SemiBold.subset.woff2',
             ],
           },
           {
             weight: 700,
             style: 'normal',
-            src: ['./src/assets/fonts/Pretendard/Pretendard-Bold.subset.woff2'],
+            src: ['./src/assets/fonts/pretendard/Pretendard-Bold.subset.woff2'],
           },
           {
             weight: 800,
             style: 'normal',
             src: [
-              './src/assets/fonts/Pretendard/Pretendard-ExtraBold.subset.woff2',
+              './src/assets/fonts/pretendard/Pretendard-ExtraBold.subset.woff2',
             ],
           },
         ],
