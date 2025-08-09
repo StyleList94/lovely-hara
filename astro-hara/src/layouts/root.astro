@@ -1,6 +1,8 @@
 ---
 import { Font } from 'astro:assets';
 
+import Toaster from '@/components/ui/sonner';
+
 import '@/styles/global.css';
 ---
 
@@ -38,5 +40,6 @@ import '@/styles/global.css';
   </head>
   <body>
     <slot />
+    <Toaster />
   </body>
 </html>
