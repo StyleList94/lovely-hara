@@ -1,6 +1,5 @@
 ---
-import { Font } from 'astro:assets';
-
+import Head from '@/components/head.astro';
 import Toaster from '@/components/ui/sonner';
 
 import '@/styles/global.css';
@@ -31,13 +30,7 @@ import '@/styles/global.css';
 </script>
 
 <html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <Font cssVariable="--font-pretendard" preload />
-    <Font cssVariable="--font-roboto-mono" preload />
-    <Font cssVariable="--font-titillium-web" preload />
-  </head>
+  <Head />
   <body>
     <slot />
     <Toaster />
