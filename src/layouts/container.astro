@@ -7,9 +7,10 @@ import {
 
 import { cn } from '@/lib/utils';
 
-import RootLayout from './root.astro';
 import Separator from '@/components/ui/separator';
 import ThemeControlSwitch from '@/components/theme-control-switch';
+
+import RootLayout from './root.astro';
 ---
 
 <RootLayout>
@@ -55,7 +56,7 @@ import ThemeControlSwitch from '@/components/theme-control-switch';
   </MainContainer>
   <Footer>
     <div
-      class={cn(
+      class:list={cn(
         'flex flex-col gap-3',
         'sm:flex-row sm:justify-between sm:gap-4',
         'text-zinc-950 dark:text-zinc-50',

@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 
 import LayoutContainer from '@/layouts/container.astro';
 
+import TopContent from '@/components/top-content';
 import ColorPicker from '@/components/color-picker';
 import SearchExplore from '@/components/search-explore';
 import StringMaker from '@/components/string-maker';
@@ -16,21 +17,26 @@ import BlogFeed from '@/components/blog-feed.astro';
 import PlayBall from '@/components/play-ball.astro';
 
 import '@/styles/global.css';
-import TopContent from '@/components/top-content';
 ---
 
 <LayoutContainer>
   <TopContent />
-  <div class={cn('grid grid-cols-1 gap-4', 'md:grid-cols-2 md:items-start')}>
+  <div
+    class:list={cn('grid grid-cols-1 gap-4', 'md:grid-cols-2 md:items-start')}
+  >
     <div
-      class={cn('grid grid-cols-1 gap-4', 'md:items-start', 'xl:grid-cols-2')}
+      class:list={cn(
+        'grid grid-cols-1 gap-4',
+        'md:items-start',
+        'xl:grid-cols-2',
+      )}
     >
-      <div class={cn('grid grid-cols-1 gap-4')}>
+      <div class:list={cn('grid grid-cols-1 gap-4')}>
         <ColorPicker client:idle />
         <SearchExplore client:idle />
         <BlogFeed />
       </div>
-      <div class={cn('grid grid-cols-1 gap-4')}>
+      <div class:list={cn('grid grid-cols-1 gap-4')}>
         <StringMaker client:load />
         <PlayBall />
       </div>
@@ -40,12 +46,16 @@ import TopContent from '@/components/top-content';
         <SpringSimulator client:idle />
       </div>
       <div
-        class={cn('grid grid-cols-1 gap-4', 'md:items-start', 'xl:grid-cols-2')}
+        class:list={cn(
+          'grid grid-cols-1 gap-4',
+          'md:items-start',
+          'xl:grid-cols-2',
+        )}
       >
-        <div class={cn('grid grid-cols-1 gap-4')}>
+        <div class:list={cn('grid grid-cols-1 gap-4')}>
           <TwBreakpoint />
         </div>
-        <div class={cn('grid grid-cols-1 gap-4')}>
+        <div class:list={cn('grid grid-cols-1 gap-4')}>
           <UnitConverter client:idle />
           <IconConverter client:load />
         </div>
