@@ -1,0 +1,32 @@
+---
+import { CircleSlashIcon } from 'lucide-react';
+
+import RootLayout from '@/layouts/root.astro';
+
+import { Button } from '@/components/ui/button';
+---
+
+<RootLayout>
+  <div
+    class="flex flex-col justify-center items-center gap-12 w-full max-w-[500px] h-screen mx-auto py-16 px-6 text-black dark:text-white"
+  >
+    <div class="flex flex-col items-center gap-6">
+      <CircleSlashIcon size={96} />
+      <h2 class="text-lg">404</h2>
+      <h3 class="text-2xl">Not Found</h3>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <Button variant="link" size="lg" asChild>
+        <a href="/">메인 페이지로 이동하기</a>
+      </Button>
+    </div>
+
+    <div class="flex flex-col gap-2 select-none">
+      <p class="flex items-end gap-0.5 font-display text-xl tracking-wide">
+        StyleList94
+        <span class="text-sm leading-relaxed tracking-wider">.DEV</span>
+      </p>
+    </div>
+  </div>
+</RootLayout>
