@@ -72,7 +72,7 @@ const UnitConverter = () => {
           <Input
             id="px"
             type="number"
-            placeholder="4배수가 아니라면"
+            placeholder="사이즈는 4배수가"
             value={inputPixelValue}
             onChange={handleChangeValue('px')}
           />
@@ -83,7 +83,7 @@ const UnitConverter = () => {
           <Input
             id="rem"
             type="number"
-            placeholder="도움이 될끼라"
+            placeholder="좋지 않겠습니까?"
             value={inputRemValue}
             onChange={handleChangeValue('rem')}
           />

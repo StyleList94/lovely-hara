@@ -113,7 +113,7 @@ const StringMaker = () => {
 
       <CardContent className="flex flex-col items-center gap-2">
         <Input
-          placeholder="40개의 16진수 같은 거..."
+          placeholder="40개의 16진수 같은 거!"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
         />

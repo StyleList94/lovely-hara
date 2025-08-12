@@ -12,7 +12,7 @@ describe('<StringMaker />', () => {
     expect(screen.getByText('EVM 주소를 처리해야만 해!')).toBeInTheDocument();
 
     expect(
-      screen.getByPlaceholderText('40개의 16진수 같은 거...'),
+      screen.getByPlaceholderText('40개의 16진수 같은 거!'),
     ).toBeInTheDocument();
 
     expect(screen.getByRole('button', { name: /single/i })).toBeInTheDocument();
@@ -35,8 +35,7 @@ describe('<StringMaker />', () => {
       .spyOn(navigator.clipboard, 'writeText')
       .mockResolvedValue();
 
-    const inputElement =
-      screen.getByPlaceholderText('40개의 16진수 같은 거...');
+    const inputElement = screen.getByPlaceholderText('40개의 16진수 같은 거!');
 
     fireEvent.change(inputElement, {
       target: { value: '0x29072219f93D6893F9201Adfc31246169e785252' },
