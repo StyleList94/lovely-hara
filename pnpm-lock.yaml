@@ -42,8 +42,8 @@ importers:
         specifier: ^1.2.7
         version: 1.2.7(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@stylelist94/nine-beauty-actress':
-        specifier: ^0.5.0
-        version: 0.5.0(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(motion@12.23.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(tailwindcss@4.1.11)
+        specifier: ^0.5.1
+        version: 0.5.1(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(motion@12.23.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(tailwindcss@4.1.11)
       bignumber.js:
         specifier: ^9.3.1
         version: 9.3.1
@@ -68,9 +68,6 @@ importers:
       motion:
         specifier: ^12.23.12
         version: 12.23.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      next-themes:
-        specifier: ^0.4.6
-        version: 0.4.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react:
         specifier: ^19.1.1
         version: 19.1.1
@@ -1563,8 +1560,8 @@ packages:
   '@speed-highlight/core@1.2.7':
     resolution: {integrity: sha512-0dxmVj4gxg3Jg879kvFS/msl4s9F3T9UXC1InxgOf7t5NvcPD97u/WTA5vL/IxWHMn7qSxBozqrnnE2wvl1m8g==}
 
-  '@stylelist94/nine-beauty-actress@0.5.0':
-    resolution: {integrity: sha512-CUfkzoLOQP0cMtXhit3LwrF4in2bIP6SeOo1JYUDAiD21a+bYbUBRcwJhR/Pq7go6ls78MPNCo0XVSFo5qxVXg==, tarball: https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/0.5.0/ad59722e95f782eb6c99e336af02d7326fec56aa}
+  '@stylelist94/nine-beauty-actress@0.5.1':
+    resolution: {integrity: sha512-k1o9R9m5X5n46G7GFCUZRoFbv3YyjHAbKtwBwf6D8ib8mke4USY2ZROOGBjrMTKYtkymip/Djl0NhPx8+L3S3w==, tarball: https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/0.5.1/5ff8d2554b3068e4624e3ff79ea8da8443cf64b8}
     peerDependencies:
       motion: '>=12'
       react: '>=18'
@@ -3564,12 +3561,6 @@ packages:
   neotraverse@0.6.18:
     resolution: {integrity: sha512-Z4SmBUweYa09+o6pG+eASabEpP6QkQ70yHj351pQoEXIs8uHbaU2DWVmzBANKgflPa47A50PtB2+NgRpQvr7vA==}
     engines: {node: '>= 10'}
-
-  next-themes@0.4.6:
-    resolution: {integrity: sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==}
-    peerDependencies:
-      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
-      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
 
   nlcst-to-string@4.0.0:
     resolution: {integrity: sha512-YKLBCcUYKAg0FNlOBT6aI91qFmSiFKiluk655WzPF+DDMA02qIyy8uiRqI8QXtcFpEvll12LpL5MXqEmAZ+dcA==}
@@ -6031,7 +6022,7 @@ snapshots:
 
   '@speed-highlight/core@1.2.7': {}
 
-  '@stylelist94/nine-beauty-actress@0.5.0(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(motion@12.23.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(tailwindcss@4.1.11)':
+  '@stylelist94/nine-beauty-actress@0.5.1(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(motion@12.23.12(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(tailwindcss@4.1.11)':
     dependencies:
       '@radix-ui/react-switch': 1.2.5(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       clsx: 2.1.1
@@ -8536,11 +8527,6 @@ snapshots:
   natural-compare@1.4.0: {}
 
   neotraverse@0.6.18: {}
-
-  next-themes@0.4.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
-    dependencies:
-      react: 19.1.1
-      react-dom: 19.1.1(react@19.1.1)
 
   nlcst-to-string@4.0.0:
     dependencies:
