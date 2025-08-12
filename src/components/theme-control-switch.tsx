@@ -6,17 +6,40 @@ import { useEffect, useState } from 'react';
 const ThemeControlSwitch = () => {
   const isMounted = useMounted();
 
-  const [theme, setThemeState] = useState<'theme-light' | 'dark' | 'system'>(
+  const [theme, setThemeState] = useState<'light' | 'dark' | 'system'>(
     'system',
   );
 
   const toggleTheme = () => {
-    setThemeState(theme === 'dark' ? 'theme-light' : 'dark');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+      .matches
+      ? 'dark'
+      : 'light';
+
+    const currentTheme = theme === 'system' ? systemTheme : theme;
+
+    const resolvedTheme: 'light' | 'dark' =
+      currentTheme === 'dark' ? 'light' : 'dark';
+
+    setThemeState(resolvedTheme);
+    if (typeof localStorage !== 'undefined' && !localStorage.getItem('theme')) {
+      localStorage.setItem('theme', resolvedTheme);
+    }
   };
 
   useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains('dark');
-    setThemeState(isDarkMode ? 'dark' : 'theme-light');
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const handleChangeTheme = () => {
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      setThemeState(isDarkMode ? 'dark' : 'light');
+    };
+
+    mediaQuery.addEventListener('change', handleChangeTheme);
+
+    handleChangeTheme();
+
+    return () => mediaQuery.removeEventListener('change', handleChangeTheme);
   }, []);
 
   useEffect(() => {
