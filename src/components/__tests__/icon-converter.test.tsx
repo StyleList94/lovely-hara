@@ -16,7 +16,7 @@ describe('<IconConverter />', () => {
       screen.getByText('PNG 이미지를 여기에 끌어놓기'),
     ).toBeInTheDocument();
     expect(screen.getByText('또는 클릭해서 업로드')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('somthing icon')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('something icon')).toBeInTheDocument();
 
     expect(
       screen.getByRole('button', { name: 'ICO 내놔!' }),

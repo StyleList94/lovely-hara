@@ -308,7 +308,7 @@ const SpringSimulator = () => {
 
         <div className="flex flex-col gap-2">
           <p className="text-sm text-zinc-800 dark:text-zinc-200">
-            스프링(?) 같이 생긴 것
+            놀랍게도 스프링(?)입니다.
           </p>
           <LazyMotion features={domAnimation}>
             <div

@@ -98,6 +98,7 @@ const PlayBall = ({
             <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
               <p>{lotteGiants.wins}승</p>
               <p>승률 {lotteGiants.winRate.toFixed(3)}</p>
+              <p>게임차 {lotteGiants.gamesBehind}</p>
             </div>
           </section>
         )}

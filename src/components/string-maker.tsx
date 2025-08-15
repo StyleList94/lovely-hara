@@ -107,13 +107,13 @@ const StringMaker = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>텍스트로 바꿔줘</CardTitle>
-        <CardDescription>EVM 주소를 처리해야만 해!</CardDescription>
+        <CardTitle>텍스트가 필요해</CardTitle>
+        <CardDescription>EVM 주소는 16진수 문자열</CardDescription>
       </CardHeader>
 
       <CardContent className="flex flex-col items-center gap-2">
         <Input
-          placeholder="40개의 16진수 같은 거!"
+          placeholder="16진수 40자리"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
         />

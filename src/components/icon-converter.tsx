@@ -85,13 +85,13 @@ const IconConverter = () => {
       <CardContent className="flex flex-col items-center gap-2">
         <form action={convertAction} className="flex flex-col w-full gap-4">
           <div className="grid w-full items-center gap-1.5">
-            <Label htmlFor="somthing-icon">아이콘 이미지</Label>
+            <Label htmlFor="something-icon">아이콘 이미지</Label>
 
             <FileUploader
               name="icon"
               accept="image/png"
-              placeholder="somthing icon"
-              id="somthing-icon"
+              placeholder="something icon"
+              id="something-icon"
               required
               onChange={handleChangeFile}
             >

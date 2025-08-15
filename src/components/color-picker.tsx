@@ -65,7 +65,7 @@ const ColorPicker = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>색폼 바꾸기</CardTitle>
+        <CardTitle>색시맵시</CardTitle>
         <CardDescription>다 똑같은 입술 색 아니었어?</CardDescription>
       </CardHeader>
 

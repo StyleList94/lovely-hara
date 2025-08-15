@@ -9,6 +9,7 @@
   --font-sans: var(--font-pretendard);
   --font-mono: var(--font-roboto-mono);
   --font-display: var(--font-titillium-web);
+  --font-hero: var(--font-mozilla-text);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

@@ -62,8 +62,8 @@ const UnitConverter = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>사이즈가 뭐꼬</CardTitle>
-        <CardDescription>16비트 박자 쪼개기</CardDescription>
+        <CardTitle>전하 아뢰옵기 황송하오나</CardTitle>
+        <CardDescription>4배수로 어떻게 아니되옵니까?</CardDescription>
       </CardHeader>
 
       <CardContent className="flex flex-col gap-2">
@@ -72,7 +72,7 @@ const UnitConverter = () => {
           <Input
             id="px"
             type="number"
-            placeholder="사이즈는 4배수가"
+            placeholder="4배수가 계산하기"
             value={inputPixelValue}
             onChange={handleChangeValue('px')}
           />
@@ -83,7 +83,7 @@ const UnitConverter = () => {
           <Input
             id="rem"
             type="number"
-            placeholder="좋지 않겠습니까?"
+            placeholder="편해서 그렇사옵니다!"
             value={inputRemValue}
             onChange={handleChangeValue('rem')}
           />

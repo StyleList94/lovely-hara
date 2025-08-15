@@ -8,7 +8,7 @@ describe('<ColorPicker />', () => {
   it('should render default state', () => {
     render(<ColorPicker />);
 
-    expect(screen.getByText('색폼 바꾸기')).toBeInTheDocument();
+    expect(screen.getByText('색시맵시')).toBeInTheDocument();
     expect(screen.getByText('다 똑같은 입술 색 아니었어?')).toBeInTheDocument();
 
     expect(screen.getByPlaceholderText('hex 또는 rgb()')).toBeInTheDocument();
