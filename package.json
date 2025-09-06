@@ -35,6 +35,7 @@
     "jimp": "^1.6.0",
     "lucide-react": "^0.539.0",
     "motion": "^12.23.12",
+    "motion-plus": "^1.5.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "sonner": "^2.0.7",
