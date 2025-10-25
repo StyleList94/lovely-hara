@@ -1,7 +1,16 @@
 'use client';
 
-import { actions } from 'astro:actions';
-import { useState, useTransition, useCallback, type ChangeEvent } from 'react';
+import type { IconConversionResult } from '@/types/icon-converter';
+
+import { actions, type SafeResult } from 'astro:actions';
+import { withState } from '@astrojs/react/actions';
+import {
+  useActionState,
+  useState,
+  useCallback,
+  useEffect,
+  type ChangeEvent,
+} from 'react';
 import { FileUpIcon, Loader2Icon } from 'lucide-react';
 
 import { FileUploader } from '@stylelist94/nine-beauty-actress';
@@ -16,13 +25,23 @@ import {
 import Label from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 
+const initialConvertState: SafeResult<FormData, IconConversionResult> = {
+  data: { iconData: '' },
+  error: undefined,
+};
+
 const IconConverter = () => {
-  const [errorMessage, setErrorMessage] = useState('');
-  const [isPending, startTransition] = useTransition();
+  const [state, formAction, isPending] = useActionState(
+    withState(actions.convertToICO),
+    initialConvertState,
+  );
+
   const [previewInfo, setPreviewInfo] = useState<{
     name: string;
     dataUrl: string;
   } | null>(null);
+
+  const [uploaderKey, setUploaderKey] = useState(0);
 
   const updatePreview = useCallback((file: File) => {
     const reader = new FileReader();
@@ -39,41 +58,19 @@ const IconConverter = () => {
     }
   };
 
-  const convertAction = (formData: FormData) => {
-    const file = formData.get('icon') as File;
+  useEffect(() => {
+    if (state.data?.iconData) {
+      const link = document.createElement('a');
+      link.href = `data:image/x-icon;base64,${state.data.iconData}`;
+      link.download = 'favicon.ico';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
 
-    if (file.size > 5 * 1024 * 1024) {
-      setErrorMessage('5MB 이하 파일만 허용됩니다');
-      return;
+      setPreviewInfo(null);
+      setUploaderKey((prev) => prev + 1); // Force FileUploader remount
     }
-
-    startTransition(async () => {
-      try {
-        const { data: res } = await actions.convertToICO(formData);
-
-        if (res) {
-          const { success, data } = res;
-
-          if (!success) {
-            setErrorMessage(data);
-            setPreviewInfo(null);
-            return;
-          }
-
-          const link = document.createElement('a');
-          link.href = `data:image/x-icon;base64,${data}`;
-          link.download = 'favicon.ico';
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }
-      } catch (error) {
-        setErrorMessage((error as Error).message);
-      } finally {
-        setPreviewInfo(null);
-      }
-    });
-  };
+  }, [state.data?.iconData]);
 
   return (
     <Card className="w-full">
@@ -83,11 +80,12 @@ const IconConverter = () => {
       </CardHeader>
 
       <CardContent className="flex flex-col items-center gap-2">
-        <form action={convertAction} className="flex flex-col w-full gap-4">
+        <form action={formAction} className="flex flex-col w-full gap-4">
           <div className="grid w-full items-center gap-1.5">
             <Label htmlFor="something-icon">아이콘 이미지</Label>
 
             <FileUploader
+              key={uploaderKey}
               name="icon"
               accept="image/png"
               placeholder="something icon"
@@ -128,8 +126,8 @@ const IconConverter = () => {
               ICO 내놔!
             </Button>
 
-            {errorMessage && (
-              <p className="text-sm text-red-500">{errorMessage}</p>
+            {state.error && (
+              <p className="text-sm text-red-500">{state.error.message}</p>
             )}
           </div>
         </form>

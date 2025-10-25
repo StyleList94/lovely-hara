@@ -1,25 +1,28 @@
-import { defineAction } from 'astro:actions';
-import { Jimp } from 'jimp';
+import type { IconConversionResult } from '@/types/icon-converter';
 
-type ConvertResult = {
-  success: boolean;
-  data: string;
-};
+import { defineAction, ActionError } from 'astro:actions';
+import { Jimp } from 'jimp';
 
 export const server = {
   convertToICO: defineAction({
     accept: 'form',
-    async handler(formData: FormData): Promise<ConvertResult> {
+    async handler(formData: FormData): Promise<IconConversionResult> {
       const file = formData.get('icon') as File;
 
       const ICO_SIZE_GROUP = [16, 24, 32, 48, 64, 128, 256];
 
       // 1. 파일 유효성 검사
       if (!file.type.startsWith('image/png')) {
-        return { success: false, data: 'PNG 이미지만 업로드 가능합니다' };
+        throw new ActionError({
+          code: 'BAD_REQUEST',
+          message: 'PNG 이미지만 업로드 가능합니다',
+        });
       }
       if (file.size > 5 * 1024 * 1024) {
-        return { success: false, data: '5MB 이하 파일만 허용됩니다' };
+        throw new ActionError({
+          code: 'BAD_REQUEST',
+          message: '5MB 이하 파일만 허용됩니다',
+        });
       }
 
       try {
@@ -29,7 +32,10 @@ export const server = {
         const image = await Jimp.fromBuffer(buffer);
 
         if (!image.width || !image.height) {
-          return { success: false, data: '이미지 크기를 읽을 수 없습니다' };
+          throw new ActionError({
+            code: 'BAD_REQUEST',
+            message: '이미지 크기를 읽을 수 없습니다',
+          });
         }
 
         // 3. ICO 크기 계산
@@ -38,10 +44,10 @@ export const server = {
         );
 
         if (targetSizes.length === 0) {
-          return {
-            success: false,
-            data: '최소 16x16px 이상 이미지가 필요합니다',
-          };
+          throw new ActionError({
+            code: 'BAD_REQUEST',
+            message: '최소 16x16px 이상 이미지가 필요합니다',
+          });
         }
 
         // 4. 모든 크기로 리사이즈 및 PNG 버퍼 생성
@@ -85,15 +91,22 @@ export const server = {
 
         // 7. 모든 버퍼 결합 및 base64 인코딩 반환
         return {
-          success: true,
-          data: Buffer.concat([
+          iconData: Buffer.concat([
             header,
             Buffer.concat(directoryEntries),
             ...imageBuffers,
           ]).toString('base64'),
         };
-      } catch {
-        return { success: false, data: '이미지 처리 중 오류 발생' };
+      } catch (error) {
+        // ActionError는 그대로 throw
+        if (error instanceof ActionError) {
+          throw error;
+        }
+        // 그 외 에러는 서버 에러로 변환
+        throw new ActionError({
+          code: 'INTERNAL_SERVER_ERROR',
+          message: '이미지 처리 중 오류 발생',
+        });
       }
     },
   }),
