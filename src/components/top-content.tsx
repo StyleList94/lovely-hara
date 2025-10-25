@@ -5,7 +5,7 @@ import Typewriter from '@/components/ui/typewriter';
 const lovelyThings = ['TypeScript', 'React', 'NEXT.JS', 'Styling', 'Web3'];
 
 const TopContent = () => (
-  <section className={cn('flex flex-col gap-5 pb-8')}>
+  <section className={cn('flex flex-col gap-5 py-8 md:py-12')}>
     <div
       className={cn(
         'flex flex-col gap-1.5 sm:gap-3',
