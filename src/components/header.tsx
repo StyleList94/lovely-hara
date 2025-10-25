@@ -28,7 +28,7 @@ const Header = () => {
 
   return (
     <HeaderContainer
-      boxStyle="2xl:max-w-[96rem]"
+      boxStyle="2xl:max-w-384"
       wrapperStyle={cn(
         'transition-transform ease-in-out duration-400',
         'border-b border-zinc-200/80 dark:border-zinc-800/80',
@@ -63,7 +63,7 @@ const Header = () => {
               />
             </svg>
           </a>
-          <Separator orientation="vertical" className="!h-5" />
+          <Separator orientation="vertical" className="h-5!" />
           <ThemeControlSwitch />
         </div>
       </div>
