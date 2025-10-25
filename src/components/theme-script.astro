@@ -19,6 +19,7 @@
     document.documentElement.classList[theme === 'dark' ? 'add' : 'remove'](
       'dark',
     );
+    document.documentElement.setAttribute('data-theme', theme);
   };
 
   let currentTheme = getThemePreference();

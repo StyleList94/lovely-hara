@@ -47,7 +47,9 @@ const ThemeControlSwitch = () => {
       theme === 'dark' ||
       (theme === 'system' &&
         window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const resolvedTheme = isDark ? 'dark' : 'light';
     document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+    document.documentElement.setAttribute('data-theme', resolvedTheme);
   }, [theme]);
 
   if (!isMounted) {
