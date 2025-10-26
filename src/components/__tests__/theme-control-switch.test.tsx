@@ -5,12 +5,34 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import ThemeControlSwitch from '../theme-control-switch';
 
 function setupDOM(theme: 'dark' | 'theme-light' = 'theme-light') {
-  document.documentElement.className = theme === 'dark' ? 'dark' : '';
+  if (theme === 'dark') {
+    document.documentElement.className = 'dark';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.documentElement.className = '';
+    localStorage.removeItem('theme');
+  }
+}
+
+function mockAstroThemeScript() {
+  window.addEventListener('theme-change', () => {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else if (theme === 'light') {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
+    window.dispatchEvent(new CustomEvent('theme-update'));
+  });
 }
 
 describe('<ThemeControlSwitch />', () => {
   beforeEach(() => {
     setupDOM('theme-light');
+    localStorage.clear();
+    mockAstroThemeScript();
   });
 
   it('should render', () => {

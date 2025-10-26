@@ -1,14 +1,41 @@
 'use client';
 
 import { Switch, useMounted } from '@stylelist94/nine-beauty-actress';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
+
+const subscribe = (callback: () => void) => {
+  window.addEventListener('storage', callback);
+  window.addEventListener('theme-update', callback);
+  return () => {
+    window.removeEventListener('storage', callback);
+    window.removeEventListener('theme-update', callback);
+  };
+};
+
+const getSnapshot = (): 'light' | 'dark' | 'system' => {
+  if (typeof window === 'undefined') return 'system';
+  return (localStorage.getItem('theme') as 'light' | 'dark' | null) ?? 'system';
+};
+
+const getServerSnapshot = (): 'system' => 'system';
 
 const ThemeControlSwitch = () => {
   const isMounted = useMounted();
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  const [theme, setThemeState] = useState<'light' | 'dark' | 'system'>(
-    'system',
-  );
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return document.documentElement.classList.contains('dark');
+  });
+
+  useEffect(() => {
+    const handleThemeUpdate = () => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    };
+
+    window.addEventListener('theme-update', handleThemeUpdate);
+    return () => window.removeEventListener('theme-update', handleThemeUpdate);
+  }, []);
 
   const toggleTheme = () => {
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
@@ -17,40 +44,12 @@ const ThemeControlSwitch = () => {
       : 'light';
 
     const currentTheme = theme === 'system' ? systemTheme : theme;
-
-    const resolvedTheme: 'light' | 'dark' =
+    const newTheme: 'light' | 'dark' =
       currentTheme === 'dark' ? 'light' : 'dark';
 
-    setThemeState(resolvedTheme);
-    if (typeof localStorage !== 'undefined' && !localStorage.getItem('theme')) {
-      localStorage.setItem('theme', resolvedTheme);
-    }
+    localStorage.setItem('theme', newTheme);
+    window.dispatchEvent(new Event('theme-change'));
   };
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-    const handleChangeTheme = () => {
-      const isDarkMode = document.documentElement.classList.contains('dark');
-      setThemeState(isDarkMode ? 'dark' : 'light');
-    };
-
-    mediaQuery.addEventListener('change', handleChangeTheme);
-
-    handleChangeTheme();
-
-    return () => mediaQuery.removeEventListener('change', handleChangeTheme);
-  }, []);
-
-  useEffect(() => {
-    const isDark =
-      theme === 'dark' ||
-      (theme === 'system' &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches);
-    const resolvedTheme = isDark ? 'dark' : 'light';
-    document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
-    document.documentElement.setAttribute('data-theme', resolvedTheme);
-  }, [theme]);
 
   if (!isMounted) {
     return null;
@@ -58,7 +57,7 @@ const ThemeControlSwitch = () => {
 
   return (
     <Switch
-      isChecked={theme === 'dark'}
+      isChecked={isDark}
       onCheckedChange={toggleTheme}
       iconClassName="text-zinc-500/80 dark:text-zinc-400"
     >
