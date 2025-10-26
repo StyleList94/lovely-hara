@@ -1,5 +1,4 @@
-import tseslint from 'typescript-eslint';
-import { globalIgnores } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
 import astroESLintParser from 'astro-eslint-parser';
 import tsESLintParser from '@typescript-eslint/parser';
@@ -13,7 +12,7 @@ import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import vitest from '@vitest/eslint-plugin';
 import testingLibrary from 'eslint-plugin-testing-library';
 
-export default tseslint.config(
+export default defineConfig(
   globalIgnores(['node_modules', 'dist', '.astro']),
   ...astroConfigs.recommended,
   ...astroConfigs['jsx-a11y-strict'],

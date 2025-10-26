@@ -45,8 +45,8 @@ importers:
         specifier: ^1.2.8
         version: 1.2.8(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@stylelist94/nine-beauty-actress':
-        specifier: ^1.0.0
-        version: 1.0.0(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(motion@12.23.24(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^1.0.1
+        version: 1.0.1(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(motion@12.23.24(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       astro:
         specifier: ^5.15.1
         version: 5.15.1(@types/node@22.18.12)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.46.2)(typescript@5.9.3)(yaml@2.8.1)
@@ -1781,8 +1781,8 @@ packages:
   '@speed-highlight/core@1.2.7':
     resolution: {integrity: sha512-0dxmVj4gxg3Jg879kvFS/msl4s9F3T9UXC1InxgOf7t5NvcPD97u/WTA5vL/IxWHMn7qSxBozqrnnE2wvl1m8g==}
 
-  '@stylelist94/nine-beauty-actress@1.0.0':
-    resolution: {integrity: sha512-9cFIsZzYalP/gM/cke7K4CAgOB8V7avKzEfU3P43yjiypx03lX9q7gfwD7POd0EC1dtFdT1k9tlXnei/xAgPAQ==, tarball: https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/1.0.0/1a41bbb91259f79e642183327b2257ab76bed1d8}
+  '@stylelist94/nine-beauty-actress@1.0.1':
+    resolution: {integrity: sha512-3nIIBDTqn8/SazLrTJ8zXGlC3gtlmc0QD4ERLvOpX+rsZLpNqcu+RbCWo6xKn3hXuWOinSI21ADH1+TaBAj3IA==, tarball: https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/1.0.1/2a5c0f8ba92e37d1ea82a0accc1fee265ba487e2}
     peerDependencies:
       motion: '>=12'
       react: '>=18'
@@ -6547,7 +6547,7 @@ snapshots:
 
   '@speed-highlight/core@1.2.7': {}
 
-  '@stylelist94/nine-beauty-actress@1.0.0(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(motion@12.23.24(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@stylelist94/nine-beauty-actress@1.0.1(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(motion@12.23.24(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@radix-ui/react-switch': 1.2.5(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@vanilla-extract/css': 1.17.4
