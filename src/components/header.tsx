@@ -3,9 +3,6 @@ import { Header as HeaderContainer } from '@stylelist94/nine-beauty-actress';
 
 import { cn } from '@/lib/utils';
 
-import Separator from '@/components/ui/separator';
-import ThemeControlSwitch from '@/components/theme-control-switch';
-
 const Header = () => {
   const [showHeader, setShowHeader] = useState(false);
 
@@ -63,8 +60,6 @@ const Header = () => {
               />
             </svg>
           </a>
-          <Separator orientation="vertical" className="h-5!" />
-          <ThemeControlSwitch />
         </div>
       </div>
     </HeaderContainer>

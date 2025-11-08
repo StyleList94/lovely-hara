@@ -1,13 +1,16 @@
 import '@testing-library/jest-dom/vitest';
 
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 
 import ThemeControlSwitch from '../theme-control-switch';
 
-function setupDOM(theme: 'dark' | 'theme-light' = 'theme-light') {
+function setupDOM(theme: 'dark' | 'theme-light' | 'system' = 'theme-light') {
   if (theme === 'dark') {
     document.documentElement.className = 'dark';
     localStorage.setItem('theme', 'dark');
+  } else if (theme === 'theme-light') {
+    document.documentElement.className = '';
+    localStorage.setItem('theme', 'light');
   } else {
     document.documentElement.className = '';
     localStorage.removeItem('theme');
@@ -30,7 +33,7 @@ function mockAstroThemeScript() {
 
 describe('<ThemeControlSwitch />', () => {
   beforeEach(() => {
-    setupDOM('theme-light');
+    setupDOM('system');
     localStorage.clear();
     mockAstroThemeScript();
   });
@@ -38,14 +41,33 @@ describe('<ThemeControlSwitch />', () => {
   it('should render', () => {
     render(<ThemeControlSwitch />);
 
-    expect(screen.getByRole('switch')).toBeInTheDocument();
+    const toggleGroup = screen.getByRole('group', {
+      name: /theme control switch/,
+    });
+
+    expect(toggleGroup).toBeInTheDocument();
+
+    expect(
+      within(toggleGroup).getByRole('radio', {
+        name: /switch to light theme/i,
+      }),
+    ).toBeInTheDocument();
+    expect(
+      within(toggleGroup).getByRole('radio', { name: /match system theme/i }),
+    ).toHaveAttribute('data-state', 'on');
+    expect(
+      within(toggleGroup).getByRole('radio', { name: /switch to dark theme/i }),
+    ).toBeInTheDocument();
   });
 
   test('today is sunny', () => {
+    setupDOM('theme-light');
     render(<ThemeControlSwitch />);
 
-    const lightModeIcon = screen.getByLabelText(/icon-light-mode/i);
-    expect(lightModeIcon).toBeInTheDocument();
+    const toggleLight = screen.getByRole('radio', {
+      name: /switch to light theme/i,
+    });
+    expect(toggleLight).toHaveAttribute('data-state', 'on');
   });
 
   test('history is made at night', () => {
@@ -53,16 +75,24 @@ describe('<ThemeControlSwitch />', () => {
 
     render(<ThemeControlSwitch />);
 
-    const darkModeIcon = screen.getByLabelText(/icon-dark-mode/i);
-    expect(darkModeIcon).toBeInTheDocument();
+    const toggleDark = screen.getByRole('radio', {
+      name: /switch to dark theme/i,
+    });
+    expect(toggleDark).toHaveAttribute('data-state', 'on');
   });
 
   it('change dark mode', () => {
     render(<ThemeControlSwitch />);
 
-    const switchButton = screen.getByRole('switch');
+    expect(
+      screen.getByRole('radio', { name: /match system theme/i }),
+    ).toHaveAttribute('data-state', 'on');
 
-    fireEvent.click(switchButton);
+    const toggleDark = screen.getByRole('radio', {
+      name: /switch to dark theme/i,
+    });
+
+    fireEvent.click(toggleDark);
     expect(document.documentElement.classList.contains('dark')).toBe(true);
   });
 
@@ -71,9 +101,15 @@ describe('<ThemeControlSwitch />', () => {
 
     render(<ThemeControlSwitch />);
 
-    const switchButton = screen.getByRole('switch');
+    expect(
+      screen.getByRole('radio', { name: /switch to dark theme/i }),
+    ).toHaveAttribute('data-state', 'on');
 
-    fireEvent.click(switchButton);
+    const toggleLight = screen.getByRole('radio', {
+      name: /switch to light theme/i,
+    });
+
+    fireEvent.click(toggleLight);
     expect(document.documentElement.classList.contains('dark')).toBe(false);
   });
 });

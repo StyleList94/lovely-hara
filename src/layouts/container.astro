@@ -4,6 +4,7 @@ import { MainContainer, Footer } from '@stylelist94/nine-beauty-actress';
 import { cn } from '@/lib/utils';
 
 import Header from '@/components/header';
+import ThemeControlSwitch from '@/components/theme-control-switch';
 
 import RootLayout from './root.astro';
 ---
@@ -17,7 +18,7 @@ import RootLayout from './root.astro';
     <div
       class:list={cn(
         'flex flex-col gap-3',
-        'sm:flex-row sm:justify-between sm:gap-4',
+        'sm:flex-row sm:justify-between sm:items-center sm:gap-4',
         'text-zinc-950 dark:text-zinc-50',
       )}
     >
@@ -30,6 +31,10 @@ import RootLayout from './root.astro';
         >
           Blog
         </a>
+      </div>
+
+      <div class="h-8">
+        <ThemeControlSwitch client:load />
       </div>
     </div>
     <div>
