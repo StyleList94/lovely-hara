@@ -6,9 +6,10 @@ import { actions, type SafeResult } from 'astro:actions';
 import { withState } from '@astrojs/react/actions';
 import {
   useActionState,
-  useState,
   useCallback,
   useEffect,
+  useId,
+  useState,
   type ChangeEvent,
 } from 'react';
 import { FileUpIcon, Loader2Icon } from 'lucide-react';
@@ -31,6 +32,7 @@ const initialConvertState: SafeResult<FormData, IconConversionResult> = {
 };
 
 const IconConverter = () => {
+  const inputIconId = useId();
   const [state, formAction, isPending] = useActionState(
     withState(actions.convertToICO),
     initialConvertState,
@@ -82,14 +84,14 @@ const IconConverter = () => {
       <CardContent className="flex flex-col items-center gap-2">
         <form action={formAction} className="flex flex-col w-full gap-4">
           <div className="grid w-full items-center gap-1.5">
-            <Label htmlFor="something-icon">아이콘 이미지</Label>
+            <Label htmlFor={inputIconId}>아이콘 이미지</Label>
 
             <FileUploader
               key={uploaderKey}
               name="icon"
               accept="image/png"
               placeholder="something icon"
-              id="something-icon"
+              id={inputIconId}
               required
               onChange={handleChangeFile}
             >
