@@ -1,27 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 import { Header as HeaderContainer } from '@stylelist94/nine-beauty-actress';
 
 import { cn } from '@/lib/utils';
 
+function subscribeToScroll(callback: () => void) {
+  window.addEventListener('scroll', callback);
+  return () => window.removeEventListener('scroll', callback);
+}
+
+function getScrollSnapshot() {
+  return window.scrollY > 0;
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
 const Header = () => {
-  const [showHeader, setShowHeader] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY) {
-        setShowHeader(true);
-      } else {
-        setShowHeader(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const showHeader = useSyncExternalStore(
+    subscribeToScroll,
+    getScrollSnapshot,
+    getServerSnapshot,
+  );
 
   return (
     <HeaderContainer

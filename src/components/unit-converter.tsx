@@ -1,7 +1,6 @@
 'use client';
 
-import { type ChangeEvent, useEffect, useState } from 'react';
-import { useDebounce } from '@stylelist94/nine-beauty-actress';
+import { type ChangeEvent, useState } from 'react';
 
 import Input from '@/components/ui/input';
 import Label from '@/components/ui/label';
@@ -18,46 +17,23 @@ type Unit = 'px' | 'rem';
 const UnitConverter = () => {
   const [inputPixelValue, setInputPixelValue] = useState('');
   const [inputRemValue, setInputRemValue] = useState('');
-  const [lastChangedValue, setLastChangedValue] = useState<Unit | null>(null);
-
-  const debouncedPixelValue = useDebounce(inputPixelValue, 300);
-  const debouncedRemValue = useDebounce(inputRemValue, 300);
 
   const handleChangeValue =
     (target: Unit) => (e: ChangeEvent<HTMLInputElement>) => {
-      switch (target) {
-        case 'px':
-          setInputPixelValue(e.target.value);
-          setLastChangedValue('px');
-          break;
-        case 'rem':
-          setInputRemValue(e.target.value);
-          setLastChangedValue('rem');
-          break;
-        default:
-          break;
+      const { value } = e.target;
+
+      if (target === 'px') {
+        setInputPixelValue(value);
+        setInputRemValue(
+          value !== '' ? `${parseFloat((+value / 16).toFixed(4))}` : '',
+        );
+      } else {
+        setInputRemValue(value);
+        setInputPixelValue(
+          value !== '' ? `${parseFloat((+value * 16).toFixed(4))}` : '',
+        );
       }
     };
-
-  useEffect(() => {
-    if (lastChangedValue === 'px') {
-      if (debouncedPixelValue !== '') {
-        setInputRemValue(
-          `${parseFloat((+debouncedPixelValue / 16).toFixed(4))}`,
-        );
-        return;
-      }
-      setInputRemValue('');
-    } else if (lastChangedValue === 'rem') {
-      if (debouncedRemValue !== '') {
-        setInputPixelValue(
-          `${parseFloat((+debouncedRemValue * 16).toFixed(4))}`,
-        );
-        return;
-      }
-      setInputPixelValue('');
-    }
-  }, [lastChangedValue, debouncedPixelValue, debouncedRemValue]);
 
   return (
     <Card className="w-full">

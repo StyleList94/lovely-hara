@@ -1,36 +1,37 @@
 'use client';
 
-import { type CSSProperties, useEffect, useState } from 'react';
+import { type CSSProperties, useSyncExternalStore } from 'react';
 
 import { Toaster as Sonner, type ToasterProps } from 'sonner';
 
-const getThemePreference = () => {
-  if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-    return localStorage.getItem('theme');
+function subscribeToTheme(callback: () => void) {
+  const observer = new MutationObserver(callback);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  });
+  return () => observer.disconnect();
+}
+
+function getThemeSnapshot(): ToasterProps['theme'] {
+  const stored = localStorage.getItem('theme');
+  if (stored && stored !== 'system') {
+    const isDark = document.documentElement.classList.contains('dark');
+    return isDark ? 'dark' : 'light';
   }
   return 'system';
-};
+}
+
+function getServerSnapshot(): ToasterProps['theme'] {
+  return 'system';
+}
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const [theme, setTheme] = useState<ToasterProps['theme']>('system');
-
-  useEffect(() => {
-    setTheme(getThemePreference() as ToasterProps['theme']);
-
-    const observer = new MutationObserver(() => {
-      const currentTheme = getThemePreference();
-      if (currentTheme !== 'system') {
-        const isDark = document.documentElement.classList.contains('dark');
-        setTheme(isDark ? 'dark' : 'light');
-      } else {
-        setTheme(currentTheme);
-      }
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-  }, []);
+  const theme = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeSnapshot,
+    getServerSnapshot,
+  );
 
   return (
     <Sonner
