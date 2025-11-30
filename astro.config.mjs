@@ -1,15 +1,12 @@
 // @ts-check
+import process from 'node:process';
+
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import cloudflare from '@astrojs/cloudflare';
 
-import {
-  mozillaText,
-  pretendard,
-  robotoMono,
-  titilliumWeb,
-} from './src/assets/fonts';
+const isTest = !!process.env.VITEST;
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,20 +24,12 @@ export default defineConfig({
       external: ['node:stream'],
     },
   },
-  experimental: {
-    fonts: [
-      // @ts-ignore
-      pretendard,
-      robotoMono,
-      titilliumWeb,
-      // @ts-ignore
-      mozillaText,
-    ],
-  },
-  adapter: cloudflare({
-    platformProxy: {
-      enabled: true,
-    },
-    imageService: 'cloudflare',
-  }),
+  adapter: isTest
+    ? undefined
+    : cloudflare({
+        platformProxy: {
+          enabled: true,
+        },
+        imageService: 'cloudflare',
+      }),
 });

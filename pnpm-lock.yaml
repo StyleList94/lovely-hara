@@ -14,6 +14,15 @@ importers:
       '@astrojs/react':
         specifier: ^4.4.2
         version: 4.4.2(@types/node@24.9.2)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(yaml@2.8.1)
+      '@fontsource-variable/mozilla-text':
+        specifier: ^5.2.2
+        version: 5.2.2
+      '@fontsource-variable/roboto-mono':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/titillium-web':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@radix-ui/react-checkbox':
         specifier: ^1.3.3
         version: 1.3.3(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -836,6 +845,15 @@ packages:
 
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
+
+  '@fontsource-variable/mozilla-text@5.2.2':
+    resolution: {integrity: sha512-lIXYrFG2SHIOd4HMM9XYxgzscIUG2rcVjeDSlqJ8gfMg6cRMFwXvUe5m2L3fU/tB2nmp12+ut8sGCSjJEdimEw==}
+
+  '@fontsource-variable/roboto-mono@5.2.8':
+    resolution: {integrity: sha512-6M2U3wGIUxYNKRrUoKls8BRRIPDA57T8J0agqwyDkiEHrLEEAqptsxcUl3eTm6tnRNEn6yEm4pCefvtnujebDA==}
+
+  '@fontsource/titillium-web@5.2.8':
+    resolution: {integrity: sha512-DNhXS1ib/de+LwbJiEmKgB9WAGK6MZfG9qFbJbz1JoY1f4KCt9HDK7lSUtqJPxdK47D2o0vqdWcg5SD+yphWOw==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -5753,6 +5771,12 @@ snapshots:
       react-dom: 19.2.0(react@19.2.0)
 
   '@floating-ui/utils@0.2.10': {}
+
+  '@fontsource-variable/mozilla-text@5.2.2': {}
+
+  '@fontsource-variable/roboto-mono@5.2.8': {}
+
+  '@fontsource/titillium-web@5.2.8': {}
 
   '@humanfs/core@0.19.1': {}
 

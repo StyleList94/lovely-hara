@@ -1,6 +1,4 @@
 ---
-import { Font } from 'astro:assets';
-
 const title = 'StyleList94';
 const description = 'FE 유틸리티';
 const siteUrl = 'https://stylelist94.dev';
@@ -12,30 +10,6 @@ const twitterImage = `${siteUrl}/twitter-image.png`;
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <Font
-    cssVariable="--font-pretendard"
-    preload={[
-      { weight: '400', style: 'normal' },
-      { weight: '500', style: 'normal' },
-      { weight: '600', style: 'normal' },
-    ]}
-  />
-  <Font
-    cssVariable="--font-roboto-mono"
-    preload={[{ weight: '400', style: 'normal' }]}
-  />
-  <Font
-    cssVariable="--font-titillium-web"
-    preload={[{ weight: '400', style: 'normal' }]}
-  />
-  <Font
-    cssVariable="--font-mozilla-text"
-    preload={[
-      { weight: '400', style: 'normal' },
-      { weight: '500', style: 'normal' },
-    ]}
-  />
 
   <title>{title}</title>
   <meta name="description" content={description} />

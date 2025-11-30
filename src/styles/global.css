@@ -1,15 +1,16 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import './fonts.css';
 
 @import '@stylelist94/nine-beauty-actress/style.css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-pretendard);
-  --font-mono: var(--font-roboto-mono);
-  --font-display: var(--font-titillium-web);
-  --font-hero: var(--font-mozilla-text);
+  --font-sans: 'Pretendard', sans-serif;
+  --font-mono: 'Roboto Mono Variable', monospace;
+  --font-display: 'Titillium Web', sans-serif;
+  --font-hero: 'Mozilla Text Variable', sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
