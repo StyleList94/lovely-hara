@@ -4,18 +4,18 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import SpringSimulator from '../spring-simulator';
 
-const ResizeObserverMock = vi.fn(() => ({
-  observe: vi.fn(),
-  unobserve: vi.fn(),
-  disconnect: vi.fn(),
-}));
+const ResizeObserverMock = vi.fn(function (this: ResizeObserver) {
+  this.observe = vi.fn();
+  this.unobserve = vi.fn();
+  this.disconnect = vi.fn();
+});
 vi.stubGlobal('ResizeObserver', ResizeObserverMock);
 
-const MutationObserverMock = vi.fn(() => ({
-  observe: vi.fn(),
-  disconnect: vi.fn(),
-  takeRecords: vi.fn(),
-}));
+const MutationObserverMock = vi.fn(function (this: MutationObserver) {
+  this.observe = vi.fn();
+  this.disconnect = vi.fn();
+  this.takeRecords = vi.fn().mockReturnValue([]);
+});
 vi.stubGlobal('MutationObserver', MutationObserverMock);
 
 describe('<SpringSimulator />', () => {
