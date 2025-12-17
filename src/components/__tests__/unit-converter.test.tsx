@@ -8,10 +8,8 @@ describe('<UnitConverter />', () => {
   it('should render', () => {
     render(<UnitConverter />);
 
-    expect(screen.getByText('전하 아뢰옵기 황송하오나')).toBeInTheDocument();
-    expect(
-      screen.getByText('4배수로 어떻게 아니되옵니까?'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('사이즈는')).toBeInTheDocument();
+    expect(screen.getByText('4배수가 진리')).toBeInTheDocument();
 
     expect(screen.getByLabelText('px')).toBeInTheDocument();
     expect(screen.getByLabelText('rem')).toBeInTheDocument();

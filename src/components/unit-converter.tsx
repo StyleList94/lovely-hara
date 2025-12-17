@@ -38,8 +38,8 @@ const UnitConverter = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>전하 아뢰옵기 황송하오나</CardTitle>
-        <CardDescription>4배수로 어떻게 아니되옵니까?</CardDescription>
+        <CardTitle>사이즈는</CardTitle>
+        <CardDescription>4배수가 진리</CardDescription>
       </CardHeader>
 
       <CardContent className="flex flex-col gap-2">
@@ -48,7 +48,7 @@ const UnitConverter = () => {
           <Input
             id="px"
             type="number"
-            placeholder="4배수가 계산하기"
+            placeholder="16"
             value={inputPixelValue}
             onChange={handleChangeValue('px')}
           />
@@ -59,7 +59,7 @@ const UnitConverter = () => {
           <Input
             id="rem"
             type="number"
-            placeholder="편해서 그렇사옵니다!"
+            placeholder="1"
             value={inputRemValue}
             onChange={handleChangeValue('rem')}
           />

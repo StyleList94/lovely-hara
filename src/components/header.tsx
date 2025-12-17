@@ -38,7 +38,6 @@ const Header = () => {
           href="/"
         >
           StyleList94
-          <span className="text-sm leading-relaxed tracking-wider"> .DEV </span>
         </a>
         <div className="flex items-center gap-2">
           <a
