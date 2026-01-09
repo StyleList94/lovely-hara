@@ -9,7 +9,7 @@
 @theme inline {
   --font-sans: 'Pretendard', sans-serif;
   --font-mono: 'Roboto Mono Variable', monospace;
-  --font-display: 'Titillium Web', sans-serif;
+  --font-display: 'Comfortaa Variable', sans-serif;
   --font-hero: 'Mozilla Text Variable', sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
