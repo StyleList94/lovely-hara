@@ -19,6 +19,9 @@ export default defineConfig(
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx,astro}'],
     extends: [stylish],
+    settings: {
+      'import/internal-regex': '^motion-plus',
+    },
     rules: {
       'import/prefer-default-export': 'off',
     },
