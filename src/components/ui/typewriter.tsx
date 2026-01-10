@@ -1,9 +1,10 @@
+import { useState, type CSSProperties } from 'react';
 import { delay, wrap } from 'motion';
+
 import {
   Typewriter as MotionTypewriter,
   type TypingSpeed,
 } from 'motion-plus/react';
-import { useState, type CSSProperties } from 'react';
 
 type Props = {
   texts: string[];

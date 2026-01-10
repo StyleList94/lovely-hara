@@ -12,6 +12,7 @@ const isTest = !!process.env.VITEST;
 export default defineConfig({
   integrations: [react()],
   vite: {
+    // @ts-expect-error vite version mismatch
     plugins: [tailwindcss()],
     resolve: {
       alias: import.meta.env.PROD
