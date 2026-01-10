@@ -6,8 +6,8 @@ if [ -f .env.local ]; then
 fi
 
 if [ -z "$MOTION_TOKEN" ]; then
-  echo "MOTION_TOKEN not set, skipping motion-plus"
-  exit 0
+  echo "MOTION_TOKEN not set"
+  exit 1
 fi
 
 echo "Installing motion-plus..."
