@@ -16,7 +16,7 @@ let postList: Post[] = [];
 let errorMessage: string | null = null;
 
 try {
-  const res = await fetch('https://blog.stylelist94.dev/rss.xml');
+  const res = await fetch('https://blog.styleli.sh/rss.xml');
 
   if (!res.ok) {
     errorMessage = '피드 어디갔어!?';
