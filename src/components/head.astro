@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from 'astro:transitions';
+
 const title = 'StyleList94';
 const description = 'FE 유틸리티';
 const siteUrl = 'https://styleli.sh';
@@ -32,4 +34,6 @@ const twitterImage = `${siteUrl}/twitter-image.png`;
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={twitterImage} />
+
+  <ClientRouter />
 </head>

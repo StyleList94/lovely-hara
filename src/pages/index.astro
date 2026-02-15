@@ -1,65 +1,20 @@
 ---
 export const prerender = false;
 
-import { cn } from '@/lib/utils';
+import { MainContainer } from '@stylelist94/nine-beauty-actress';
 
-import LayoutContainer from '@/layouts/container.astro';
-
+import RootLayout from '@/layouts/root.astro';
 import TopContent from '@/components/top-content';
-import ColorPicker from '@/components/color-picker';
-import SearchExplore from '@/components/search-explore';
-import StringMaker from '@/components/string-maker';
-import SpringSimulator from '@/components/spring-simulator';
-import TwBreakpoint from '@/components/tw-breakpoint';
-import UnitConverter from '@/components/unit-converter';
-import IconConverter from '@/components/icon-converter';
-import BlogFeed from '@/components/blog-feed.astro';
-import PlayBall from '@/components/play-ball.astro';
+import PageFooter from '@/components/page-footer.astro';
 
 import '@/styles/global.css';
 ---
 
-<LayoutContainer>
-  <TopContent client:only="react" />
-  <div
-    class:list={cn('grid grid-cols-1 gap-4', 'md:grid-cols-2 md:items-start')}
-  >
-    <div
-      class:list={cn(
-        'grid grid-cols-1 gap-4',
-        'md:items-start',
-        'xl:grid-cols-2',
-      )}
-    >
-      <div class:list={cn('grid grid-cols-1 gap-4')}>
-        <ColorPicker client:only="react" />
-        <SearchExplore client:only="react" />
-        <BlogFeed />
-      </div>
-      <div class:list={cn('grid grid-cols-1 gap-4')}>
-        <StringMaker client:only="react" />
-        <PlayBall />
-      </div>
+<RootLayout>
+  <MainContainer className="2xl:max-w-384">
+    <div class="flex min-h-[max(35rem,100dvh)] items-center justify-center">
+      <TopContent client:only="react" />
     </div>
-    <div class="grid grid-cols-1 gap-4">
-      <div class="grid gird-cols-1 gap-4">
-        <SpringSimulator client:only="react" />
-      </div>
-      <div
-        class:list={cn(
-          'grid grid-cols-1 gap-4',
-          'md:items-start',
-          'xl:grid-cols-2',
-        )}
-      >
-        <div class:list={cn('grid grid-cols-1 gap-4')}>
-          <TwBreakpoint client:only="react" />
-        </div>
-        <div class:list={cn('grid grid-cols-1 gap-4')}>
-          <UnitConverter client:only="react" />
-          <IconConverter client:only="react" />
-        </div>
-      </div>
-    </div>
-  </div>
-</LayoutContainer>
+  </MainContainer>
+  <PageFooter />
+</RootLayout>

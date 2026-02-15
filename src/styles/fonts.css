@@ -1,7 +1,7 @@
 /* Fontsource imports */
-@import '@fontsource-variable/roboto-mono';
-@import '@fontsource-variable/comfortaa';
-@import '@fontsource-variable/mozilla-text';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/geist-mono';
 
 /* Local font: Pretendard */
 @font-face {

@@ -8,9 +8,9 @@
 
 @theme inline {
   --font-sans: 'Pretendard', sans-serif;
-  --font-mono: 'Roboto Mono Variable', monospace;
-  --font-display: 'Comfortaa Variable', sans-serif;
-  --font-hero: 'Mozilla Text Variable', sans-serif;
+  --font-mono: 'Geist Mono Variable', monospace;
+  --font-display: 'Geist Mono Variable', monospace;
+  --font-hero: 'Space Grotesk Variable', sans-serif;
 }
 
 @layer base {

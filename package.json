@@ -17,9 +17,9 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/react": "^4.4.2",
-    "@fontsource-variable/comfortaa": "^5.2.8",
-    "@fontsource-variable/mozilla-text": "^5.2.2",
-    "@fontsource-variable/roboto-mono": "^5.2.8",
+    "@fontsource-variable/geist": "^5.2.8",
+    "@fontsource-variable/geist-mono": "^5.2.7",
+    "@fontsource-variable/space-grotesk": "^5.2.10",
     "@stylelist94/nine-beauty-actress": "^2.0.0",
     "astro": "^5.16.3",
     "bignumber.js": "^9.3.1",
