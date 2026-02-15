@@ -1,22 +1,21 @@
 import type { PropsWithChildren } from 'react';
 
-import { cn } from '@/lib/utils';
-
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import {
+  ScrollArea,
+  ScrollBar,
   Table,
   TableBody,
   TableCaption,
   TableCell,
   TableRow,
-} from '@/components/ui/table';
+} from '@stylelist94/nine-beauty-actress';
+
+import { cn } from '@/lib/utils';
 
 type Props = {
   postList: {
@@ -42,7 +41,7 @@ const FailLoadData = ({ message }: { message: string }) => (
   <CardContent className="flex flex-col gap-2">
     <div
       className={cn(
-        'flex justify-center items-center w-full h-[11.5rem]',
+        'flex justify-center items-center w-full h-46',
         'border border-dashed rounded-lg',
       )}
     >

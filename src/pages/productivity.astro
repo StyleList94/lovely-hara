@@ -1,0 +1,96 @@
+---
+export const prerender = false;
+
+import { MainContainer } from '@stylelist94/nine-beauty-actress';
+
+import { cn } from '@/lib/utils';
+
+import RootLayout from '@/layouts/root.astro';
+import Header from '@/components/header';
+import PageFooter from '@/components/page-footer.astro';
+
+import ColorPicker from '@/components/color-picker';
+import SearchExplore from '@/components/search-explore';
+import StringMaker from '@/components/string-maker';
+import SpringSimulator from '@/components/spring-simulator';
+import TwBreakpoint from '@/components/tw-breakpoint';
+import UnitConverter from '@/components/unit-converter';
+import IconConverter from '@/components/icon-converter';
+import BlogFeed from '@/components/blog-feed.astro';
+import PlayBall from '@/components/play-ball.astro';
+
+import '@/styles/global.css';
+---
+
+<RootLayout>
+  <Header client:only="react" />
+  <MainContainer className="2xl:max-w-384">
+    <section class:list={cn('flex flex-col gap-5 py-8 md:py-12')}>
+      <div
+        class:list={cn(
+          'flex flex-col gap-1.5 sm:gap-3',
+          'items-center md:items-start',
+          'font-hero font-light tracking-wide',
+          'text-2xl sm:text-4xl md:text-5xl lg:text-6xl',
+        )}
+      >
+        <h1>S3xy Util</h1>
+      </div>
+      <div
+        class:list={cn(
+          'flex flex-col gap-1',
+          'items-center md:items-start',
+          'text-zinc-500',
+          'md:text-lg lg:text-xl',
+        )}
+      >
+        <p>색에 빠지고 치수를 재고 끈을 매만지고</p>
+        <p>떨림을 느껴보고</p>
+        <p>조금만 더</p>
+        <p>맵시나게.</p>
+      </div>
+    </section>
+    <div
+      class:list={cn('grid grid-cols-1 gap-4', 'md:grid-cols-2 md:items-start')}
+    >
+      <div
+        class:list={cn(
+          'grid grid-cols-1 gap-4',
+          'md:items-start',
+          'xl:grid-cols-2',
+        )}
+      >
+        <div class:list={cn('grid grid-cols-1 gap-4')}>
+          <ColorPicker client:only="react" />
+          <SearchExplore client:only="react" />
+          <BlogFeed />
+        </div>
+        <div class:list={cn('grid grid-cols-1 gap-4')}>
+          <StringMaker client:only="react" />
+          <PlayBall />
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-4">
+        <div class="grid gird-cols-1 gap-4">
+          <SpringSimulator client:only="react" />
+        </div>
+        <div
+          class:list={cn(
+            'grid grid-cols-1 gap-4',
+            'md:items-start',
+            'xl:grid-cols-2',
+          )}
+        >
+          <div class:list={cn('grid grid-cols-1 gap-4')}>
+            <TwBreakpoint client:only="react" />
+          </div>
+          <div class:list={cn('grid grid-cols-1 gap-4')}>
+            <UnitConverter client:only="react" />
+            <IconConverter client:only="react" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </MainContainer>
+  <PageFooter />
+</RootLayout>

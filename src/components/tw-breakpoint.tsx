@@ -3,28 +3,25 @@
 import { toast } from 'sonner';
 import { ChevronDownIcon } from 'lucide-react';
 
-import { cn } from '@/lib/utils';
-
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import {
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible';
+} from '@stylelist94/nine-beauty-actress';
+
+import { cn } from '@/lib/utils';
+
 
 const twViewportBreak = [
   { prefix: 'sm', remValue: 40 },

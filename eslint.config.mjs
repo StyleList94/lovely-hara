@@ -13,7 +13,7 @@ import vitest from '@vitest/eslint-plugin';
 import testingLibrary from 'eslint-plugin-testing-library';
 
 export default defineConfig(
-  globalIgnores(['node_modules', 'dist', '.astro']),
+  globalIgnores(['node_modules', 'dist', '.astro', 'eslint.config.mjs']),
   ...astroConfigs.recommended,
   ...astroConfigs['jsx-a11y-strict'],
   {
@@ -65,6 +65,7 @@ export default defineConfig(
     },
     extends: [stylishTypeScript],
     rules: {
+      '@typescript-eslint/no-deprecated': 'off',
       'astro/prefer-class-list-directive': 'warn',
       'import/namespace': 'off',
     },

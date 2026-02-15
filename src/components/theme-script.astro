@@ -51,4 +51,8 @@
   window.addEventListener('storage', (e) => {
     if (e.key === 'theme') handleThemeUpdate();
   });
+
+  document.addEventListener('astro:after-swap', () => {
+    resolveTheme(getThemePreference());
+  });
 </script>

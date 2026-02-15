@@ -2,15 +2,15 @@
 
 import { type ChangeEvent, useState } from 'react';
 
-import Input from '@/components/ui/input';
-import Label from '@/components/ui/label';
 import {
+  TextInput,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+  FormControl,
+} from '@stylelist94/nine-beauty-actress';
 
 type Unit = 'px' | 'rem';
 
@@ -43,27 +43,25 @@ const UnitConverter = () => {
       </CardHeader>
 
       <CardContent className="flex flex-col gap-2">
-        <div className="grid w-full lg:max-w-sm items-center gap-1.5">
-          <Label htmlFor="px">px</Label>
-          <Input
-            id="px"
+        <FormControl>
+          <FormControl.Label>px</FormControl.Label>
+          <TextInput
             type="number"
             placeholder="16"
             value={inputPixelValue}
             onChange={handleChangeValue('px')}
           />
-        </div>
+        </FormControl>
 
-        <div className="grid w-full lg:max-w-sm items-center gap-1.5">
-          <Label htmlFor="rem">rem</Label>
-          <Input
-            id="rem"
+        <FormControl>
+          <FormControl.Label>rem</FormControl.Label>
+          <TextInput
             type="number"
             placeholder="1"
             value={inputRemValue}
             onChange={handleChangeValue('rem')}
           />
-        </div>
+        </FormControl>
       </CardContent>
     </Card>
   );

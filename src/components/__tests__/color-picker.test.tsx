@@ -23,9 +23,7 @@ describe('<ColorPicker />', () => {
     const inputElement = screen.getByPlaceholderText('hex 또는 rgb()');
     const previewBox = screen.getByLabelText('preview');
 
-    expect(previewBox).toHaveStyle(`
-      background-color: transparent;
-    `);
+    expect(previewBox).not.toHaveAttribute('style');
 
     fireEvent.change(inputElement, { target: { value: '#FFFFFF' } });
     expect(previewBox).toHaveStyle(`

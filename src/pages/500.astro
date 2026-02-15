@@ -1,7 +1,7 @@
 ---
-import RootLayout from '@/layouts/root.astro';
+import { Button } from '@stylelist94/nine-beauty-actress';
 
-import { Button } from '@/components/ui/button';
+import RootLayout from '@/layouts/root.astro';
 
 interface Props {
   error: unknown;
@@ -12,13 +12,13 @@ const { error } = Astro.props;
 
 <RootLayout>
   <div
-    class="flex flex-col justify-center items-center gap-12 w-full max-w-[500px] h-screen mx-auto py-16 px-6 text-black dark:text-white"
+    class="flex flex-col justify-center items-center gap-12 w-full max-w-125 h-screen mx-auto py-16 px-6 text-black dark:text-white"
   >
     <h2 class="text-2xl">뭔가 잘못되었습니다!</h2>
 
     {
       process.env.NODE_ENV === 'development' && (
-        <div class="w-80 h-[200px] overflow-auto p-4 rounded-lg bg-neutral-50 dark:bg-neutral-900">
+        <div class="w-80 h-50 overflow-auto p-4 rounded-lg bg-neutral-50 dark:bg-neutral-900">
           <p>{error instanceof Error ? error.stack : 'Unknown error'}</p>
         </div>
       )
