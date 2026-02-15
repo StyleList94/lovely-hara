@@ -8,23 +8,21 @@ import {
   useActionState,
   useCallback,
   useEffect,
-  useId,
   useState,
   type ChangeEvent,
 } from 'react';
 import { FileUpIcon, Loader2Icon } from 'lucide-react';
 
-import { FileUploader } from '@stylelist94/nine-beauty-actress';
-
 import {
+  FileUploader,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import Label from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
+  Button,
+  FormControl,
+} from '@stylelist94/nine-beauty-actress';
 
 const initialConvertState: SafeResult<FormData, IconConversionResult> = {
   data: { iconData: '' },
@@ -32,7 +30,6 @@ const initialConvertState: SafeResult<FormData, IconConversionResult> = {
 };
 
 const IconConverter = () => {
-  const inputIconId = useId();
   const [state, formAction, isPending] = useActionState(
     withState(actions.convertToICO),
     initialConvertState,
@@ -83,15 +80,14 @@ const IconConverter = () => {
 
       <CardContent className="flex flex-col items-center gap-2">
         <form action={formAction} className="flex flex-col w-full gap-4">
-          <div className="grid w-full items-center gap-1.5">
-            <Label htmlFor={inputIconId}>아이콘 이미지</Label>
+          <FormControl>
+            <FormControl.Label>아이콘 이미지</FormControl.Label>
 
             <FileUploader
               key={uploaderKey}
               name="icon"
               accept="image/png"
               placeholder="something icon"
-              id={inputIconId}
               required
               onChange={handleChangeFile}
             >
@@ -120,7 +116,7 @@ const IconConverter = () => {
                 )}
               </div>
             </FileUploader>
-          </div>
+          </FormControl>
 
           <div className="flex flex-col gap-2">
             <Button type="submit" disabled={isPending} variant="outline">

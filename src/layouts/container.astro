@@ -10,7 +10,7 @@ import RootLayout from './root.astro';
 ---
 
 <RootLayout>
-  <Header client:load />
+  <Header client:only="react" />
   <MainContainer className="2xl:max-w-384">
     <slot />
   </MainContainer>
@@ -34,7 +34,7 @@ import RootLayout from './root.astro';
       </div>
 
       <div class="h-8">
-        <ThemeControlSwitch client:load />
+        <ThemeControlSwitch client:only="react" />
       </div>
     </div>
     <div>

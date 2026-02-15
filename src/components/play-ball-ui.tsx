@@ -2,8 +2,6 @@ import type { PropsWithChildren } from 'react';
 
 import { format } from 'date-fns';
 
-import { cn } from '@/lib/utils';
-
 import {
   Card,
   CardContent,
@@ -11,8 +9,6 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import {
   Table,
   TableBody,
   TableCaption,
@@ -20,8 +16,12 @@ import {
   TableHeader,
   TableRow,
   TableCell,
-} from '@/components/ui/table';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+  ScrollArea,
+  ScrollBar,
+} from '@stylelist94/nine-beauty-actress';
+
+import { cn } from '@/lib/utils';
+
 
 type TeamStanding = {
   rank: number;

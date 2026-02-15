@@ -12,6 +12,6 @@ import '@/styles/global.css';
   <Head />
   <body>
     <slot />
-    <Toaster client:idle />
+    <Toaster client:only="react" />
   </body>
 </html>

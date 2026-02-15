@@ -1,6 +1,6 @@
 'use client';
 
-import { type CSSProperties, useSyncExternalStore } from 'react';
+import { useSyncExternalStore } from 'react';
 
 import { Toaster as Sonner, type ToasterProps } from 'sonner';
 
@@ -37,13 +37,12 @@ const Toaster = ({ ...props }: ToasterProps) => {
     <Sonner
       theme={theme}
       className="toaster group"
-      style={
-        {
-          '--normal-bg': 'var(--popover)',
-          '--normal-text': 'var(--popover-foreground)',
-          '--normal-border': 'var(--border)',
-        } as CSSProperties
-      }
+      toastOptions={{
+        classNames: {
+          toast:
+            'bg-white text-zinc-950 border-zinc-200 dark:bg-zinc-900 dark:text-zinc-50 dark:border-white/10',
+        },
+      }}
       {...props}
     />
   );

@@ -2,12 +2,10 @@
 
 import {
   type ChangeEvent,
-  type ComponentProps,
   useMemo,
   useRef,
   useState,
 } from 'react';
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { SearchIcon } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -18,16 +16,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import Input from '@/components/ui/input';
-import Label from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import Checkbox from '@/components/ui/checkbox';
-import Separator from '@/components/ui/separator';
-
-type CheckboxWithLabelProps = {
-  labelText: string;
-} & ComponentProps<typeof CheckboxPrimitive.Root>;
+  TextInput,
+  Button,
+  Checkbox,
+  Separator,
+  FormControl,
+  CheckboxGroup,
+} from '@stylelist94/nine-beauty-actress';
 
 const searchEngines = [
   {
@@ -100,18 +95,6 @@ const initialCheckboxState: Record<string, boolean> = searchEngines.reduce(
     [current.id]: true,
   }),
   {},
-);
-
-const CheckboxWithLabel = ({ labelText, ...props }: CheckboxWithLabelProps) => (
-  <div className="flex items-center space-x-2">
-    <Checkbox {...props} />
-    <label
-      htmlFor={props.id}
-      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-    >
-      {labelText}
-    </label>
-  </div>
 );
 
 const SearchExplore = () => {
@@ -246,116 +229,127 @@ const SearchExplore = () => {
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
         <div className="grid w-full max-w-sm items-center gap-1.5">
-          <Label htmlFor="query">검색어</Label>
-          <div className="flex w-full max-w-sm items-center space-x-2">
-            <Input
-              id="query"
-              placeholder="뭐든 말해봐!"
-              onChange={handleChange}
-              value={query}
-            />
-            <Button
-              size="icon"
-              variant="outline"
-              disabled={!query || !isSearchable}
-              onClick={handleClickSearch}
-              aria-label="search"
-            >
-              <SearchIcon />
-            </Button>
-          </div>
+          <FormControl>
+            <FormControl.Label>검색어</FormControl.Label>
+            <div className="flex w-full max-w-sm items-center space-x-2">
+              <TextInput
+                placeholder="뭐든 말해봐!"
+                onChange={handleChange}
+                value={query}
+              />
+              <Button
+                size="icon"
+                variant="outline"
+                disabled={!query || !isSearchable}
+                onClick={handleClickSearch}
+                aria-label="search"
+              >
+                <SearchIcon />
+              </Button>
+            </div>
+          </FormControl>
         </div>
       </CardContent>
       <CardFooter className="@container flex flex-col items-start gap-4">
         <div className="flex flex-col gap-4 w-full">
-          <CheckboxWithLabel
-            labelText="모두 선택"
-            id="all"
-            name="all"
-            checked={isAllChecked}
-            onCheckedChange={handleCheck('all')}
-          />
+          <FormControl layout="horizontal">
+            <Checkbox
+              name="all"
+              checked={isAllChecked}
+              onCheckedChange={handleCheck('all')}
+            />
+            <FormControl.Label>모두 선택</FormControl.Label>
+          </FormControl>
 
           <Separator />
 
-          <section className="flex flex-col gap-2">
-            <h2 className="text-sm text-zinc-500 dark:text-zinc-400">주제</h2>
+          <CheckboxGroup>
+            <CheckboxGroup.Label className="text-zinc-500 dark:text-zinc-400">
+              주제
+            </CheckboxGroup.Label>
             <div className="flex flex-col gap-2 @3xs:flex-row @2xs:items-center">
-              <CheckboxWithLabel
-                labelText="문제 해결"
-                id="googling"
-                name="googling"
-                checked={isProblemChecked}
-                onCheckedChange={handleCheck('googling')}
-              />
-              <CheckboxWithLabel
-                labelText="맛집"
-                id="food"
-                name="food"
-                checked={isFoodChecked}
-                onCheckedChange={handleCheck('food')}
-              />
-              <CheckboxWithLabel
-                labelText="실시간 가십"
-                id="community"
-                name="community"
-                checked={isCommunityChecked}
-                onCheckedChange={handleCheck('community')}
-              />
+              <FormControl layout="horizontal" className="!w-auto">
+                <Checkbox
+                  name="googling"
+                  checked={isProblemChecked}
+                  onCheckedChange={handleCheck('googling')}
+                />
+                <FormControl.Label>문제 해결</FormControl.Label>
+              </FormControl>
+              <FormControl layout="horizontal" className="!w-auto">
+                <Checkbox
+                  name="food"
+                  checked={isFoodChecked}
+                  onCheckedChange={handleCheck('food')}
+                />
+                <FormControl.Label>맛집</FormControl.Label>
+              </FormControl>
+              <FormControl layout="horizontal" className="!w-auto">
+                <Checkbox
+                  name="community"
+                  checked={isCommunityChecked}
+                  onCheckedChange={handleCheck('community')}
+                />
+                <FormControl.Label>실시간 가십</FormControl.Label>
+              </FormControl>
             </div>
-          </section>
+          </CheckboxGroup>
         </div>
 
         <Separator />
 
-        <div className="flex flex-col gap-3">
-          <section className="flex flex-col gap-2">
-            <h2 className="text-sm text-zinc-500 dark:text-zinc-400">해외</h2>
+        <div className="flex flex-col gap-3 w-full">
+          <CheckboxGroup>
+            <CheckboxGroup.Label className="text-zinc-500 dark:text-zinc-400">
+              해외
+            </CheckboxGroup.Label>
             <div className="flex flex-col gap-2 @3xs:flex-row @2xs:items-center">
               {externalSearchEngines.map((item) => (
-                <CheckboxWithLabel
-                  key={item.id}
-                  labelText={item.name}
-                  id={item.id}
-                  name={item.id}
-                  onCheckedChange={handleCheck(item.id)}
-                  checked={isChecked[item.id]}
-                />
+                <FormControl key={item.id} layout="horizontal" className="!w-auto">
+                  <Checkbox
+                    name={item.id}
+                    onCheckedChange={handleCheck(item.id)}
+                    checked={isChecked[item.id]}
+                  />
+                  <FormControl.Label>{item.name}</FormControl.Label>
+                </FormControl>
               ))}
             </div>
-          </section>
-          <section className="flex flex-col gap-2">
-            <h2 className="text-sm text-zinc-500 dark:text-zinc-400">국내</h2>
+          </CheckboxGroup>
+          <CheckboxGroup>
+            <CheckboxGroup.Label className="text-zinc-500 dark:text-zinc-400">
+              국내
+            </CheckboxGroup.Label>
             <div className="flex flex-col gap-2 @3xs:flex-row @2xs:items-center">
               {internalSearchEngines.map((item) => (
-                <CheckboxWithLabel
-                  key={item.id}
-                  labelText={item.name}
-                  id={item.id}
-                  name={item.id}
-                  onCheckedChange={handleCheck(item.id)}
-                  checked={isChecked[item.id]}
-                />
+                <FormControl key={item.id} layout="horizontal" className="!w-auto">
+                  <Checkbox
+                    name={item.id}
+                    onCheckedChange={handleCheck(item.id)}
+                    checked={isChecked[item.id]}
+                  />
+                  <FormControl.Label>{item.name}</FormControl.Label>
+                </FormControl>
               ))}
             </div>
-          </section>
-          <section className="flex flex-col gap-2">
-            <h2 className="text-sm text-zinc-500 dark:text-zinc-400">
+          </CheckboxGroup>
+          <CheckboxGroup>
+            <CheckboxGroup.Label className="text-zinc-500 dark:text-zinc-400">
               커뮤니티
-            </h2>
+            </CheckboxGroup.Label>
             <div className="flex flex-col gap-2 @3xs:flex-row @2xs:items-center">
               {communitySearchEngines.map((item) => (
-                <CheckboxWithLabel
-                  key={item.id}
-                  labelText={item.name}
-                  id={item.id}
-                  name={item.id}
-                  onCheckedChange={handleCheck(item.id)}
-                  checked={isChecked[item.id]}
-                />
+                <FormControl key={item.id} layout="horizontal" className="!w-auto">
+                  <Checkbox
+                    name={item.id}
+                    onCheckedChange={handleCheck(item.id)}
+                    checked={isChecked[item.id]}
+                  />
+                  <FormControl.Label>{item.name}</FormControl.Label>
+                </FormControl>
               ))}
             </div>
-          </section>
+          </CheckboxGroup>
         </div>
       </CardFooter>
     </Card>

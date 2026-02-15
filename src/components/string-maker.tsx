@@ -2,22 +2,20 @@
 
 import { useEffect, useState } from 'react';
 
-import Input from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 import {
+  TextInput,
+  Button,
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip';
-import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from '@stylelist94/nine-beauty-actress';
 
 type StringType = 'single' | 'double' | 'template';
 
@@ -112,7 +110,7 @@ const StringMaker = () => {
       </CardHeader>
 
       <CardContent className="flex flex-col items-center gap-2">
-        <Input
+        <TextInput
           placeholder="16진수 40자리"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}

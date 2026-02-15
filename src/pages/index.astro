@@ -20,7 +20,7 @@ import '@/styles/global.css';
 ---
 
 <LayoutContainer>
-  <TopContent client:load />
+  <TopContent client:only="react" />
   <div
     class:list={cn('grid grid-cols-1 gap-4', 'md:grid-cols-2 md:items-start')}
   >
@@ -32,18 +32,18 @@ import '@/styles/global.css';
       )}
     >
       <div class:list={cn('grid grid-cols-1 gap-4')}>
-        <ColorPicker client:idle />
-        <SearchExplore client:idle />
+        <ColorPicker client:only="react" />
+        <SearchExplore client:only="react" />
         <BlogFeed />
       </div>
       <div class:list={cn('grid grid-cols-1 gap-4')}>
-        <StringMaker client:load />
+        <StringMaker client:only="react" />
         <PlayBall />
       </div>
     </div>
     <div class="grid grid-cols-1 gap-4">
       <div class="grid gird-cols-1 gap-4">
-        <SpringSimulator client:idle />
+        <SpringSimulator client:only="react" />
       </div>
       <div
         class:list={cn(
@@ -53,11 +53,11 @@ import '@/styles/global.css';
         )}
       >
         <div class:list={cn('grid grid-cols-1 gap-4')}>
-          <TwBreakpoint client:idle />
+          <TwBreakpoint client:only="react" />
         </div>
         <div class:list={cn('grid grid-cols-1 gap-4')}>
-          <UnitConverter client:idle />
-          <IconConverter client:load />
+          <UnitConverter client:only="react" />
+          <IconConverter client:only="react" />
         </div>
       </div>
     </div>

@@ -8,25 +8,23 @@ import * as m from 'motion/react-m';
 import { InfoIcon } from 'lucide-react';
 import { toast } from 'sonner';
 
-import { cn } from '@/lib/utils';
-
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import Input from '@/components/ui/input';
-import Slider from '@/components/ui/slider';
-import { Button } from '@/components/ui/button';
-import {
+  TextInput,
+  Slider,
+  Button,
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip';
-import Combobox from '@/components/ui/combobox';
+  Combobox,
+} from '@stylelist94/nine-beauty-actress';
+
+import { cn } from '@/lib/utils';
 
 type PresetOptionValue = 'scroll-linked';
 
@@ -48,7 +46,7 @@ const presetGroup: Record<PresetOptionValue, SpringOptions> = {
 };
 
 const inputStyle =
-  'w-20 h-7 text-sm text-right pr-0 border-transparent shadow-none dark:bg-transparent';
+  'w-20! h-7 text-sm text-right pr-0 border-transparent shadow-none dark:bg-transparent';
 
 const SpringBox = ({ stiffness, damping, mass }: SpringOptions) => {
   const springOptions = useMemo(
@@ -185,7 +183,7 @@ const SpringSimulator = () => {
                       </TooltipContent>
                     </Tooltip>
                   </div>
-                  <Input
+                  <TextInput
                     id="stiffness"
                     type="number"
                     min={1}
@@ -223,7 +221,7 @@ const SpringSimulator = () => {
                       </TooltipContent>
                     </Tooltip>
                   </div>
-                  <Input
+                  <TextInput
                     id="damping"
                     type="number"
                     min={1}
@@ -260,7 +258,7 @@ const SpringSimulator = () => {
                       </TooltipContent>
                     </Tooltip>
                   </div>
-                  <Input
+                  <TextInput
                     id="mass"
                     type="number"
                     min={1}

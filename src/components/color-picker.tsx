@@ -2,25 +2,23 @@
 
 import { useMemo, useState } from 'react';
 
-import { hexColorRegex, rgbRegex } from '@/lib/regex';
-import { cn, hexToHSL, hexToRGB, rgbToHex } from '@/lib/utils';
-
-import Input from '@/components/ui/input';
-import Code from '@/components/ui/code';
 import {
+  TextInput,
+  Code,
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip';
-import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from '@stylelist94/nine-beauty-actress';
+
+import { hexColorRegex, rgbRegex } from '@/lib/regex';
+import { cn, hexToHSL, hexToRGB, rgbToHex } from '@/lib/utils';
 
 const ColorPicker = () => {
   const [inputColorValue, setInputColorValue] = useState('');
@@ -71,14 +69,18 @@ const ColorPicker = () => {
 
       <CardContent className="flex items-center gap-2">
         <div
-          className={cn('w-10 h-10 flex-none rounded-md border-2')}
-          style={{
-            backgroundColor: colorValue ?? 'transparent',
-            borderColor: colorValue ?? 'var(--border)',
-          }}
+          className={cn(
+            'w-10 h-10 flex-none rounded-md border-2',
+            !colorValue && 'border-zinc-200 dark:border-white/10',
+          )}
+          style={
+            colorValue
+              ? { backgroundColor: colorValue, borderColor: colorValue }
+              : undefined
+          }
           aria-label="preview"
         />
-        <Input
+        <TextInput
           placeholder="hex 또는 rgb()"
           value={inputColorValue}
           onChange={(e) => setInputColorValue(e.target.value)}
@@ -86,7 +88,7 @@ const ColorPicker = () => {
       </CardContent>
 
       {convertedValue ? (
-        <CardFooter className="flex flex-col items-end gap-2">
+        <CardFooter className="flex flex-col items-end! gap-2">
           <TooltipProvider delayDuration={0}>
             {convertedValue.map((item, index) => (
               <Tooltip key={`converted-${item}`}>
@@ -104,7 +106,7 @@ const ColorPicker = () => {
         <CardFooter className="flex flex-col">
           <div
             className={cn(
-              'flex justify-center items-center w-full h-[10.75rem]',
+              'flex justify-center items-center w-full h-43',
               'border border-dashed rounded-lg',
             )}
           >
