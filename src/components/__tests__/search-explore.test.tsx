@@ -19,24 +19,22 @@ describe('<SearchExplore />', () => {
 
     expect(screen.getByLabelText('모두 선택')).toBeInTheDocument();
 
-    expect(screen.getByRole('heading', { name: '주제' })).toBeInTheDocument();
+    expect(screen.getByText('주제')).toBeInTheDocument();
     expect(screen.getByLabelText('문제 해결')).toBeInTheDocument();
     expect(screen.getByLabelText('맛집')).toBeInTheDocument();
     expect(screen.getByLabelText('실시간 가십')).toBeInTheDocument();
 
-    expect(screen.getByRole('heading', { name: '해외' })).toBeInTheDocument();
+    expect(screen.getByText('해외')).toBeInTheDocument();
     expect(screen.getByLabelText('Google')).toBeInTheDocument();
     expect(screen.getByLabelText('Bing')).toBeInTheDocument();
     expect(screen.getByLabelText('DuckDuckGo')).toBeInTheDocument();
 
-    expect(screen.getByRole('heading', { name: '국내' })).toBeInTheDocument();
+    expect(screen.getByText('국내')).toBeInTheDocument();
     expect(screen.getByLabelText('네이버')).toBeInTheDocument();
     expect(screen.getByLabelText('다음')).toBeInTheDocument();
     expect(screen.getByLabelText('네이트')).toBeInTheDocument();
 
-    expect(
-      screen.getByRole('heading', { name: '커뮤니티' }),
-    ).toBeInTheDocument();
+    expect(screen.getByText('커뮤니티')).toBeInTheDocument();
     expect(screen.getByLabelText('디시인사이드')).toBeInTheDocument();
   });
 

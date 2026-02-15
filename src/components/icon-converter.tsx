@@ -88,6 +88,7 @@ const IconConverter = () => {
               name="icon"
               accept="image/png"
               placeholder="something icon"
+              aria-label="아이콘 이미지"
               required
               onChange={handleChangeFile}
             >
