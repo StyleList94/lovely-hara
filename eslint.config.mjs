@@ -3,7 +3,7 @@ import globals from 'globals';
 import astroESLintParser from 'astro-eslint-parser';
 import tsESLintParser from '@typescript-eslint/parser';
 
-import { configs as astroConfigs } from 'eslint-plugin-astro';
+import eslintPluginAstro from 'eslint-plugin-astro';
 import stylish from 'eslint-config-stylish';
 import stylishReact from 'eslint-config-stylish/react';
 import stylishReactHooks from 'eslint-config-stylish/react-hooks';
@@ -14,8 +14,8 @@ import testingLibrary from 'eslint-plugin-testing-library';
 
 export default defineConfig(
   globalIgnores(['node_modules', 'dist', '.astro', 'eslint.config.mjs']),
-  ...astroConfigs.recommended,
-  ...astroConfigs['jsx-a11y-strict'],
+  ...eslintPluginAstro.configs.recommended,
+  ...eslintPluginAstro.configs['jsx-a11y-strict'],
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx,astro}'],
     extends: [stylish],

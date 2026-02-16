@@ -61,6 +61,7 @@ const SpringBox = ({ stiffness, damping, mass }: SpringOptions) => {
   const x = useSpring(0, springOptions);
 
   useEffect(() => {
+    // eslint-disable-next-line react-you-might-not-need-an-effect/no-pass-data-to-parent -- x.set()은 로컬 MotionValue 애니메이션 트리거
     x.set(64 * 4 - 16);
   }, [x]);
 
