@@ -10,8 +10,8 @@ const ASCII_ART = `
 
   Lovely Frontend
 
-  GitHub  5k.gg/s94
-  Blog    blog.styleli.sh
+  GitHub  https://5k.gg/gh94
+  Blog    https://blog.styleli.sh
 `;
 
 export const onRequest = defineMiddleware(({ request }, next) => {
