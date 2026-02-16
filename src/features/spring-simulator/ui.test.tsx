@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/vitest';
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
-import SpringSimulator from '../spring-simulator';
+import SpringSimulator from './ui';
 
 const ResizeObserverMock = vi.fn(function ResizeObserverMock(this: ResizeObserver) {
   this.observe = vi.fn();

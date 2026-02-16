@@ -1,4 +1,4 @@
-import type { IconConversionResult } from '@/types/icon-converter';
+import type { IconConversionResult } from '@/features/icon-converter';
 
 import { defineAction, ActionError } from 'astro:actions';
 import { Jimp } from 'jimp';

@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/vitest';
 
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import SearchExplore from '../search-explore';
+import SearchExplore from './ui';
 
 describe('<SearchExplore />', () => {
   it('should render', () => {

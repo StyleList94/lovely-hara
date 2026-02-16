@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/vitest';
 
 import { render, screen } from '@testing-library/react';
 
-import IconConverter from '../icon-converter';
+import IconConverter from './ui';
 
 describe('<IconConverter />', () => {
   it('should render', () => {

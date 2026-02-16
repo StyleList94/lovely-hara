@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/vitest';
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
-import StringMaker from '../string-maker';
+import StringMaker from './ui';
 
 describe('<StringMaker />', () => {
   it('should render', () => {

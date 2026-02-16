@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/vitest';
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
-import UnitConverter from '../unit-converter';
+import UnitConverter from './ui';
 
 describe('<UnitConverter />', () => {
   it('should render', () => {

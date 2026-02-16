@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from 'react';
 import { Header as HeaderContainer } from '@stylelist94/nine-beauty-actress';
 
-import { cn } from '@/lib/utils';
+import { cn } from '../lib/utils';
 
 function subscribeToScroll(callback: () => void) {
   window.addEventListener('scroll', callback);

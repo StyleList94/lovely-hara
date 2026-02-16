@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/vitest';
 
 import { fireEvent, render, screen, within } from '@testing-library/react';
 
-import ThemeControlSwitch from '../theme-control-switch';
+import ThemeControlSwitch from './theme-control-switch';
 
 function setupDOM(theme: 'dark' | 'theme-light' | 'system' = 'theme-light') {
   if (theme === 'dark') {

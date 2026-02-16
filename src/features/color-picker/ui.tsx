@@ -17,8 +17,8 @@ import {
   CardTitle,
 } from '@stylelist94/nine-beauty-actress';
 
-import { hexColorRegex, rgbRegex } from '@/lib/regex';
-import { cn, hexToHSL, hexToRGB, rgbToHex } from '@/lib/utils';
+import { hexColorRegex, rgbRegex } from '@/shared/lib/regex';
+import { cn, hexToHSL, hexToRGB, rgbToHex } from '@/shared/lib/utils';
 
 const ColorPicker = () => {
   const [inputColorValue, setInputColorValue] = useState('');

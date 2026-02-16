@@ -4,10 +4,10 @@ export const prerender = false;
 import { MainContainer } from '@stylelist94/nine-beauty-actress';
 
 import RootLayout from '@/layouts/root.astro';
-import TopContent from '@/components/top-content';
-import PageFooter from '@/components/page-footer.astro';
+import { TopContent } from '@/features/landing-hero';
+import PageFooter from '@/shared/ui/page-footer.astro';
 
-import '@/styles/global.css';
+import '@/shared/styles/global.css';
 ---
 
 <RootLayout>

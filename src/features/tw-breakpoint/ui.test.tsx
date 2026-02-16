@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/vitest';
 
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import TwBreakpoint from '../tw-breakpoint';
+import TwBreakpoint from './ui';
 
 describe('<TwBreakpoint />', () => {
   it('should render', () => {

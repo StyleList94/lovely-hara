@@ -20,7 +20,7 @@ import {
   CollapsibleTrigger,
 } from '@stylelist94/nine-beauty-actress';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/lib/utils';
 
 
 const twViewportBreak = [

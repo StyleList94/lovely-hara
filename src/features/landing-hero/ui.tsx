@@ -5,9 +5,9 @@ import { Button } from '@stylelist94/nine-beauty-actress';
 import { Cursor } from 'motion-plus/react';
 
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/shared/lib/utils';
 
-import Typewriter from '@/components/ui/typewriter';
+import Typewriter from '@/shared/ui/typewriter';
 
 const lovelyThings = [
   'TypeScript',

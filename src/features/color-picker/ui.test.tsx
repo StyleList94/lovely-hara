@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/vitest';
 
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import ColorPicker from '../color-picker';
+import ColorPicker from './ui';
 
 describe('<ColorPicker />', () => {
   it('should render default state', () => {

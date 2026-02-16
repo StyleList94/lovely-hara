@@ -1,6 +1,6 @@
 'use client';
 
-import type { IconConversionResult } from '@/types/icon-converter';
+import type { IconConversionResult } from './types';
 
 import { actions, type SafeResult } from 'astro:actions';
 import { withState } from '@astrojs/react/actions';
