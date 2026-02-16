@@ -56,3 +56,13 @@ Exception: `blog-feed/` and `play-ball/` use `index.astro` as entry point (Astro
 - **Prettier** with `prettier-plugin-astro`
 - **Husky** + **lint-staged** pre-commit hook
 - `import/prefer-default-export: off`
+
+## PR Review Checklist
+
+When reviewing PRs, focus on these rules only:
+
+1. **FSD layer violations** — `shared/` importing from `features/`, cross-feature imports
+2. **Public API bypass** — importing internal files instead of `index.ts`
+3. **Import path style** — same layer must use relative paths, cross layer must use `@/`
+4. **React hydration** — `client:only="react"` required for React components in `.astro` files
+5. **Named export rule** — public API must use `export { default as X }`, not `export { default }`
