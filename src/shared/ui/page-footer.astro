@@ -1,0 +1,50 @@
+---
+import { Footer } from '@stylelist94/nine-beauty-actress';
+
+import { cn } from '../lib/utils';
+
+import ThemeControlSwitch from './theme-control-switch';
+---
+
+<Footer>
+  <div
+    class:list={cn(
+      'flex flex-col gap-3',
+      'sm:flex-row sm:justify-between sm:items-center sm:gap-4',
+      'font-mono text-zinc-950 dark:text-zinc-50',
+    )}
+  >
+    <div class="flex items-center gap-8">
+      <a
+        href="https://blog.styleli.sh"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Blog (새 탭에서 열림)"
+        class="text-sm"
+      >
+        Blog
+      </a>
+      <a
+        href="https://nine.styleli.sh"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Nine (새 탭에서 열림)"
+        class="text-sm"
+      >
+        Nine
+      </a>
+    </div>
+
+    <div class="h-8">
+      <ThemeControlSwitch client:only="react" />
+    </div>
+  </div>
+  <div>
+    <p class="text-xs font-mono text-neutral-500 dark:text-neutral-400">
+      © 2026.{' '}
+      <a href="/productivity">
+        @StyleList94
+      </a>
+    </p>
+  </div>
+</Footer>

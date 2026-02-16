@@ -1,0 +1,37 @@
+---
+import BlogFeedContainer from './ui';
+
+type Post = {
+  title: string;
+  link: string;
+  description: string;
+};
+
+const extractTags = (xml: string, tag: string): string[] => {
+  const regex = new RegExp(`<${tag}>([\\s\\S]*?)<\\/${tag}>`, 'g');
+  return Array.from(xml.matchAll(regex), (match) => match[1]);
+};
+
+let postList: Post[] = [];
+let errorMessage: string | null = null;
+
+try {
+  const res = await fetch('https://blog.styleli.sh/rss.xml');
+
+  if (!res.ok) {
+    errorMessage = '피드 어디갔어!?';
+  } else {
+    const data = await res.text();
+
+    postList = extractTags(data, 'item').map((itemXml) => ({
+      title: extractTags(itemXml, 'title')[0] || '',
+      link: extractTags(itemXml, 'link')[0] || '',
+      description: extractTags(itemXml, 'description')[0] || '',
+    }));
+  }
+} catch {
+  errorMessage = '그럴리가 없는데...';
+}
+---
+
+<BlogFeedContainer client:only="react" postList={postList} errorMessage={errorMessage} />
