@@ -3,6 +3,7 @@ import {
   animate,
   motion,
   useMotionValue,
+  useReducedMotion,
   useScroll,
   useTransform,
   type MotionValue,
@@ -35,35 +36,39 @@ const useCombinedOpacity = (
 const useEntrance = (initial: number) => useMotionValue(initial);
 
 const TopContent = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start'],
   });
 
-  const titleY = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const descY = useTransform(scrollYProgress, [0, 1], [0, -400]);
-  const linkY = useTransform(scrollYProgress, [0, 1], [0, -600]);
-  const scrollDescOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-  const scrollLinkOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -100]);
+  const descY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -400]);
+  const linkY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : -600]);
+  const scrollDescOpacity = useTransform(scrollYProgress, [0, 0.4], [1, shouldReduceMotion ? 1 : 0]);
+  const scrollLinkOpacity = useTransform(scrollYProgress, [0, 0.3], [1, shouldReduceMotion ? 1 : 0]);
 
-  const entranceDescOpacity1 = useEntrance(0);
-  const entranceDescY1 = useEntrance(12);
-  const entranceDescOpacity2 = useEntrance(0);
-  const entranceDescY2 = useEntrance(12);
-  const entranceLinkOpacity = useEntrance(0);
+  const entranceDescOpacity1 = useEntrance(shouldReduceMotion ? 1 : 0);
+  const entranceDescY1 = useEntrance(0);
+  const entranceDescOpacity2 = useEntrance(shouldReduceMotion ? 1 : 0);
+  const entranceDescY2 = useEntrance(0);
+  const entranceLinkOpacity = useEntrance(shouldReduceMotion ? 1 : 0);
 
   const descOpacity1 = useCombinedOpacity(entranceDescOpacity1, scrollDescOpacity);
   const descOpacity2 = useCombinedOpacity(entranceDescOpacity2, scrollDescOpacity);
   const linkOpacity = useCombinedOpacity(entranceLinkOpacity, scrollLinkOpacity);
 
   useEffect(() => {
+    if (shouldReduceMotion) return;
     animate(entranceDescOpacity1, 1, { duration: 0.6, delay: 0.1 });
     animate(entranceDescY1, 0, { duration: 0.6, delay: 0.1 });
     animate(entranceDescOpacity2, 1, { duration: 0.6, delay: 0.3 });
     animate(entranceDescY2, 0, { duration: 0.6, delay: 0.3 });
     animate(entranceLinkOpacity, 1, { duration: 0.6, delay: 0.4 });
   }, [
+    shouldReduceMotion,
     entranceDescOpacity1,
     entranceDescY1,
     entranceDescOpacity2,
