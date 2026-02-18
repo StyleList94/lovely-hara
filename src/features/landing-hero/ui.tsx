@@ -15,7 +15,16 @@ import { cn } from '@/shared/lib/utils';
 import ScrambleTextCycle from '@/shared/ui/scramble-text';
 import Typewriter from '@/shared/ui/typewriter';
 
-const LOVELY_THINGS = ['TypeScript', 'React', 'Next.js', 'Astro', 'tailwindcss'];
+const LOVELY_THINGS = [
+  'TypeScript',
+  'React',
+  'Next.js',
+  'Astro',
+  'tailwindcss',
+  'Vite',
+  'Vitest',
+  'zustand',
+];
 const SCRAMBLE_TEXTS = ['Frontend', 'Design', 'Web3'];
 
 const useCombinedOpacity = (
