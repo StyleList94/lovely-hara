@@ -9,6 +9,7 @@ import {
 type Props = {
   texts: string[];
   speed?: number | TypingSpeed;
+  backspace?: 'character' | 'word' | 'all';
 };
 
 const cursor: CSSProperties = {
@@ -16,7 +17,7 @@ const cursor: CSSProperties = {
   height: '0.25rem',
 };
 
-const Typewriter = ({ texts, speed }: Props) => {
+const Typewriter = ({ texts, speed, backspace = 'character' }: Props) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   return (
@@ -31,6 +32,9 @@ const Typewriter = ({ texts, speed }: Props) => {
         );
       }}
       speed={speed}
+      replace="type"
+      backspace={backspace}
+      cursorBlinkRepeat={3}
     >
       {texts[currentTextIndex]}
     </MotionTypewriter>
