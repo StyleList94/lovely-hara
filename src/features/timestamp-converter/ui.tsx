@@ -107,23 +107,22 @@ const TimestampConverter = () => {
 
       <CardContent className="flex flex-col gap-2">
         <FormControl>
+          <FormControl.Label>Unix</FormControl.Label>
           <div className="flex items-center gap-1">
-            <FormControl.Label className="flex-none">Unix</FormControl.Label>
+            <TextInput
+              type="number"
+              placeholder="1740000000"
+              value={unixInput}
+              onChange={handleUnixChange}
+            />
             <Button
-              variant="ghost"
-              size="sm"
-              className="flex-none text-xs"
+              variant="outline"
+              className="flex-none"
               onClick={handleNow}
             >
               Now
             </Button>
           </div>
-          <TextInput
-            type="number"
-            placeholder="1740000000"
-            value={unixInput}
-            onChange={handleUnixChange}
-          />
         </FormControl>
 
         <FormControl>
