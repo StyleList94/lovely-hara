@@ -16,6 +16,10 @@ import { SpringSimulator } from '@/features/spring-simulator';
 import { TwBreakpoint } from '@/features/tw-breakpoint';
 import { UnitConverter } from '@/features/unit-converter';
 import { IconConverter } from '@/features/icon-converter';
+import { Base64Codec } from '@/features/base64-codec';
+import { TimestampConverter } from '@/features/timestamp-converter';
+import { AspectRatio } from '@/features/aspect-ratio';
+import { EasingCurve } from '@/features/easing-curve';
 import BlogFeed from '@/features/blog-feed/index.astro';
 import PlayBall from '@/features/play-ball/index.astro';
 
@@ -64,15 +68,19 @@ import '@/shared/styles/global.css';
           <ColorPicker client:only="react" />
           <SearchExplore client:only="react" />
           <BlogFeed />
+          <AspectRatio client:only="react" />
         </div>
         <div class:list={cn('grid grid-cols-1 gap-4')}>
           <StringMaker client:only="react" />
+          <Base64Codec client:only="react" />
           <PlayBall />
+          <TimestampConverter client:only="react" />
         </div>
       </div>
       <div class="grid grid-cols-1 gap-4">
-        <div class="grid gird-cols-1 gap-4">
+        <div class="grid grid-cols-1 gap-4">
           <SpringSimulator client:only="react" />
+          <EasingCurve client:only="react" />
         </div>
         <div
           class:list={cn(
