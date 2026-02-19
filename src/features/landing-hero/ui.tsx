@@ -17,14 +17,14 @@ import ScrambleTextCycle from '@/shared/ui/scramble-text';
 import Typewriter from '@/shared/ui/typewriter';
 
 const LOVELY_THINGS = [
-  'TypeScript',
-  'React',
-  'Next.js',
-  'Astro',
-  'tailwindcss',
-  'Vite',
-  'Vitest',
-  'Zustand',
+  'Lovely TypeScript',
+  'Lovely React',
+  'Lovely Next.js',
+  'Lovely Astro',
+  'Lovely tailwindcss',
+  'Lovely Vite',
+  'Lovely Vitest',
+  'Lovely Zustand',
 ];
 const SCRAMBLE_TEXTS = ['Frontend', 'Design', 'Web3'];
 
@@ -152,9 +152,8 @@ const TopContent = () => {
                 </span>
               </h1>
               <h2 className="whitespace-nowrap">
-                Lovely{' '}
                 <span className="relative inline-block text-left">
-                  <span className="invisible">tailwindcss</span>
+                  <span className="invisible">Lovely tailwindcss</span>
                   <span className="absolute inset-0">
                     <Typewriter texts={LOVELY_THINGS} />
                   </span>
