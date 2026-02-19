@@ -83,7 +83,7 @@ const TwBreakpoint = () => {
             <TableHeader>
               <TableRow>
                 <TableHead>prefix</TableHead>
-                <TableHead className="text-right">최소 너비</TableHead>
+                <TableHead className="text-right!">최소 너비</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -124,7 +124,7 @@ const TwBreakpoint = () => {
               <TableHeader>
                 <TableRow>
                   <TableHead>prefix</TableHead>
-                  <TableHead className="text-right">최소 너비</TableHead>
+                  <TableHead className="text-right!">최소 너비</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

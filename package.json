@@ -21,7 +21,7 @@
     "@fontsource-variable/geist": "^5.2.8",
     "@fontsource-variable/geist-mono": "^5.2.7",
     "@fontsource-variable/space-grotesk": "^5.2.10",
-    "@stylelist94/nine-beauty-actress": "^2.0.1",
+    "@stylelist94/nine-beauty-actress": "^2.1.1",
     "astro": "5.17.2",
     "bignumber.js": "^9.3.1",
     "clsx": "^2.1.1",
