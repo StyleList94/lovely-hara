@@ -60,7 +60,8 @@ describe('<AspectRatio />', () => {
     fireEvent.click(preset16x9);
 
     await waitFor(() => {
-      expect((screen.getByLabelText('Height')).value).toBe(
+      expect(screen.getByLabelText('Height')).toHaveAttribute(
+        'value',
         '1080',
       );
     });
