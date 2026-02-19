@@ -10,7 +10,7 @@
         "@fontsource-variable/geist": "^5.2.8",
         "@fontsource-variable/geist-mono": "^5.2.7",
         "@fontsource-variable/space-grotesk": "^5.2.10",
-        "@stylelist94/nine-beauty-actress": "^2.0.1",
+        "@stylelist94/nine-beauty-actress": "^2.1.1",
         "astro": "5.17.2",
         "bignumber.js": "^9.3.1",
         "clsx": "^2.1.1",
@@ -532,7 +532,7 @@
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
-    "@stylelist94/nine-beauty-actress": ["@stylelist94/nine-beauty-actress@2.0.1", "https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/2.0.1/b0aace1fa905c344e69229b30fe00485a07c5fdb", { "dependencies": { "@radix-ui/react-checkbox": "^1.3.3", "@radix-ui/react-collapsible": "^1.1.12", "@radix-ui/react-dialog": "^1.1.15", "@radix-ui/react-label": "^2.1.8", "@radix-ui/react-popover": "^1.1.15", "@radix-ui/react-scroll-area": "^1.2.10", "@radix-ui/react-separator": "^1.1.8", "@radix-ui/react-slider": "^1.3.6", "@radix-ui/react-slot": "^1.2.4", "@radix-ui/react-switch": "^1.2.6", "@radix-ui/react-toast": "^1.2.15", "@radix-ui/react-toggle-group": "^1.1.11", "@radix-ui/react-tooltip": "^1.2.8", "@vanilla-extract/css": "^1.17.4", "@vanilla-extract/recipes": "^0.5.7", "clsx": "^2.1.1", "cmdk": "^1.1.1", "lucide-react": "^0.563.0" }, "peerDependencies": { "motion": ">=12", "react": ">=19.2", "react-dom": ">=19.2" } }, "sha512-bl7lGGUlTVUW4nxUQrQ9iY+ck84nFBnPyNkue8kN15hX02Iu+EbxWMRdjBBunUQ/SlK6Ny9W8KxCq0xLaGGw0g=="],
+    "@stylelist94/nine-beauty-actress": ["@stylelist94/nine-beauty-actress@2.1.1", "https://npm.pkg.github.com/download/@stylelist94/nine-beauty-actress/2.1.1/1e3b8911ad1d41ab713b4e7f760d7266fb204b9e", { "dependencies": { "@radix-ui/react-checkbox": "^1.3.3", "@radix-ui/react-collapsible": "^1.1.12", "@radix-ui/react-dialog": "^1.1.15", "@radix-ui/react-label": "^2.1.8", "@radix-ui/react-popover": "^1.1.15", "@radix-ui/react-scroll-area": "^1.2.10", "@radix-ui/react-separator": "^1.1.8", "@radix-ui/react-slider": "^1.3.6", "@radix-ui/react-slot": "^1.2.4", "@radix-ui/react-switch": "^1.2.6", "@radix-ui/react-toast": "^1.2.15", "@radix-ui/react-toggle-group": "^1.1.11", "@radix-ui/react-tooltip": "^1.2.8", "@vanilla-extract/css": "^1.17.4", "@vanilla-extract/recipes": "^0.5.7", "clsx": "^2.1.1", "cmdk": "^1.1.1", "lucide-react": "^0.563.0" }, "peerDependencies": { "motion": ">=12", "react": ">=19.2", "react-dom": ">=19.2" } }, "sha512-oaDkfWSZ5DH6XTl3CTXgrKjy1Og+0eGbUiBA+m9X3D3A3AQ/5OkxDCqMlcB1eVSCpgyR88Z8NJ3UYLpbJt9sDw=="],
 
     "@tailwindcss/node": ["@tailwindcss/node@4.1.18", "", { "dependencies": { "@jridgewell/remapping": "^2.3.4", "enhanced-resolve": "^5.18.3", "jiti": "^2.6.1", "lightningcss": "1.30.2", "magic-string": "^0.30.21", "source-map-js": "^1.2.1", "tailwindcss": "4.1.18" } }, "sha512-DoR7U1P7iYhw16qJ49fgXUlry1t4CpXeErJHnQ44JgTSKMaZUdf17cfn5mHchfJ4KRBZRFA/Coo+MUF5+gOaCQ=="],
 
