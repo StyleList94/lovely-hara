@@ -316,8 +316,8 @@ const EasingCurve = () => {
       </CardHeader>
 
       <CardContent className="flex flex-col gap-4">
-        <div className="flex flex-col @md:flex-row gap-4">
-          <div className="relative z-10 flex justify-center">
+        <div className="relative z-1 flex flex-col @md:flex-row gap-4">
+          <div className="relative flex justify-center">
             <CurveGraph points={points} onDrag={handleDrag} />
           </div>
 
