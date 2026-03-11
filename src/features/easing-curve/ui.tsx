@@ -3,7 +3,6 @@
 import {
   type PointerEvent as ReactPointerEvent,
   useCallback,
-  useEffect,
   useMemo,
   useRef,
   useState,
@@ -292,21 +291,6 @@ const EasingCurve = () => {
       /* empty */
     }
   };
-
-  // Inject keyframes into document
-  useEffect(() => {
-    const styleId = 'easing-curve-keyframes';
-    if (document.getElementById(styleId)) return;
-    const style = document.createElement('style');
-    style.id = styleId;
-    style.textContent = `
-      @keyframes easing-slide {
-        from { left: 0; }
-        to { left: calc(100% - 2rem); }
-      }
-    `;
-    document.head.appendChild(style);
-  }, []);
 
   return (
     <Card className="@container w-full">

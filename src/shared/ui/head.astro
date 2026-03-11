@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import { Font } from 'astro:assets';
 
 const title = 'styleli.sh';
 const description = 'Lovely Frontend';
@@ -41,6 +42,10 @@ const twitterImage = `${siteUrl}/twitter-image.png`;
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={twitterImage} />
+
+  <Font cssVariable="--astro-font-sans" preload />
+  <Font cssVariable="--astro-font-mono" preload />
+  <Font cssVariable="--astro-font-hero" preload />
 
   <ClientRouter />
 </head>
