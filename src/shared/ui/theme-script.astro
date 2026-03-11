@@ -10,11 +10,8 @@
         : 'light';
     }
 
-    const css = document.createElement('style');
-    css.textContent = '*, *::before, *::after { transition: none !important; }';
-    document.head.appendChild(css);
+    document.documentElement.classList.add('no-transitions');
 
-    //
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
       document.documentElement.classList.remove('light');
@@ -25,7 +22,7 @@
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        document.head.removeChild(css);
+        document.documentElement.classList.remove('no-transitions');
       });
     });
   };
@@ -55,4 +52,5 @@
   document.addEventListener('astro:after-swap', () => {
     resolveTheme(getThemePreference());
   });
+
 </script>
