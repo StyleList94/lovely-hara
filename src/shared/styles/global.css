@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import './fonts.css';
 
 @import '@stylelist94/nine-beauty-actress/style.css';
 @import '@stylelist94/nine-beauty-actress/tailwind-theme.css';
@@ -8,10 +7,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: 'Pretendard', sans-serif;
-  --font-mono: 'Geist Mono Variable', monospace;
-  --font-display: 'Geist Mono Variable', monospace;
-  --font-hero: 'Space Grotesk Variable', sans-serif;
+  --font-sans: var(--astro-font-sans), sans-serif;
+  --font-mono: var(--astro-font-mono), monospace;
+  --font-display: var(--astro-font-mono), monospace;
+  --font-hero: var(--astro-font-hero), sans-serif;
 }
 
 @layer base {
@@ -20,5 +19,19 @@
   }
   body {
     @apply bg-white text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50;
+  }
+  .no-transitions *,
+  .no-transitions *::before,
+  .no-transitions *::after {
+    transition: none !important;
+  }
+}
+
+@keyframes easing-slide {
+  from {
+    left: 0;
+  }
+  to {
+    left: calc(100% - 2rem);
   }
 }
