@@ -18,10 +18,10 @@
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "13.0.2",
-    "@astrojs/react": "5.0.0",
+    "@astrojs/cloudflare": "13.1.4",
+    "@astrojs/react": "5.0.2",
     "@stylelist94/nine-beauty-actress": "^2.1.1",
-    "astro": "6.0.2",
+    "astro": "6.1.1",
     "bignumber.js": "^9.3.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
