@@ -52,9 +52,7 @@ const IconConverter = () => {
 
   const handleChangeFile = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      updatePreview(file);
-    }
+    if (file) updatePreview(file);
   };
 
   useEffect(() => {

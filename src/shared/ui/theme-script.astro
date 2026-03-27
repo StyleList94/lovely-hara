@@ -1,18 +1,17 @@
 <script is:inline>
-  const getThemePreference = () => {
-    return localStorage.getItem('theme') || 'system';
-  };
+  const getThemePreference = () => localStorage.getItem('theme') || 'system';
 
   const resolveTheme = (theme) => {
-    if (theme === 'system') {
-      theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+    let resolvedTheme = theme;
+
+    if (theme === 'system')
+      resolvedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
         ? 'dark'
         : 'light';
-    }
 
     document.documentElement.classList.add('no-transitions');
 
-    if (theme === 'dark') {
+    if (resolvedTheme === 'dark') {
       document.documentElement.classList.add('dark');
       document.documentElement.classList.remove('light');
     } else {
@@ -38,9 +37,7 @@
   window
     .matchMedia('(prefers-color-scheme: dark)')
     .addEventListener('change', () => {
-      if (getThemePreference() === 'system') {
-        handleThemeUpdate();
-      }
+      if (getThemePreference() === 'system') handleThemeUpdate();
     });
 
   window.addEventListener('theme-change', handleThemeUpdate);
@@ -52,5 +49,4 @@
   document.addEventListener('astro:after-swap', () => {
     resolveTheme(getThemePreference());
   });
-
 </script>

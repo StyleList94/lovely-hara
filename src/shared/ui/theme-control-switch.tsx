@@ -47,9 +47,7 @@ const ThemeControlSwitch = () => {
     window.dispatchEvent(new Event('theme-change'));
   };
 
-  if (!isMounted) {
-    return null;
-  }
+  if (!isMounted) return null;
 
   return (
     <ToggleGroup

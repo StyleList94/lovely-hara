@@ -115,11 +115,7 @@ const TimestampConverter = () => {
               value={unixInput}
               onChange={handleUnixChange}
             />
-            <Button
-              variant="outline"
-              className="flex-none"
-              onClick={handleNow}
-            >
+            <Button variant="outline" className="flex-none" onClick={handleNow}>
               Now
             </Button>
           </div>

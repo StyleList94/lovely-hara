@@ -17,12 +17,11 @@ const ASCII_ART = `
 export const onRequest = defineMiddleware(({ request }, next) => {
   const ua = request.headers.get('user-agent') ?? '';
 
-  if (ua.toLowerCase().includes('curl')) {
+  if (ua.toLowerCase().includes('curl'))
     return new Response(ASCII_ART, {
       status: 200,
       headers: { 'Content-Type': 'text/plain; charset=utf-8' },
     });
-  }
 
   return next();
 });

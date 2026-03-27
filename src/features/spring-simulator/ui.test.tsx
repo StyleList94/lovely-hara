@@ -4,18 +4,24 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import SpringSimulator from './ui';
 
-const ResizeObserverMock = vi.fn(function ResizeObserverMock(this: ResizeObserver) {
-  this.observe = vi.fn();
-  this.unobserve = vi.fn();
-  this.disconnect = vi.fn();
-});
+// eslint-disable-next-line react/no-this-in-sfc -- Mock constructors are not React SFCs
+const ResizeObserverMock = vi.fn(
+  function ResizeObserverMock(this: ResizeObserver) {
+    this.observe = vi.fn(); // eslint-disable-line react/no-this-in-sfc
+    this.unobserve = vi.fn(); // eslint-disable-line react/no-this-in-sfc
+    this.disconnect = vi.fn(); // eslint-disable-line react/no-this-in-sfc
+  },
+);
 vi.stubGlobal('ResizeObserver', ResizeObserverMock);
 
-const MutationObserverMock = vi.fn(function MutationObserverMock(this: MutationObserver) {
-  this.observe = vi.fn();
-  this.disconnect = vi.fn();
-  this.takeRecords = vi.fn().mockReturnValue([]);
-});
+// eslint-disable-next-line react/no-this-in-sfc -- Mock constructors are not React SFCs
+const MutationObserverMock = vi.fn(
+  function MutationObserverMock(this: MutationObserver) {
+    this.observe = vi.fn(); // eslint-disable-line react/no-this-in-sfc
+    this.disconnect = vi.fn(); // eslint-disable-line react/no-this-in-sfc
+    this.takeRecords = vi.fn().mockReturnValue([]); // eslint-disable-line react/no-this-in-sfc
+  },
+);
 vi.stubGlobal('MutationObserver', MutationObserverMock);
 
 describe('<SpringSimulator />', () => {

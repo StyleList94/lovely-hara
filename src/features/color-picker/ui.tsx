@@ -24,18 +24,15 @@ const ColorPicker = () => {
   const [inputColorValue, setInputColorValue] = useState('');
 
   const colorValue = useMemo(() => {
-    if (hexColorRegex.test(inputColorValue)) {
-      return inputColorValue;
-    }
-    if (rgbRegex.test(inputColorValue)) {
-      return rgbToHex(inputColorValue);
-    }
+    if (hexColorRegex.test(inputColorValue)) return inputColorValue;
+
+    if (rgbRegex.test(inputColorValue)) return rgbToHex(inputColorValue);
 
     return null;
   }, [inputColorValue]);
 
   const convertedValue = useMemo(() => {
-    if (colorValue) {
+    if (colorValue)
       return [
         colorValue,
         hexToRGB(colorValue) as string,
@@ -43,15 +40,12 @@ const ColorPicker = () => {
         hexToHSL(colorValue) as string,
         hexToHSL(colorValue, { includeAlpha: true }) as string,
       ];
-    }
 
     return null;
   }, [colorValue]);
 
   const handleClickConvertedValue = (target: number) => async () => {
-    if (!convertedValue) {
-      return;
-    }
+    if (!convertedValue) return;
 
     try {
       await navigator.clipboard.writeText(convertedValue[target]);

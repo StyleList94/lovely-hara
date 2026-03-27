@@ -17,11 +17,11 @@ export const rgbToHex = (rgbString: string) => {
   if (!match) return null;
 
   const toHex = (value: string): string => {
-    if (value.includes('%')) {
+    if (value.includes('%'))
       return Math.round((parseFloat(value) / 100) * 255)
         .toString(16)
         .padStart(2, '0');
-    }
+
     return parseInt(value, 10).toString(16).padStart(2, '0');
   };
 
@@ -38,17 +38,16 @@ export const hexToRGB = (
 
   let hexColor = hex.replace(/^#/, '');
 
-  if (hexColor.length === 3) {
+  if (hexColor.length === 3)
     hexColor = hexColor
       .split('')
       .map((char) => char + char)
       .join('');
-  } else if (hexColor.length === 4) {
+  else if (hexColor.length === 4)
     hexColor = hexColor
       .split('')
       .map((char) => char + char)
       .join('');
-  }
 
   const hasAlpha = hexColor.length === 8;
 
@@ -70,12 +69,11 @@ export const hexToHSL = (
   if (!hexColorWithAlphaRegex.test(hex)) return null;
 
   let expandedHex = hex.slice(1);
-  if (expandedHex.length === 3 || expandedHex.length === 4) {
+  if (expandedHex.length === 3 || expandedHex.length === 4)
     expandedHex = expandedHex
       .split('')
       .map((char) => char + char)
       .join('');
-  }
 
   const r = parseInt(expandedHex.substring(0, 2), 16);
   const g = parseInt(expandedHex.substring(2, 4), 16);
@@ -143,9 +141,9 @@ export const hexToHSL = (
     parseFloat(new BigNumber(l).multipliedBy(100).toFixed(1)),
   );
 
-  if (alphaHex !== 'ff' || includeAlpha) {
+  if (alphaHex !== 'ff' || includeAlpha)
     return `hsl(${h} ${s}% ${lPercent}% / ${a})`;
-  }
+
   return `hsl(${h} ${s}% ${lPercent}%)`;
 };
 
@@ -158,10 +156,10 @@ export const isFileAccepted = (file: File, accept?: string) => {
   const fileExt = `.${file.name.split('.').pop()?.toLowerCase()}`;
 
   return acceptList.some((acceptItem) => {
-    if (acceptItem.startsWith('.')) {
+    if (acceptItem.startsWith('.'))
       // 확장자 비교
       return fileExt === acceptItem;
-    }
+
     if (acceptItem.endsWith('/*')) {
       // 와일드카드 MIME 타입 비교 (예: image/*)
       const baseType = acceptItem.replace('/*', '');

@@ -508,7 +508,11 @@
         "**/__tests__/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[jt]s?(x)"
       ],
-      "rules": {}
+      "rules": {
+        // Mock constructors in tests legitimately use `this` — not React SFCs
+        "react/no-this-in-sfc": "off",
+        "react-js/no-this-in-sfc": "off"
+      }
     },
     {
       "files": ["**/*.{jsx,tsx}"],

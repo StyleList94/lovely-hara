@@ -22,7 +22,6 @@ import {
 
 import { cn } from '@/shared/lib/utils';
 
-
 type TeamStanding = {
   rank: number;
   team: string;
@@ -72,13 +71,12 @@ const PlayBall = ({
   updateDate,
   errorMessage,
 }: Props) => {
-  if (errorMessage) {
+  if (errorMessage)
     return (
       <Container>
         <FailLoadData message={errorMessage} />
       </Container>
     );
-  }
 
   return (
     <Container>

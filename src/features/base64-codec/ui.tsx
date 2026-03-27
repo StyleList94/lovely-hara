@@ -83,18 +83,10 @@ const Base64Codec = () => {
           onChange={(e) => setInputText(e.target.value)}
         />
         <div className="flex items-center gap-1">
-          <Button
-            className="flex-1"
-            variant="secondary"
-            onClick={handleEncode}
-          >
+          <Button className="flex-1" variant="secondary" onClick={handleEncode}>
             Encode
           </Button>
-          <Button
-            className="flex-1"
-            variant="secondary"
-            onClick={handleDecode}
-          >
+          <Button className="flex-1" variant="secondary" onClick={handleDecode}>
             Decode
           </Button>
         </div>

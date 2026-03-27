@@ -1,11 +1,6 @@
 'use client';
 
-import {
-  type ChangeEvent,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { type ChangeEvent, useMemo, useRef, useState } from 'react';
 import { SearchIcon } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -191,9 +186,7 @@ const SearchExplore = () => {
   };
 
   const handleClickSearch = () => {
-    if (!isSearchable) {
-      return;
-    }
+    if (!isSearchable) return;
 
     searchEngines.forEach((engine) => {
       if (isChecked[engine.id]) {
@@ -202,7 +195,7 @@ const SearchExplore = () => {
           `${engine.id}${Date.now()}`,
         );
 
-        if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+        if (!popup || popup.closed || typeof popup.closed === 'undefined')
           if (toastId.current) {
             toast.dismiss(toastId.current);
             toastId.current = null;
@@ -214,7 +207,6 @@ const SearchExplore = () => {
               duration: 3000,
             });
           }
-        }
       }
     });
   };
@@ -305,7 +297,11 @@ const SearchExplore = () => {
             </CheckboxGroup.Label>
             <div className="flex flex-col gap-2 @3xs:flex-row @2xs:items-center">
               {externalSearchEngines.map((item) => (
-                <FormControl key={item.id} layout="horizontal" className="!w-auto">
+                <FormControl
+                  key={item.id}
+                  layout="horizontal"
+                  className="!w-auto"
+                >
                   <Checkbox
                     name={item.id}
                     onCheckedChange={handleCheck(item.id)}
@@ -322,7 +318,11 @@ const SearchExplore = () => {
             </CheckboxGroup.Label>
             <div className="flex flex-col gap-2 @3xs:flex-row @2xs:items-center">
               {internalSearchEngines.map((item) => (
-                <FormControl key={item.id} layout="horizontal" className="!w-auto">
+                <FormControl
+                  key={item.id}
+                  layout="horizontal"
+                  className="!w-auto"
+                >
                   <Checkbox
                     name={item.id}
                     onCheckedChange={handleCheck(item.id)}
@@ -339,7 +339,11 @@ const SearchExplore = () => {
             </CheckboxGroup.Label>
             <div className="flex flex-col gap-2 @3xs:flex-row @2xs:items-center">
               {communitySearchEngines.map((item) => (
-                <FormControl key={item.id} layout="horizontal" className="!w-auto">
+                <FormControl
+                  key={item.id}
+                  layout="horizontal"
+                  className="!w-auto"
+                >
                   <Checkbox
                     name={item.id}
                     onCheckedChange={handleCheck(item.id)}

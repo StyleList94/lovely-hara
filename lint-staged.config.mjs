@@ -7,7 +7,10 @@ import process from 'node:process';
 export default {
   '*.{js,jsx,ts,tsx}': (filenames) => {
     const files = filenames.map((file) => path.relative(process.cwd(), file));
-    return [`oxfmt --write ${files.join(' ')}`, `oxlint --fix ${files.join(' ')}`];
+    return [
+      `oxfmt --write ${files.join(' ')}`,
+      `oxlint --fix ${files.join(' ')}`,
+    ];
   },
   '*.astro': (filenames) => {
     const files = filenames.map((file) => path.relative(process.cwd(), file));
