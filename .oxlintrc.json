@@ -390,14 +390,6 @@
           }
         ],
         "pathGroupsExcludedImportTypes": ["type"],
-        "pathGroups": [
-          {
-            "pattern": "@/**",
-            "group": "internal",
-            "position": "before"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["type"],
         "newlines-between": "always-and-inside-groups"
       }
     ],
@@ -505,8 +497,8 @@
     },
     {
       "files": [
-        "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[jt]s?(x)"
+        "**/__tests__/**/*.{js,jsx,ts,tsx}",
+        "**/*.{spec,test}.{js,jsx,ts,tsx}"
       ],
       "rules": {
         // Mock constructors in tests legitimately use `this` — not React SFCs

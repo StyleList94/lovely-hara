@@ -4,25 +4,25 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import SpringSimulator from './ui';
 
-// eslint-disable-next-line react/no-this-in-sfc -- Mock constructors are not React SFCs
+/* oxlint-disable react/no-this-in-sfc */
 const ResizeObserverMock = vi.fn(
   function ResizeObserverMock(this: ResizeObserver) {
-    this.observe = vi.fn(); // eslint-disable-line react/no-this-in-sfc
-    this.unobserve = vi.fn(); // eslint-disable-line react/no-this-in-sfc
-    this.disconnect = vi.fn(); // eslint-disable-line react/no-this-in-sfc
+    this.observe = vi.fn();
+    this.unobserve = vi.fn();
+    this.disconnect = vi.fn();
   },
 );
 vi.stubGlobal('ResizeObserver', ResizeObserverMock);
 
-// eslint-disable-next-line react/no-this-in-sfc -- Mock constructors are not React SFCs
 const MutationObserverMock = vi.fn(
   function MutationObserverMock(this: MutationObserver) {
-    this.observe = vi.fn(); // eslint-disable-line react/no-this-in-sfc
-    this.disconnect = vi.fn(); // eslint-disable-line react/no-this-in-sfc
-    this.takeRecords = vi.fn().mockReturnValue([]); // eslint-disable-line react/no-this-in-sfc
+    this.observe = vi.fn();
+    this.disconnect = vi.fn();
+    this.takeRecords = vi.fn().mockReturnValue([]);
   },
 );
 vi.stubGlobal('MutationObserver', MutationObserverMock);
+/* oxlint-enable react/no-this-in-sfc */
 
 describe('<SpringSimulator />', () => {
   it('should render', () => {

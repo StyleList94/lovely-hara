@@ -189,25 +189,18 @@ const SearchExplore = () => {
     if (!isSearchable) return;
 
     searchEngines.forEach((engine) => {
-      if (isChecked[engine.id]) {
-        const popup = window.open(
-          engine.url(query),
-          `${engine.id}${Date.now()}`,
-        );
+      if (!isChecked[engine.id]) return;
 
-        if (!popup || popup.closed || typeof popup.closed === 'undefined')
-          if (toastId.current) {
-            toast.dismiss(toastId.current);
-            toastId.current = null;
-          } else {
-            toastId.current = toast.warning('팝업이 차단됨!', {
-              position: 'bottom-right',
-              description:
-                '검색 결과를 모두 확인하려면 팝업 해제를 해야합니다!',
-              duration: 3000,
-            });
-          }
-      }
+      const popup = window.open(engine.url(query), `${engine.id}${Date.now()}`);
+
+      if (popup && !popup.closed) return;
+
+      if (!toastId.current)
+        toastId.current = toast.warning('팝업이 차단됨!', {
+          position: 'bottom-right',
+          description: '검색 결과를 모두 확인하려면 팝업 해제를 해야합니다!',
+          duration: 3000,
+        });
     });
   };
 
