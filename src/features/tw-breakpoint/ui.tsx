@@ -22,7 +22,6 @@ import {
 
 import { cn } from '@/shared/lib/utils';
 
-
 const twViewportBreak = [
   { prefix: 'sm', remValue: 40 },
   { prefix: 'md', remValue: 48 },

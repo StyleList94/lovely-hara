@@ -51,11 +51,12 @@ const FailLoadData = ({ message }: { message: string }) => (
 );
 
 const BlogFeed = ({ postList, errorMessage }: Props) => {
-  if (errorMessage) {
-    <Container>
-      <FailLoadData message={errorMessage} />
-    </Container>;
-  }
+  if (errorMessage)
+    return (
+      <Container>
+        <FailLoadData message={errorMessage} />
+      </Container>
+    );
 
   return (
     <Container>

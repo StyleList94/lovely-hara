@@ -91,14 +91,11 @@ const StringMaker = () => {
 
   useEffect(() => {
     let timerId: NodeJS.Timeout | undefined;
-    if (targetSuccessCopy) {
+    if (targetSuccessCopy)
       timerId = setTimeout(() => setTargetSuccessCopy(null), 3000);
-    }
 
     return () => {
-      if (timerId) {
-        clearTimeout(timerId);
-      }
+      if (timerId) clearTimeout(timerId);
     };
   }, [targetSuccessCopy]);
 
