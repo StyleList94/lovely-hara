@@ -5,20 +5,22 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import SpringSimulator from './ui';
 
 /* oxlint-disable react/no-this-in-sfc */
-const ResizeObserverMock = vi.fn(
+const ResizeObserverMock = vi.fn<() => void>(
   function ResizeObserverMock(this: ResizeObserver) {
-    this.observe = vi.fn();
-    this.unobserve = vi.fn();
-    this.disconnect = vi.fn();
+    this.observe = vi.fn<ResizeObserver['observe']>();
+    this.unobserve = vi.fn<ResizeObserver['unobserve']>();
+    this.disconnect = vi.fn<ResizeObserver['disconnect']>();
   },
 );
 vi.stubGlobal('ResizeObserver', ResizeObserverMock);
 
-const MutationObserverMock = vi.fn(
+const MutationObserverMock = vi.fn<() => void>(
   function MutationObserverMock(this: MutationObserver) {
-    this.observe = vi.fn();
-    this.disconnect = vi.fn();
-    this.takeRecords = vi.fn().mockReturnValue([]);
+    this.observe = vi.fn<MutationObserver['observe']>();
+    this.disconnect = vi.fn<MutationObserver['disconnect']>();
+    this.takeRecords = vi
+      .fn<MutationObserver['takeRecords']>()
+      .mockReturnValue([]);
   },
 );
 vi.stubGlobal('MutationObserver', MutationObserverMock);
@@ -92,7 +94,7 @@ describe('<SpringSimulator />', () => {
   });
 
   it('should be copied value', async () => {
-    const writeTextMock = vi.fn();
+    const writeTextMock = vi.fn<Clipboard['writeText']>();
     Object.defineProperty(window, 'navigator', {
       value: {
         clipboard: {

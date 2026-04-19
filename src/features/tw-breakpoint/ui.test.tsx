@@ -65,7 +65,9 @@ describe('<TwBreakpoint />', () => {
     Object.defineProperty(window, 'navigator', {
       value: {
         clipboard: {
-          writeText: vi.fn().mockResolvedValue(undefined),
+          writeText: vi
+            .fn<Clipboard['writeText']>()
+            .mockResolvedValue(undefined),
         },
       },
     });

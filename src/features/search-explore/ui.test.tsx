@@ -48,7 +48,7 @@ describe('<SearchExplore />', () => {
   });
 
   it('should open search results', () => {
-    const openMock = vi.fn();
+    const openMock = vi.fn<typeof window.open>();
     vi.stubGlobal('open', openMock);
 
     render(<SearchExplore />);
