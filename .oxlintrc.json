@@ -263,7 +263,6 @@
           "**/rollup.config.*.js",
           "**/vite.config.*",
           "**/vitest.setup.{js,ts,mjs,mts}",
-          "eslint.config.*",
           "**/__mocks__/**",
           "**/mocks/**"
         ]
@@ -520,6 +519,12 @@
       "rules": {
         "react/rules-of-hooks": "error",
         "react/exhaustive-deps": "warn"
+      }
+    },
+    {
+      "files": ["**/eslint.config.*"],
+      "rules": {
+        "import-js/no-extraneous-dependencies": "off"
       }
     }
   ]
