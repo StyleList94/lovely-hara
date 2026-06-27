@@ -1,4 +1,6 @@
 // @ts-check
+import { fileURLToPath } from 'node:url';
+
 import { defineConfig, fontProviders } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
@@ -57,6 +59,24 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      // Cloudflare's workerd build applies the `browser` export condition,
+      // which resolves jimp to an empty stub (dist/browser/index.js exports {}).
+      // Force the esm build that actually exports `Jimp` for the server action.
+      // Absolute path bypasses jimp's exports-field encapsulation.
+      alias: {
+        jimp: fileURLToPath(
+          new URL('./node_modules/jimp/dist/esm/index.js', import.meta.url),
+        ),
+      },
+    },
+    optimizeDeps: {
+      // Dev-only: pre-bundle jimp's CommonJS codec deps so the workerd dev
+      // runner receives ESM (with require interop) instead of raw CJS, which
+      // otherwise crashes with "require is not defined". The production build
+      // already bundles these via rolldown, so this only affects `astro dev`.
+      include: ['jimp', 'utif2', 'jpeg-js'],
+    },
   },
   // TODO: Enable CSP when motion library supports it.
   // Astro's CSP auto-generates style hashes, which causes browsers to ignore
